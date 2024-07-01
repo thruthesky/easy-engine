@@ -5,8 +5,8 @@ import {
   initializeTestEnvironment
 } from "@firebase/rules-unit-testing";
 import firebase from 'firebase/compat/app';
-import { doc, getDoc, setDoc, serverTimestamp, setLogLevel, Firestore } from 'firebase/firestore';
-import { readFileSync, createWriteStream } from "node:fs";
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, setLogLevel } from 'firebase/firestore';
+import { readFileSync } from "node:fs";
 import { before } from "mocha";
 
 
@@ -19,7 +19,7 @@ let testEnv: RulesTestEnvironment;
 // 로그인 하지 않은, unauthenticated context 를 글로벌에 저장해서, 타이핑을 줄이고 간소화 한다.
 let unauthedDb: firebase.firestore.Firestore;
 
-// 각 사용자별 로그인 context 를 저장한다.
+// 각 사용자별 로그인 context 를 저장해 놓고 편하게 사용한다.
 let appleDb: firebase.firestore.Firestore;
 let bananaDb: firebase.firestore.Firestore;
 let cherryDb: firebase.firestore.Firestore;
@@ -27,32 +27,31 @@ let durianDb: firebase.firestore.Firestore;
 
 
 
-describe('Firestore rules', async () => {
+describe('전반적인 파이어스토어 규칙 테스트', async () => {
 
-
+  // 모든 테스트를 시작하기 전에 실행되는 콜백 함수.
+  // 여기에 initializeTestEnvironment() 를 호출해서, Firestore 접속을 초기화 하면 된다.
+  // watch 코드가 수정될 경우, 전체 테스트를 다시 실행하면, 이 함수도 다시 호출 된다.
   before(async () => {
-    // Silence expected rules rejections from Firestore SDK. Unexpected rejections
-    // will still bubble up and will be thrown as an error (failing the tests).
-    setLogLevel('error');
-
-    /// 테스트가 처음 실행 될 때, 파이어베이스 접속 초기화.
+    setLogLevel("error"); // 로그 레벨을 설정한다.
+    /// 모든 테스트를 실행하기 전에, 파이어베이스 접속 초기화.
     testEnv = await initializeTestEnvironment({
       projectId: PROJECT_ID,
       firestore: {
-        host: '127.0.0.1',
-        port: 8080,
+        host,
+        port,
+        // Firestore Security Rules 파일을 읽어서, 테스트 환경에 적용한다.
+        // 즉, Security Rules 파일을 수정하고, 테스트를 다시 실행하면, 수정된 Rules 이 적용되므로,
+        // mocha watch 를 하는 경우, 소스 코드를 한번 수정 해 주면 된다.
         rules: readFileSync('firestore.rules', 'utf8')
       },
     });
-
 
   });
 
   // 각 테스트를 하기 전에, 로컬 Firestore 의 데이터를 모두 지운다.
   beforeEach(async () => {
     await testEnv.clearFirestore();
-
-
 
     // 셋업: Security Rules 를 적용하지 않고, 테스트 데이터를 미리 좀 저장해 놓는다.
     // withSecurityRulesDisabled 는 한번에 하나의 쿼리만 실행해야 한다. 그렇지 않으면,
@@ -110,4 +109,74 @@ describe('Firestore rules', async () => {
     const context = testEnv.authenticatedContext("alice", { email: "alice@email.com", });
     await assertSucceeds(setDoc(doc(context.firestore(), '/users/alice'), { name: 'Alice' }));
   });
+
+  it("나의 공개 정보 수정 - 성공", async () => {
+    await assertSucceeds(setDoc(doc(appleDb, '/users/apple'), {}));
+    await assertSucceeds(setDoc(doc(bananaDb, '/users/banana'), { 'name': 'Banana Q' }));
+    await assertSucceeds(updateDoc(doc(cherryDb, '/users/cherry'), { 'name': 'Cherry Q' }));
+  });
+
+  it("타인의 공개 정보 수정 - 실패", async () => {
+    await assertFails(setDoc(doc(appleDb, '/users/banana'), { name: 'Banana Q' }));
+    await assertFails(updateDoc(doc(unauthedDb, '/users/banana'), { name: 'Banana Q' }));
+  });
+
+
+  it("나의 공개 정보 삭제 불가", async () => {
+    await assertFails(deleteDoc(doc(appleDb, '/users/apple')));
+  });
+  it("타인의 공개 정보 삭제 불가", async () => {
+    await assertFails(deleteDoc(doc(appleDb, '/users/banana')));
+  });
+
+  it("나의 비공개 정보 수정 - 성공", async () => {
+    await assertSucceeds(setDoc(doc(appleDb, '/users/apple/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
+    await assertSucceeds(updateDoc(doc(appleDb, '/users/apple/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
+  });
+  it("타인의 비공개 정보 수정 - 실패", async () => {
+    await assertFails(setDoc(doc(appleDb, '/users/banana/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
+    await assertFails(updateDoc(doc(appleDb, '/users/banana/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
+  });
+
+  it("나의 비공개 정보 삭제 - 실패", async () => {
+    await assertFails(deleteDoc(doc(appleDb, '/users/apple/user_meta/private')));
+  });
+
+  it("타인의 비공개 정보 삭제 - 실패", async () => {
+    await assertFails(deleteDoc(doc(appleDb, '/users/banana/user_meta/private')));
+  });
+
+  it("나의 설정 읽기 - 성공", async () => {
+    await assertSucceeds(getDoc(doc(appleDb, '/users/apple/user_meta/settings')));
+  });
+  it("타인의 설정 읽기 - 성공", async () => {
+    await assertSucceeds(getDoc(doc(appleDb, '/users/banana/user_meta/settings')));
+  });
+  it("나의 설정 생성 & 수정", async () => {
+    await assertSucceeds(setDoc(doc(appleDb, '/users/apple/user_meta/settings'), { theme: 'dark' }));
+    await assertSucceeds(updateDoc(doc(appleDb, '/users/apple/user_meta/settings'), { theme: 'light' }));
+  });
+  it("타인의 설정 생성 & 수정 - 실패", async () => {
+    await assertFails(setDoc(doc(appleDb, '/users/banana/user_meta/settings'), { theme: 'dark' }));
+    await assertFails(updateDoc(doc(appleDb, '/users/banana/user_meta/settings'), { theme: 'light' }));
+  });
+
+  it("나의 설정 삭제 - 실패", async () => {
+    await assertFails(deleteDoc(doc(appleDb, '/users/apple/user_meta/settings')));
+  });
+  it("타인의 설정 삭제 - 실패", async () => {
+    await assertFails(deleteDoc(doc(appleDb, '/users/banana/user_meta/settings')));
+  });
+
+
+  // 관리자 권한 테스트 --------------
+  //
+
+  // 관리자가 지정되지 않았으면, 아무나 자기 자신읠 root 관리자로 지정 할 수 있다.
+  // 관리자 설정은 /settings/admins 에 저장된다.
+  it("관리자 지정하기", async () => {
+
+  });
+
+
 });
