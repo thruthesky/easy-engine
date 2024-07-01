@@ -42,7 +42,7 @@ describe('전반적인 파이어스토어 규칙 테스트', async () => {
         port,
         // Firestore Security Rules 파일을 읽어서, 테스트 환경에 적용한다.
         // 즉, Security Rules 파일을 수정하고, 테스트를 다시 실행하면, 수정된 Rules 이 적용되므로,
-        // mocha watch 를 하는 경우, 소스 코드를 한번 수정 해 주면 된다.
+        // mocha watch 를 하는 경우, 소스 코드를 수정 필요 없이 저장만 한번 해 주면 된다.
         rules: readFileSync('firestore.rules', 'utf8')
       },
     });
@@ -171,11 +171,24 @@ describe('전반적인 파이어스토어 규칙 테스트', async () => {
 
   // 관리자 권한 테스트 --------------
   //
-
   // 관리자가 지정되지 않았으면, 아무나 자기 자신읠 root 관리자로 지정 할 수 있다.
   // 관리자 설정은 /settings/admins 에 저장된다.
-  it("관리자 지정하기", async () => {
+  it("나 자신을 root 관리자로 지정하기", async () => {
+    await assertSucceeds(setDoc(doc(appleDb, '/settings/admins'), { 'apple': ['root', 'customer-chat-support'] }));
 
+    // 로컬 Firestore 의 데이터를 가져와서 확인하는 방법
+    const snapshot = await getDoc(doc(unauthedDb, '/settings/admins'));
+    const data = snapshot.data();
+    console.log(data);
+  });
+
+  it("다른 사용자를 관리자로 지정하기", async () => {
+    await assertFails(setDoc(doc(appleDb, '/settings/admins'), { 'banana': ['root'] }));
+  });
+
+  it("이미 관리자가 지정되어져 있는데, 나를 root 관리자로 지정하는 경우 - 실패", async () => {
+    await assertSucceeds(setDoc(doc(appleDb, '/settings/admins'), { 'apple': ['root', 'customer-chat-support'] }));
+    await assertFails(setDoc(doc(bananaDb, '/settings/admins'), { 'banana': ['root'] }));
   });
 
 
