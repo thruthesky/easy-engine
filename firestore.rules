@@ -15,5 +15,24 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
+
+    // 사용자 공개 문서
+    //
+    // fcm tokens 는 RTDB 에 저장된다.
+    match /users/{uid} {
+      allow read: if true;
+      allow write: if (request.auth.uid == uid);
+
+      // 사용자 개인 문서
+      match /user_meta/private {
+        allow read, write: if request.auth.uid == uid;
+      }
+
+      // 사용자 설정 문서
+      match /user_meta/settings {
+        allow read: if true;
+        allow write: if request.auth.uid == uid;
+      }
+    }
   }
 }
