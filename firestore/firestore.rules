@@ -2,38 +2,19 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // This rule allows anyone with your Firestore database reference to view, edit,
-    // and delete all data in your Firestore database. It is useful for getting
-    // started, but it is configured to expire after 30 days because it
-    // leaves your app open to attackers. At that time, all client
-    // requests to your Firestore database will be denied.
-    //
-    // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Firestore database will be denied until you Update
-    // your rules
     match /{document=**} {
       allow read, write: if false;
     }
-
-    // 관리자
-    match /settings/admins {
-      allow read: if true;
-      allow create: if isAdminNotSet() && request.resource.data.keys().hasOnly([request.auth.uid]);
-      allow update: if isRootAdmin();
-      allow delete: if false;
-    }
-
     // 사용자 공개 문서
     //
-    // fcm tokens 는 RTDB 에 저장된다.
     match /users/{uid} {
       allow read: if true;
-      allow create: if (request.auth.uid == uid);
-      allow update: if (request.auth.uid == uid);
+      allow create: if (request.auth.uid == uid) && notUpdating(['admin']);
+      allow update: if (request.auth.uid == uid) && notUpdating(['admin']);
       allow delete: if false;
 
-      // 사용자 개인 문서
+      
+      // 사용자 개인 비밀 문서. 연락처 또는 민감한 정보 저장
       match /user_meta/private {
         allow read: if request.auth.uid == uid;
         allow create: if (request.auth.uid == uid);
@@ -48,52 +29,33 @@ service cloud.firestore {
         allow update: if (request.auth.uid == uid);
         allow delete: if false;
       }
+
     }
 
-    //
-    // 아래의 데이터 부터 테스트를 해 나가야 한다.
-    function isAdminSet() {
-      return exists(/databases/$(database)/documents/settings/admins);
-    }
-    function isAdminNotSet() {
-      return !isAdminSet();
-    }
-    function getAdminData() {
-      return get(/databases/$(database)/documents/settings/admins).data;
-    }
-    function isAdmin() {
-      return isAdminSet() && getAdminData().keys().hasAny([request.auth.uid]);
-    }
-    function isRootAdmin() {
-      return isAdmin() && getAdminData()[request.auth.uid].hasAny(['root']);
-    }
+
+      match /temp/{doc} {
+        allow read: if false;
+        allow create: if willBeMyDoc('uid');
+        allow update: if isMyDoc('uid') || willBeMyDoc('uid')
+            && notUpdating(['uid'])
+            && mustUpdating(['name'])
+            && onlyAddingOneElement('users')
+            && notRemoving('users', 'a')
+            && onlyRemoving('users', 'a')
+            && fieldCheck(['required', 'fields'], ['optional', 'fields'])
+            ;
+        allow delete: if false;
+      }
   }
 }
 
 
-// Check if roomId contains my Uid.
-function myChatRoom(roomId) {
-  return request.auth.uid in roomId.split('__');
-}
-
-// Check if the message is create by me.
-function myChatMessage() {
-  return request.auth.uid == resource.data.from;
-}
-
-function messageFields() {
-  let required = ["to", "from", "timestamp", "text"];
-  let optional = ["protocol"];
-  return fieldCheck(required, optional);
-}
-
 // example: fieldCheck(['required', 'fields'], ['optional', 'fields'])
-function fieldCheck(required, optional) {
-  let all = required.concat( optional );
+function fieldCheck(requires, optional) {
+  let all = requires.concat( optional );
   // let fC = debug('****** fieldCheck *****');
-  return required( required ) && request.resource.data.keys().hasOnly(all);
+  return required( requires ) && request.resource.data.keys().hasOnly(all);
 }
-
 
 // * Warning : It's check the fields after save.
 // * Warning : !!! It's not checking the incoming data fields !!!
@@ -104,16 +66,25 @@ function required(fields) {
 }
 
 
+
 // Check if the field matches to the user id before save
 //
-// [field] must match the user uid.
+// [field] is the failed name of the document and the value of the
+// document must be the login user's uid.
+//
 // Use this to see if the document belongs to the user.
 // For instance, when data is `{authorUid: 'aaa', ...}`,
 //  - you can call `isMyDoc('authorUid')`,
 //  - And if the authorUid is your uid, then it's your document.
+//
+// Normally you would use like `isMyDoc('uid')` to check if the document
+// belongs to the user. The document must have a field named `uid` and
+// the value of the field must be the login user's uid.
 function isMyDoc(field) {
    return resource.data[field] == request.auth.uid;
 }
+
+
 
 
 // Check if the field matches to the user uid
@@ -124,16 +95,6 @@ function willBeMyDoc(field) {
    return request.resource.data[field] == request.auth.uid;
 }
 
-// Check if login user is the one who created the post
-function isMyPost() {
-  return isMyDoc('uid');
-}
-
-// Check if the post belongs to the user (after create or update).
-// Use this to validate that the author does not change after updating.
-function willBeMyPost() {
-  return willBeMyDoc('uid');
-}
 
 
 // Check if the [fields] does not change.
@@ -143,41 +104,21 @@ function willBeMyPost() {
 // allow update: if notUpdating(['a', 'b', 'c']);
 // ```
 // Fields that are not in the `fields` parameters may change.
+//
+// 문서의 특정 필드들(fields)은 변경되지 않도록 한다.
+//
+// 변경이 안되면 true, 변경이 되면, false 를 리턴.
 function notUpdating(fields) {
-  return request.resource.data.diff(resource.data).unchangedKeys().hasAll(fields);
+  // 저장되어져 있는 데이터가 없으면, 즉 생성인 경우,
+  return resource == null 
+    // 생성될 문서에 변경 금지된 필드들(fields)이 없으면, true 를 리턴.
+    ? !request.resource.data.keys().hasAny(fields)
+    // 이미 생성된 문서가 있는 경우, 변경 금지 필드들(fields)이 변경안되면 true 를 리턴.
+    : !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
 }
 
-// Only updating [fields]
-// - Succeeds if no property changes or only one or all of the [fields] changes.
-// - Fails if other properties rather than the [fields] are changed.
-//
-// - Success if only the properties in the list of [fields] should be changed.
-// - Success if none of the properties are changed.
-//
-// Note, the action will succeed even if
-//  the value of the fields do not changed or does not exists in incoming data.
-//  This means, even if the incoming data is empty, it will succeed.
-//  FIY, `[].hasOnly(['a', 'b'])` is true expressoin.
-//  See, https://firebase.google.com/docs/reference/rules/rules.List#hasOnly
-// 
-// For instance, when client can only update like and dislike; see the following code;
-// ```
-// rule => onlyUpdating(['like', 'dislike']);
-// code => succeed on `doc.update({})`, `doc.update({like: x})`,
-// code => fails on `doc.update({title: 'x'})` 
-// ```
-// For anthother instance, the client can update 'viewCounter';
-// ```
-// rule => allow update: if onlyUpdating(['viewCounter']);
-// code succeeds => doc.update({ viewCounter: FieldValue.increment(1) });
-// code succeeds => doc.update({}); // no update is okay.
-// code fials => doc.update({b: 'Banana'})
-// ```
-// 문서에 특정 필드 하나만 추가 또는 업데이트하는 경우에 사용한다.
-// 다른 필드를 추가하거나 수정하면 에러가 난다.
-function onlyUpdating(fields) {
-  return request.resource.data.diff(resource.data).affectedKeys().hasOnly(fields);
-}
+
+
 
 
 // The value of [fields] must be changed.
@@ -231,4 +172,3 @@ function onlyRemoving(arryField, element) {
     resource.data[arryField].toSet().intersection(request.resource.data[arryField].toSet()) == request.resource.data[arryField].toSet()
   ;
 }
-

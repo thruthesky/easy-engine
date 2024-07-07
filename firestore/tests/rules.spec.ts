@@ -27,6 +27,7 @@ let durianDb: firebase.firestore.Firestore;
 
 
 
+
 describe('전반적인 파이어스토어 규칙 테스트', async () => {
 
   // 모든 테스트를 시작하기 전에 실행되는 콜백 함수.
@@ -98,9 +99,11 @@ describe('전반적인 파이어스토어 규칙 테스트', async () => {
   it('공개 프로필 읽기 테스트 - 성공 - 로그인 하지 않고 참조', async () => {
     await assertSucceeds(getDoc(doc(unauthedDb, '/users/apple')));
   });
+
   it('비공개 프로필 읽기 테스트 - 성공', async () => {
     await assertSucceeds(getDoc(doc(appleDb, '/users/apple/user_meta/private')));
   });
+
   it('비공개 프로필 읽기 테스트 - 실패 - 다른 사용자 비공개 정보 읽기', async () => {
     await assertFails(getDoc(doc(appleDb, '/users/banana/user_meta/private')));
   });
@@ -110,9 +113,17 @@ describe('전반적인 파이어스토어 규칙 테스트', async () => {
     await assertSucceeds(setDoc(doc(context.firestore(), '/users/alice'), { name: 'Alice' }));
   });
 
-  it("나의 공개 정보 수정 - 성공", async () => {
+  it("나의 공개 정보 생성 by apple - 성공 ", async () => {
     await assertSucceeds(setDoc(doc(appleDb, '/users/apple'), {}));
-    await assertSucceeds(setDoc(doc(bananaDb, '/users/banana'), { 'name': 'Banana Q' }));
+  });
+
+
+
+  it("나의 공개 정보 생성 by banana - 성공 ", async () => {
+    await assertSucceeds(updateDoc(doc(cherryDb, '/users/cherry'), { 'name': 'Cherry Q' }));
+  });
+
+  it("나의 공개 정보 수정 by cherrry - 성공 ", async () => {
     await assertSucceeds(updateDoc(doc(cherryDb, '/users/cherry'), { 'name': 'Cherry Q' }));
   });
 
@@ -129,6 +140,12 @@ describe('전반적인 파이어스토어 규칙 테스트', async () => {
     await assertFails(deleteDoc(doc(appleDb, '/users/banana')));
   });
 
+  it("나의 비공개 정보 문서 - 생성 - 성공", async () => {
+    await assertSucceeds(setDoc(doc(appleDb, '/users/apple/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
+  });
+  it("나의 비공개 정보 문서 - 수정 - 성공", async () => {
+    await assertSucceeds(updateDoc(doc(appleDb, '/users/apple/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
+  });
   it("나의 비공개 정보 수정 - 성공", async () => {
     await assertSucceeds(setDoc(doc(appleDb, '/users/apple/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
     await assertSucceeds(updateDoc(doc(appleDb, '/users/apple/user_meta/private'), { email: 'email', phoneNumber: 'phone number' }));
