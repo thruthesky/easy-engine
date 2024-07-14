@@ -1,5 +1,15 @@
-# House Engine
+# Easy Engine
 
+
+This is a Firebase backend for supporting the [easy packages](https://github.com/thruthesky/easy_frame) Flutter framework. This project rovides firebase auth account management, and other features that cannot be made in Flutter Firebase Client SDK.
+
+# Install
+
+
+
+## Firebase Extensions
+
+To make it ultamately easy to install cloud functions of easy engine, it is distributed as firebase extensions. You can simply click the link below and begin to install with easy.
 
 
 ## Firebase Security Rules
@@ -17,32 +27,18 @@
 고객(회원) 상담을 할 때, 모든 관리자들과 함께 그룹 채팅방으로 상담이 진행된다.
 
 
-### 관리자로 지정하기
 
-- 2024. 07. 07. 현재는 Firestore 의 사용자 문서에서 `admin` 필드에 `true` 의 값을 주어야 한다.
-- 앞으로는 백엔드에서 관리자가 설정되지 않은 경우, 누구나 먼저 선착순으로 root 관리자로 지정 할 수 있도록 한다.
+# How to use
+
+## Delete account
+
+Firebase Client SDK noramlly asks for recent-login to delete the user's own account. And yes, it's an extra work for the client developers. If the user signed in with phone number, the user must re-authenticate with it. If the app provides multiple sign-in methods, the developer must implement all the re-authentication logic. To make it simple, it provides the `deleteAccount` of firebase cloud function through firebase extension.
 
 
-### 관리자 권한의 과거 설정 - 2024. 07. 06 이전
 
-이전에는 아래와 같이 관리자를 위한 Security Rules 문서를 따로 만들었는데 로직 및 데이터 관리에 불편함이 있었다.
 
-```sh
-match /settings/admins {
-  allow read: if true;
-  allow create: if isAdminNotSet() && request.resource.data.keys().hasOnly([request.auth.uid]);
-  allow update: if isRootAdmin();
-  allow delete: if false;
-}
-```
+## Claim as admin
 
-데이터 구조 예:
+- Call `claimAsAdmin` cloud function to become the admin. Only the only user who first claim becomes admin and the follow users who tries to claim will get error.
 
-```json
-/settings
-  /admin
-    {
-        "user-id-1": ["root", "customer-chat-support"],
-        "user-id-2": ["customer-chat-support"]
-    }
-```
+
