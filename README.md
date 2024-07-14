@@ -42,3 +42,24 @@ Firebase Client SDK noramlly asks for recent-login to delete the user's own acco
 - Call `claimAsAdmin` cloud function to become the admin. Only the only user who first claim becomes admin and the follow users who tries to claim will get error.
 
 
+
+# Unit Tests
+
+# E2E Tests
+
+- First, run emulators like below.
+
+```sh
+% firebase emulators:start
+```
+
+- Second, run the tsc to transpile ts to javascript.
+
+```sh
+% npm run build -- --watch
+```
+
+- Then, run the test like below
+
+```sh
+```
