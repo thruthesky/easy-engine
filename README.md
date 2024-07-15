@@ -59,8 +59,7 @@ npm run test:e2e:claimAdmin
 
 ## Release
 
-
-- [Version 0.0.3-rc.0](https://console.firebase.google.com/project/_/extensions/install?ref=jaehosong/easy-extensions@0.0.3-rc.0)
+- [Version 0.0.6-rc.0](https://console.firebase.google.com/project/_/extensions/install?ref=jaehosong/easy-extensions@0.0.6-rc.0)
 
 
 
