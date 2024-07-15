@@ -3,7 +3,7 @@
 
 # Identifier for your extension
 name: easy-extensions
-version: 0.0.5 # Follow semver versioning
+version: 0.0.6 # Follow semver versioning
 specVersion: v1beta # Version of the Firebase Extensions specification
 
 # Friendly display name for your extension (~3-5 words)
@@ -35,6 +35,8 @@ billingRequired: true
 roles:
   - role: firebaseauth.admin
     reason: Required to update the email address of the user account
+  - role: datastore.owner
+    reason: Allows the extension to update the Firestore database
 
 # In the `resources` field, list each of your extension's functions, including the trigger for each function.
 # Learn more in the docs:

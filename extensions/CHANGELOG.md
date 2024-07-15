@@ -1,3 +1,6 @@
+## Version 0.0.6
+- Fix. Firestore role
+
 ## Version 0.0.5
 - Fix. Firebase initializeApp
 
@@ -13,3 +16,4 @@
 
 ## Version 0.0.1
 - Initial Version
+
