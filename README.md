@@ -6,14 +6,14 @@ This project provides essential cloud functions to help front-end apps use Fireb
 # Install
 
 
+## Cloud functions install
 
-## Firebase Extensions
+- `git clone` the easy-engine
+- `cd functions`
+- `firebase use`
+- `firebase deploy`
 
-To make it ultamately easy to install cloud functions of easy engine, it is distributed as firebase extensions. You can simply click the link below and begin to install with easy.
-
-
-## Firebase Security Rules
-
+## Firebase Security Rules install
 
 - To understand better about the security rules, please read the comments of the security rules source code.
 

@@ -1,5 +1,6 @@
 import {UserDocument} from "./user.interfaces";
 import * as admin from "firebase-admin";
+import {getAuth, UserRecord} from "firebase-admin/auth";
 import * as functions from "firebase-functions";
 
 
@@ -8,11 +9,13 @@ import * as functions from "firebase-functions";
  */
 export class UserModel {
     /**
-     * Create a user in the Firestore and returns the user
+     * Create a user document in the Firestore and returns the user object.
+     *
+     * Note that, it does not create the user account in the FirebaseAuth.
      *
      * @return {Promise<UserDocument>} UserDocument object
      */
-    static async createUser(): Promise<UserDocument> {
+    static async createUserDocument(): Promise<UserDocument> {
         const ref = admin.firestore().collection("users").doc();
         const user: Partial<UserDocument> = {
             displayName: "Test UserDocument",
@@ -22,6 +25,21 @@ export class UserModel {
 
         await ref.set(user);
         return await this.getUser(ref.id);
+    }
+    /**
+     * Create a user account in the FirebaseAuth and returns the user record.
+     *
+     * Note that, it does not create the user document in the Firestore.
+     *
+     * @return {Promise<UserRecord>} User Record of the Firebase Auth
+     */
+    static async createUserAccount(): Promise<UserRecord> {
+        const auth = getAuth();
+        const user = await auth.createUser({
+            email: "test" + new Date().getTime() + "@example.com",
+            password: "password,*12345a",
+        });
+        return user;
     }
 
     /**
@@ -46,9 +64,9 @@ export class UserModel {
      * If there is a user with the admin field set to true, it will throw an error.
      *
      * @param {string} uid uid of the user
-     * @return {Promise<string>} the user uid
+     * @return {Promise} the user uid
      */
-    static async claimAdmin(uid: string): Promise<string> {
+    static async claimAdmin(uid: string): Promise<{ uid: string }> {
         if (!uid) {
             throw new functions.https.HttpsError("invalid-argument", "The function must be called with " +
                 "one arguments 'uid' containing the user id to claim as admin");
@@ -60,7 +78,24 @@ export class UserModel {
         await admin.firestore().collection("users").doc(uid).update({
             admin: true,
         });
-        return uid;
+        return {uid};
+    }
+
+
+    /**
+     * Delete the user account from FirebaseAuth
+     *
+     *
+     * @param {string} uid uid of the user
+     * @return {Promise} the user uid
+     */
+    static async deleteAccount(uid: string): Promise<{ uid: string }> {
+        if (!uid) {
+            throw new functions.https.HttpsError("invalid-argument", "The uid is empty on deleteAccount.");
+        }
+        const auth = getAuth();
+        await auth.deleteUser(uid);
+        return {uid};
     }
 }
 

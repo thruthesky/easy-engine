@@ -35,7 +35,7 @@ describe("Claim Admin", () => {
             });
         }
 
-        const user = await UserModel.createUser();
+        const user = await UserModel.createUserDocument();
 
         const wrapped = test.wrap(userFunctions.claimAdmin);
         const result = await wrapped({},
@@ -47,7 +47,7 @@ describe("Claim Admin", () => {
 
         expect(result).equals(user.uid);
 
-        const user2 = await UserModel.createUser();
+        const user2 = await UserModel.createUserDocument();
 
         try {
             await wrapped({},

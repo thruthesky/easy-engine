@@ -1,3 +1,9 @@
+## Version 0.0.9
+- Add. exposing deleteAccount
+
+## Version 0.0.7
+- Add. deleteAccount
+
 ## Version 0.0.6
 - Fix. Firestore role
 

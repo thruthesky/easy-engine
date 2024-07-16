@@ -1,17 +1,16 @@
 /**
- * Unit Test 만 하는 코드
+ * Unit Test Only
  */
 import { expect } from "chai";
 import "mocha";
 import * as admin from "firebase-admin";
 import { initializeFirebaseOnce } from "../initialize-firebase-once";
-import { claimAdmin } from "../../src/user/user.functions";
 import { UserModel } from "../../src/user/user.model";
 
 initializeFirebaseOnce();
 
-describe("Count no of users", () => {
-    it("Should be bigger than 0", async () => {
+describe("Claim admin", () => {
+    it("Claim as admin.", async () => {
         const db = admin.firestore();
 
         /// Delete existing admin
@@ -24,7 +23,7 @@ describe("Count no of users", () => {
 
 
         /// Create a user
-        const user = await UserModel.createUser();
+        const user = await UserModel.createUserDocument();
 
         /// Claim him as admin
         await UserModel.claimAdmin(user.uid);

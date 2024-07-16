@@ -5,8 +5,9 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
-    // 사용자 공개 문서
-    //
+    // The public information of the user.
+    // Warning: This is a public document. Do not store sensitive information like
+    // email, phone number, address, card number, license number, etc.
     match /users/{uid} {
       allow read: if true;
       allow create: if (request.auth.uid == uid) && notUpdating(['admin']);
@@ -14,7 +15,8 @@ service cloud.firestore {
       allow delete: if false;
 
       
-      // 사용자 개인 비밀 문서. 연락처 또는 민감한 정보 저장
+      // The private information of the user.
+      // Save sensitive information here like email, phone number.
       match /user_meta/private {
         allow read: if request.auth.uid == uid;
         allow create: if (request.auth.uid == uid);
@@ -22,7 +24,7 @@ service cloud.firestore {
         allow delete: if false;
       }
 
-      // 사용자 설정 문서
+      // The settings of the user.
       match /user_meta/settings {
         allow read: if true;
         allow create: if (request.auth.uid == uid);
