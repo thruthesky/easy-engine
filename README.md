@@ -55,16 +55,3 @@ Firebase Client SDK noramlly asks for recent-login to delete the user's own acco
 ```sh
 npm run test:e2e:claimAdmin
 ```
-
-
-## Release
-
-- [Version 0.0.6-rc.0](https://console.firebase.google.com/project/_/extensions/install?ref=jaehosong/easy-extensions@0.0.6-rc.0) - v0.0.6
-
-
-
-
-
-## Release console
-
-https://console.firebase.google.com/u/0/project/jaehosong/publisher/extensions/easy-extensions/v/0.0.1-rc.0
