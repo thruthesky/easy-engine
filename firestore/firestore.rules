@@ -31,23 +31,29 @@ service cloud.firestore {
         allow update: if (request.auth.uid == uid);
         allow delete: if false;
       }
-
+    }
+    
+    match /task/{taskId} {
+      allow read: if true;
+      allow create: if willBeMyDoc('uid');
+      allow update: if isMyDoc('uid') && willBeMyDoc('uid');
     }
 
-
-      match /temp/{doc} {
-        allow read: if false;
-        allow create: if willBeMyDoc('uid');
-        allow update: if isMyDoc('uid') || willBeMyDoc('uid')
-            && notUpdating(['uid'])
-            && mustUpdating(['name'])
-            && onlyAddingOneElement('users')
-            && notRemoving('users', 'a')
-            && onlyRemoving('users', 'a')
-            && fieldCheck(['required', 'fields'], ['optional', 'fields'])
-            ;
-        allow delete: if false;
-      }
+    // temporary rules test
+    match /temp/{doc} {
+      allow read: if false;
+      allow create: if willBeMyDoc('uid');
+      allow update: if isMyDoc('uid') || willBeMyDoc('uid')
+          && notUpdating(['uid'])
+          && mustUpdating(['name'])
+          && onlyAddingOneElement('users')
+          && notRemoving('users', 'a')
+          && onlyRemoving('users', 'a')
+          && fieldCheck(['required', 'fields'], ['optional', 'fields'])
+          ;
+      allow delete: if false;
+    }
+  // EO of Rules
   }
 }
 

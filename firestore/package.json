@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha --require ts-node/register tests/rules.spec.ts --watch --watch-files 'tests/**/*.ts'"
+    "test:user": "mocha --require ts-node/register tests/user.rules.spec.ts --watch --watch-files 'tests/**/*.ts'",
+    "test:task": "mocha --require ts-node/register tests/task.rules.spec.ts --watch --watch-files 'tests/**/*.ts'"
   },
   "keywords": [],
   "author": "",

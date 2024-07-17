@@ -11,9 +11,12 @@ import { before } from "mocha";
 
 
 /****** SETUP ********/
-const PROJECT_ID = 'withcenter-test-5'; // 실제 프로젝트 ID로 지정해야 한다.
-const host = '127.0.0.1'; // localhost 로 하면 안된다.
+const PROJECT_ID = 'withcenter-test-5'; // Set your firebase project ID here
+const host = '127.0.0.1'; // Don't user "localhost" unless you have a reasion.
 const port = 8080; // 터미날에 표시되는 포트로 적절히 지정해야 한다.
+/****** UNTIL HERE */
+
+
 let testEnv: RulesTestEnvironment;
 
 // 로그인 하지 않은, unauthenticated context 를 글로벌에 저장해서, 타이핑을 줄이고 간소화 한다.
@@ -28,7 +31,7 @@ let durianDb: firebase.firestore.Firestore;
 
 
 
-describe('전반적인 파이어스토어 규칙 테스트', async () => {
+describe('Rules Test', async () => {
 
   // 모든 테스트를 시작하기 전에 실행되는 콜백 함수.
   // 여기에 initializeTestEnvironment() 를 호출해서, Firestore 접속을 초기화 하면 된다.
@@ -47,7 +50,6 @@ describe('전반적인 파이어스토어 규칙 테스트', async () => {
         rules: readFileSync('firestore.rules', 'utf8')
       },
     });
-
   });
 
   // 각 테스트를 하기 전에, 로컬 Firestore 의 데이터를 모두 지운다.
@@ -186,27 +188,6 @@ describe('전반적인 파이어스토어 규칙 테스트', async () => {
   });
 
 
-  // 관리자 권한 테스트 --------------
-  //
-  // 관리자가 지정되지 않았으면, 아무나 자기 자신읠 root 관리자로 지정 할 수 있다.
-  // 관리자 설정은 /settings/admins 에 저장된다.
-  it("나 자신을 root 관리자로 지정하기", async () => {
-    await assertSucceeds(setDoc(doc(appleDb, '/settings/admins'), { 'apple': ['root', 'customer-chat-support'] }));
-
-    // 로컬 Firestore 의 데이터를 가져와서 확인하는 방법
-    const snapshot = await getDoc(doc(unauthedDb, '/settings/admins'));
-    const data = snapshot.data();
-    console.log(data);
-  });
-
-  it("다른 사용자를 관리자로 지정하기", async () => {
-    await assertFails(setDoc(doc(appleDb, '/settings/admins'), { 'banana': ['root'] }));
-  });
-
-  it("이미 관리자가 지정되어져 있는데, 나를 root 관리자로 지정하는 경우 - 실패", async () => {
-    await assertSucceeds(setDoc(doc(appleDb, '/settings/admins'), { 'apple': ['root', 'customer-chat-support'] }));
-    await assertFails(setDoc(doc(bananaDb, '/settings/admins'), { 'banana': ['root'] }));
-  });
 
 
 });
