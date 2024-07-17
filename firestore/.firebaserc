@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "withcenter-test-5"
-  }
+    "default": "withcenter-test-3",
+    "test-3": "withcenter-test-3"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
