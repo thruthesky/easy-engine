@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test:user": "mocha --require ts-node/register tests/user.rules.spec.ts --watch --watch-files 'tests/**/*.ts'",
-    "test:task": "mocha --require ts-node/register tests/task.rules.spec.ts --watch --watch-files 'tests/**/*.ts'"
+    "test:task": "mocha --require ts-node/register tests/task.rules.spec.ts --watch --watch-files 'tests/**/*.ts'",
+    "build:watch": "tsc tests/**.ts --watch --outDir ./src"
   },
   "keywords": [],
   "author": "",

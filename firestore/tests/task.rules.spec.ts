@@ -5,10 +5,10 @@ import {
     initializeTestEnvironment
 } from "@firebase/rules-unit-testing";
 import firebase from 'firebase/compat/app';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, setLogLevel } from 'firebase/firestore';
+import { doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, setLogLevel } from 'firebase/firestore';
 import { readFileSync } from "node:fs";
 import { before } from "mocha";
-
+import { taskCol, TaskCreate } from "./task/task";
 
 /****** SETUP ********/
 const PROJECT_ID = 'withcenter-test-3'; // Set your firebase project ID here
@@ -75,9 +75,74 @@ describe('Rules Test', async () => {
     });
 
 
-    it("Unauthenticated user can't read a task", async () => {
+    it("User must be signed in to read a task", async () => {
         await assertFails(getDoc(doc(unauthedDb, '/tasks/task1')));
-        await assertSucceeds(getDoc(doc(unauthedDb, '/task/task1')));
+        await assertFails(getDoc(doc(unauthedDb, '/task/task1')));
+        await assertSucceeds(getDoc(doc(appleDb, '/tasks/task1')));
     });
 
+    it("User must be signed in to create a task", async () => {
+        const taskCreateUnAuth: TaskCreate = {
+            title: 'Create Task Test',
+            content: 'Creating a task for testing',
+        };
+        await assertFails(addDoc(unauthedDb.collection(taskCol()), taskCreateUnAuth));
+
+
+        const taskCreateApple: TaskCreate = {
+            title: 'Create Task Test',
+            content: 'Creating a task for testing',
+            createdBy: 'apple',
+        };
+        await assertSucceeds(addDoc(appleDb.collection(taskCol()), taskCreateApple));
+    });
+
+    it("User must the creator of the created task", async () => {
+        const taskCreateUnAuthWithCreatedBy: TaskCreate = {
+            title: 'Create Task Test',
+            content: 'Creating a task for testing',
+            createdBy: 'apple',
+        };
+        await assertFails(addDoc(unauthedDb.collection(taskCol()), taskCreateUnAuthWithCreatedBy));
+
+
+        const taskCreateUnAuthWithDifferentUid: TaskCreate = {
+            title: 'Create Task Test',
+            content: 'Creating a task for testing',
+            createdBy: 'IAmNotApple',
+        };
+        await assertFails(addDoc(appleDb.collection(taskCol()), taskCreateUnAuthWithDifferentUid));
+
+        const taskCreateBanana: TaskCreate = {
+            title: 'Create Task Test',
+            content: 'Creating a task for testing',
+            createdBy: 'banana',
+        };
+        await assertSucceeds(addDoc(bananaDb.collection(taskCol()), taskCreateBanana));
+    });
+
+
+    // it("A task may be (or may not be) assigned to a group", async () => {
+    //     const taskCreateUnAuthWithCreatedBy: TaskCreate = {
+    //         title: 'Create Task Test',
+    //         content: 'Creating a task for testing',
+    //         createdBy: 'apple',
+    //     };
+    //     await assertFails(addDoc(unauthedDb.collection(taskCol()), taskCreateUnAuthWithCreatedBy));
+
+
+    //     const taskCreateUnAuthWithDifferentUid: TaskCreate = {
+    //         title: 'Create Task Test',
+    //         content: 'Creating a task for testing',
+    //         createdBy: 'IAmNotApple',
+    //     };
+    //     await assertFails(addDoc(appleDb.collection(taskCol()), taskCreateUnAuthWithDifferentUid));
+
+    //     const taskCreateBanana: TaskCreate = {
+    //         title: 'Create Task Test',
+    //         content: 'Creating a task for testing',
+    //         createdBy: 'banana',
+    //     };
+    //     await assertSucceeds(addDoc(bananaDb.collection(taskCol()), taskCreateBanana));
+    // });
 });
