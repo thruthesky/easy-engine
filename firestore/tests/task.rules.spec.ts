@@ -37,7 +37,7 @@ let bananaDb: firebase.firestore.Firestore;
 let cherryDb: firebase.firestore.Firestore;
 let durianDb: firebase.firestore.Firestore;
 
-describe("Rules Test", async () => {
+describe("Task and Task Group Test", async () => {
     // 모든 테스트를 시작하기 전에 실행되는 콜백 함수.
     // 여기에 initializeTestEnvironment() 를 호출해서, Firestore 접속을 초기화 하면 된다.
     // watch 코드가 수정될 경우, 전체 테스트를 다시 실행하면, 이 함수도 다시 호출 된다.
@@ -1008,4 +1008,77 @@ describe("Rules Test", async () => {
             setDoc(doc(cherryDb, taskRef()), memberCreatedTask)
         );
     });
+});
+
+describe("Task Assign Test", async () => {
+    before(async () => {
+        setLogLevel("error");
+        testEnv = await initializeTestEnvironment({
+            projectId: PROJECT_ID,
+            firestore: {
+                host,
+                port,
+                rules: readFileSync("firestore.rules", "utf8"),
+            },
+        });
+    });
+
+    // 각 테스트를 하기 전에, 로컬 Firestore 의 데이터를 모두 지운다.
+    beforeEach(async () => {
+        await testEnv.clearFirestore();
+        await testEnv.withSecurityRulesDisabled(async (context) => {
+            await setDoc(doc(context.firestore(), "users/apple"), {
+                name: "apple",
+                no: 1,
+            });
+        });
+
+        unauthedDb = testEnv.unauthenticatedContext().firestore();
+
+        appleDb = testEnv.authenticatedContext("apple").firestore();
+        bananaDb = testEnv.authenticatedContext("banana").firestore();
+        cherryDb = testEnv.authenticatedContext("cherry").firestore();
+        durianDb = testEnv.authenticatedContext("durian").firestore();
+    });
+
+    it("[Pass] Member created a task in a group for multiple users who are in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: [
+                "cherry",
+                "banana",
+                "eggplant",
+                "flower",
+                "guava"
+            ],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
+
+        const memberCreatedTask: Task = {
+            title: "Crazy till we see the sun",
+            groupId: groupId,
+            status: "open",
+            assignedUsers: multipleUsers,
+            creator: "cherry",
+        }
+        await assertSucceeds(
+            setDoc(doc(cherryDb, taskRef()), memberCreatedTask)
+        );
+    });
+
+    it("[Pass] User created a task and assigned to himself (not in group)", async () => { });
+    it("[Fail] User created a task and assigned to others (not in group)", async () => { });
+    it("[Fail] User created a task and another user assigned it others (not in group)", async () => { });
+    it("[Fail] User created a task and another user assigned it himself (not in group)", async () => { });
+    it("[Fail] User created a task and unauthed user assigned it others (not in group)", async () => { });
+    it("[Fail] User created a task and unauthed user assigned it to the user (not in group)", async () => { });
 });

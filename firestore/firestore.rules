@@ -82,18 +82,8 @@ service cloud.firestore {
     match /task-group/{taskGroupId} {
       allow read: if true;
       allow create: if willBeMyField('creator');
-      allow update: if (
-        (
-          isMyField('creator') 
-          && 
-          willBeMyField('creator')
-        )
-        ||
-        (
-          resource.data.moderatorUsers.hasAny([request.auth.uid])
-        )
-      )
-      && resource.data['creator'] == request.resource.data['creator'];
+      allow update: if (isMyField('creator') || resource.data.moderatorUsers.hasAny([request.auth.uid]))
+                        && resource.data['creator'] == request.resource.data['creator'];
     }
     
     match /task-assign {

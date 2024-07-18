@@ -55,7 +55,7 @@ var appleDb;
 var bananaDb;
 var cherryDb;
 var durianDb;
-describe("Rules Test", function () { return __awaiter(void 0, void 0, void 0, function () {
+describe("Task and Task Group Test", function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         // 모든 테스트를 시작하기 전에 실행되는 콜백 함수.
         // 여기에 initializeTestEnvironment() 를 호출해서, Firestore 접속을 초기화 하면 된다.
@@ -1471,6 +1471,120 @@ describe("Rules Test", function () { return __awaiter(void 0, void 0, void 0, fu
                 }
             });
         }); });
+        return [2 /*return*/];
+    });
+}); });
+describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        (0, mocha_1.before)(function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        (0, firestore_1.setLogLevel)("error");
+                        return [4 /*yield*/, (0, rules_unit_testing_1.initializeTestEnvironment)({
+                                projectId: PROJECT_ID,
+                                firestore: {
+                                    host: host,
+                                    port: port,
+                                    rules: (0, node_fs_1.readFileSync)("firestore.rules", "utf8"),
+                                },
+                            })];
+                    case 1:
+                        testEnv = _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        // 각 테스트를 하기 전에, 로컬 Firestore 의 데이터를 모두 지운다.
+        beforeEach(function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, testEnv.clearFirestore()];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), "users/apple"), {
+                                                name: "apple",
+                                                no: 1,
+                                            })];
+                                        case 1:
+                                            _a.sent();
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            }); })];
+                    case 2:
+                        _a.sent();
+                        unauthedDb = testEnv.unauthenticatedContext().firestore();
+                        appleDb = testEnv.authenticatedContext("apple").firestore();
+                        bananaDb = testEnv.authenticatedContext("banana").firestore();
+                        cherryDb = testEnv.authenticatedContext("cherry").firestore();
+                        durianDb = testEnv.authenticatedContext("durian").firestore();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Member created a task in a group for multiple users who are in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, memberCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: [
+                                "cherry",
+                                "banana",
+                                "eggplant",
+                                "flower",
+                                "guava"
+                            ],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
+                        _a.sent();
+                        memberCreatedTask = {
+                            title: "Crazy till we see the sun",
+                            groupId: groupId,
+                            status: "open",
+                            assignedUsers: multipleUsers,
+                            creator: "cherry",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_1.taskRef)()), memberCreatedTask))];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created a task and assigned to himself (not in group)", function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); }); });
+        it("[Fail] User created a task and assigned to others (not in group)", function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); }); });
+        it("[Fail] User created a task and another user assigned it others (not in group)", function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); }); });
+        it("[Fail] User created a task and another user assigned it himself (not in group)", function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); }); });
+        it("[Fail] User created a task and unauthed user assigned it others (not in group)", function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); }); });
+        it("[Fail] User created a task and unauthed user assigned it to the user (not in group)", function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+            return [2 /*return*/];
+        }); }); });
         return [2 /*return*/];
     });
 }); });
