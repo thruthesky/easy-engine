@@ -14,12 +14,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@firebase/rules-unit-testing": "^3.0.3"
-  },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^3.0.3",
     "@types/mocha": "^10.0.7",
-    "firebase": "^10.12.2",
+    "firebase": "^10.12.3",
     "mocha": "^10.5.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"

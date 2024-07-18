@@ -33,17 +33,80 @@ service cloud.firestore {
       }
     }
     
-    match /task/{taskId} {
+    match /posts/{postId} {
       allow read: if true;
-      allow create: if willBeMyDoc('uid');
-      allow update: if isMyDoc('uid') && willBeMyDoc('uid');
+      allow create: if willBeMyDoc();
+      allow update: if willBeMyDoc() && isMyDoc();
     }
+    
+
+    
+    match /task/{taskId} {
+
+      function areUsersInTaskGroup(taskGroupId, uids) {
+        let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
+        let taskAllUids = taskGroupDoc.data['users'].toSet()
+                            .union(taskGroupDoc.data['moderatorUsers'].toSet())
+                            .union([taskGroupDoc.data['creator']].toSet());
+        return taskGroupDoc != null && taskAllUids.hasAll(uids);
+      }
+
+      function areCreatorOrModerators(taskGroupId, uids) {
+        let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
+        let taskAllUids = taskGroupDoc.data['moderatorUsers'].toSet()
+                            .union([taskGroupDoc.data['creator']].toSet());
+        return taskGroupDoc != null && taskAllUids.hasAll(uids);
+      }
+
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && willBeMyField('creator')
+       &&
+       (
+        !request.resource.data.keys().hasAny(["groupId"])
+        ||
+        areUsersInTaskGroup(request.resource.data['groupId'], [request.auth.uid])
+       );
+      allow update: if isAuthenticated()
+        && areCreatorOrModerators(request.resource.data['groupId'], [request.auth.uid]) 
+        && request.resource.data['creator'] == resource.data['creator'];
+    }
+
+    match /task-group/{taskGroupId} {
+      allow read: if true;
+      allow create: if willBeMyField('creator');
+      allow update: if (
+        (
+          isMyField('creator') 
+          && 
+          willBeMyField('creator')
+        )
+        ||
+        (
+          resource.data.moderatorUsers.hasAny([request.auth.uid])
+        )
+      )
+      && resource.data['creator'] == request.resource.data['creator'];
+    }
+    
+    match /task-assign {
+      allow read: if true;
+      allow create: if
+        willBeMyField('assignTo')
+        // ||
+        // (
+        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
+        //   &&
+        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
+        // )
+        // ;
+    }
+
 
     // temporary rules test
     match /temp/{doc} {
       allow read: if false;
-      allow create: if willBeMyDoc('uid');
-      allow update: if isMyDoc('uid') || willBeMyDoc('uid')
+      allow create: if willBeMyDoc();
+      allow update: if isMyDoc() || willBeMyDoc()
           && notUpdating(['uid'])
           && mustUpdating(['name'])
           && onlyAddingOneElement('users')
@@ -73,25 +136,37 @@ function required(fields) {
   return request.resource.data.keys().hasAll( fields );
 }
 
-
-
-// Check if the field matches to the user id before save
-//
-// [field] is the failed name of the document and the value of the
-// document must be the login user's uid.
-//
-// Use this to see if the document belongs to the user.
-// For instance, when data is `{authorUid: 'aaa', ...}`,
-//  - you can call `isMyDoc('authorUid')`,
-//  - And if the authorUid is your uid, then it's your document.
-//
-// Normally you would use like `isMyDoc('uid')` to check if the document
-// belongs to the user. The document must have a field named `uid` and
-// the value of the field must be the login user's uid.
-function isMyDoc(field) {
-   return resource.data[field] == request.auth.uid;
+function isAuthenticated() {
+  return request.auth != null && request.auth.token.firebase.sign_in_provider != null;
 }
 
+// function isAnonymous() {
+//   return !isAuthenticated();
+// }
+
+
+
+
+// Check if the uid of the document matches to the loign user's uid.
+//
+function isMyDoc() {
+   return isMyField('uid');
+}
+
+// Check if the field matches to the login user's uid
+//
+// Use this to see if the document belongs to the user.
+//
+// For instance, if your uid is 'aaa' and the document data is `{authorUid: 'aaa', ...}`,
+//  - you can call `isMyField('authorUid')`,
+//  - And if the authorUid is your uid, then it passes.
+//
+// Normally you would use like `isMyDoc()` to check if the document
+// belongs to the user. And this only works if the docuemnt field has 'uid'
+// If the document has some other field instead of 'uid', use this function.
+function isMyField(field) {
+   return resource.data[field] == request.auth.uid;
+}
 
 
 
@@ -99,7 +174,10 @@ function isMyDoc(field) {
 //
 // [field] must match the user uid.
 // Use this to see if the document belongs to the user after save.
-function willBeMyDoc(field) {
+function willBeMyDoc() {
+   return willBeMyField('uid');
+}
+function willBeMyField(field) {
    return request.resource.data[field] == request.auth.uid;
 }
 

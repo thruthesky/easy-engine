@@ -1,17 +1,21 @@
-export function taskCol(id?: string) {
-    const task = '/task';
+
+export const taskCol = '/task';
+
+export function randomTaskId() { return Date.now().toString() + Math.ceil(Math.random() * 1000000); };
+
+export function taskRef(id?: string) {
     if (id) {
-        return `${task}/${id}`;
+        return `${taskCol}/${id}`;
     }
-    return task;
+    return `${taskCol}/${randomTaskId()}`;
 }
 
-
-export type TaskCreate = {
+export type Task = {
     assignedUsers?: string[],
     title?: string,
     content?: string,
     status?: string,
-    createdBy?: string,
+    groupId?: string,
+    creator?: string,
 }
 

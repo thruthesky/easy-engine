@@ -1,16 +1,23 @@
-export function taskGroupCol(id?: string) {
-    const taskGroup = '/task-group';
+import { FieldValue } from "firebase/firestore";
+
+export const taskGroupCol = '/task-group';
+
+export function randomtaskGroupId() { return Date.now().toString() + Math.ceil(Math.random() * 1000000); };
+
+export function taskGroupRef(id?: string) {
     if (id) {
-        return `${taskGroup}/${id}`;
+        return `${taskGroupCol}/${id}`;
     }
-    return taskGroup;
+    return `${taskGroupCol}/${randomtaskGroupId()}`;
 }
 
-export type TaskGroupCreate = {
-    assignedUsers?: string[],
+export type TaskGroup = {
+    moderatorUsers?: string[] | FieldValue,
+    users?: string[] | FieldValue,
+    invitedUsers?: string[] | FieldValue,
+    rejectedUsers?: string[] | FieldValue,
+    name?: string,
     title?: string,
-    content?: string,
-    createdBy?: string,
-    status?: string,
+    creator?: string,
 }
 
