@@ -64,7 +64,15 @@ service cloud.firestore {
        (
         !request.resource.data.keys().hasAny(["groupId"])
         ||
-        areUsersInTaskGroup(request.resource.data['groupId'], [request.auth.uid])
+        (
+          areUsersInTaskGroup(request.resource.data['groupId'], [request.auth.uid])
+          &&
+          (
+            !request.resource.data.keys().hasAny(["assignedUsers"]) 
+            ||
+            areUsersInTaskGroup(request.resource.data['groupId'], request.resource.data["assignedUsers"])
+          )
+        )
        );
       allow update: if isAuthenticated()
         && areCreatorOrModerators(request.resource.data['groupId'], [request.auth.uid]) 

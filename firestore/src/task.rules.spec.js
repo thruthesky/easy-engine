@@ -1173,8 +1173,8 @@ describe("Rules Test", function () { return __awaiter(void 0, void 0, void 0, fu
                 }
             });
         }); });
-        it("One task can be assigned to multiple users", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, unauthCreatedTask, notMemberCreatedTask, creatorCreatedTask, moderatorCreatedTask, memberCreatedTask;
+        it("[Fail] Unauth user tried to create a task in a group for multiple users who are not all in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, unauthCreatedTask;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -1193,51 +1193,279 @@ describe("Rules Test", function () { return __awaiter(void 0, void 0, void 0, fu
                         };
                         return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
                     case 1:
-                        (_a.sent());
+                        _a.sent();
                         unauthCreatedTask = {
                             title: "Dance the tiktok Challenge",
                             groupId: groupId,
                             status: "open",
                             assignedUsers: multipleUsers,
+                            creator: "unauthed",
                         };
                         return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.setDoc)((0, firestore_1.doc)(unauthedDb, (0, task_1.taskRef)()), unauthCreatedTask))];
                     case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Nonmember user tried to create a task in a group for users who are not all in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, notMemberCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
                         _a.sent();
                         notMemberCreatedTask = {
                             title: "Gotta Move like Jagger",
                             groupId: groupId,
                             status: "open",
                             assignedUsers: multipleUsers,
+                            creator: "durian",
                         };
                         return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.setDoc)((0, firestore_1.doc)(durianDb, (0, task_1.taskRef)()), notMemberCreatedTask))];
-                    case 3:
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Creator created a task in a group for multiple users who are not all in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, creatorCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
                         _a.sent();
                         creatorCreatedTask = {
                             title: "Live like we're Young",
                             groupId: groupId,
                             status: "open",
                             assignedUsers: multipleUsers,
+                            creator: "apple",
                         };
-                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_1.taskRef)()), creatorCreatedTask))];
-                    case 4:
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_1.taskRef)()), creatorCreatedTask))];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Moderator created a task in a group for multiple users who are not all in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, moderatorCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
                         _a.sent();
                         moderatorCreatedTask = {
                             title: "Drink while Living",
                             groupId: groupId,
                             status: "open",
                             assignedUsers: multipleUsers,
+                            creator: "banana",
                         };
-                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)()), moderatorCreatedTask))];
-                    case 5:
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)()), moderatorCreatedTask))];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Member created a task in a group for multiple users who are not all in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, memberCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
                         _a.sent();
                         memberCreatedTask = {
                             title: "Crazy till we see the sun",
                             groupId: groupId,
                             status: "open",
                             assignedUsers: multipleUsers,
+                            creator: "cherry",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_1.taskRef)()), memberCreatedTask))];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Creator created a task in a group for multiple users who are in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, creatorCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: [
+                                "cherry",
+                                "banana",
+                                "eggplant",
+                                "flower",
+                                "guava"
+                            ],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
+                        _a.sent();
+                        creatorCreatedTask = {
+                            title: "Live like we're Young",
+                            groupId: groupId,
+                            status: "open",
+                            assignedUsers: multipleUsers,
+                            creator: "apple",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_1.taskRef)()), creatorCreatedTask))];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Moderator created a task in a group for multiple users who are in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, moderatorCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: [
+                                "cherry",
+                                "banana",
+                                "eggplant",
+                                "flower",
+                                "guava"
+                            ],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
+                        _a.sent();
+                        moderatorCreatedTask = {
+                            title: "Drink while Living",
+                            groupId: groupId,
+                            status: "open",
+                            assignedUsers: multipleUsers,
+                            creator: "banana",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)()), moderatorCreatedTask))];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Member created a task in a group for multiple users who are in the group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var multipleUsers, groupId, taskGroupCreateWithCorrectCreator, memberCreatedTask;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        multipleUsers = [
+                            "cherry",
+                            "banana",
+                            "eggplant",
+                            "flower",
+                        ];
+                        groupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupCreateWithCorrectCreator = {
+                            name: "Task Group 3",
+                            creator: "apple",
+                            users: [
+                                "cherry",
+                                "banana",
+                                "eggplant",
+                                "flower",
+                                "guava"
+                            ],
+                            moderatorUsers: ["banana"],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(groupId)), taskGroupCreateWithCorrectCreator)];
+                    case 1:
+                        _a.sent();
+                        memberCreatedTask = {
+                            title: "Crazy till we see the sun",
+                            groupId: groupId,
+                            status: "open",
+                            assignedUsers: multipleUsers,
+                            creator: "cherry",
                         };
                         return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_1.taskRef)()), memberCreatedTask))];
-                    case 6:
+                    case 2:
                         _a.sent();
                         return [2 /*return*/];
                 }

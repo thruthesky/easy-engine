@@ -774,7 +774,7 @@ describe("Rules Test", async () => {
 
 
 
-    it("One task can be assigned to multiple users", async () => {
+    it("[Fail] Unauth user tried to create a task in a group for multiple users who are not all in the group", async () => {
         const multipleUsers = [
             "cherry",
             "banana",
@@ -788,51 +788,221 @@ describe("Rules Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        (await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator));
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
 
         const unauthCreatedTask: Task = {
             title: "Dance the tiktok Challenge",
             groupId: groupId,
             status: "open",
             assignedUsers: multipleUsers,
+            creator: "unauthed",
         }
         await assertFails(
             setDoc(doc(unauthedDb, taskRef()), unauthCreatedTask)
         );
+    });
+    it("[Fail] Nonmember user tried to create a task in a group for users who are not all in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
 
         const notMemberCreatedTask: Task = {
             title: "Gotta Move like Jagger",
             groupId: groupId,
             status: "open",
             assignedUsers: multipleUsers,
+            creator: "durian",
         }
         await assertFails(
             setDoc(doc(durianDb, taskRef()), notMemberCreatedTask)
         );
+    });
+    it("[Fail] Creator created a task in a group for multiple users who are not all in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
 
         const creatorCreatedTask: Task = {
             title: "Live like we're Young",
             groupId: groupId,
             status: "open",
             assignedUsers: multipleUsers,
+            creator: "apple",
         }
-        await assertSucceeds(
+        await assertFails(
             setDoc(doc(appleDb, taskRef()), creatorCreatedTask)
         );
+    });
+    it("[Fail] Moderator created a task in a group for multiple users who are not all in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
+
         const moderatorCreatedTask: Task = {
             title: "Drink while Living",
             groupId: groupId,
             status: "open",
             assignedUsers: multipleUsers,
+            creator: "banana",
         }
-        await assertSucceeds(
+        await assertFails(
             setDoc(doc(bananaDb, taskRef()), moderatorCreatedTask)
         );
+    });
+    it("[Fail] Member created a task in a group for multiple users who are not all in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
+
         const memberCreatedTask: Task = {
             title: "Crazy till we see the sun",
             groupId: groupId,
             status: "open",
             assignedUsers: multipleUsers,
+            creator: "cherry",
+        }
+        await assertFails(
+            setDoc(doc(cherryDb, taskRef()), memberCreatedTask)
+        );
+    });
+    it("[Pass] Creator created a task in a group for multiple users who are in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: [
+                "cherry",
+                "banana",
+                "eggplant",
+                "flower",
+                "guava"
+            ],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
+
+        const creatorCreatedTask: Task = {
+            title: "Live like we're Young",
+            groupId: groupId,
+            status: "open",
+            assignedUsers: multipleUsers,
+            creator: "apple",
+        }
+        await assertSucceeds(
+            setDoc(doc(appleDb, taskRef()), creatorCreatedTask)
+        );
+    });
+    it("[Pass] Moderator created a task in a group for multiple users who are in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: [
+                "cherry",
+                "banana",
+                "eggplant",
+                "flower",
+                "guava"
+            ],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
+
+        const moderatorCreatedTask: Task = {
+            title: "Drink while Living",
+            groupId: groupId,
+            status: "open",
+            assignedUsers: multipleUsers,
+            creator: "banana",
+        }
+        await assertSucceeds(
+            setDoc(doc(bananaDb, taskRef()), moderatorCreatedTask)
+        );
+    });
+    it("[Pass] Member created a task in a group for multiple users who are in the group", async () => {
+        const multipleUsers = [
+            "cherry",
+            "banana",
+            "eggplant",
+            "flower",
+        ];
+        const groupId = randomtaskGroupId();
+        const taskGroupCreateWithCorrectCreator: TaskGroup = {
+            name: "Task Group 3",
+            creator: "apple",
+            users: [
+                "cherry",
+                "banana",
+                "eggplant",
+                "flower",
+                "guava"
+            ],
+            moderatorUsers: ["banana"],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(groupId)), taskGroupCreateWithCorrectCreator);
+
+        const memberCreatedTask: Task = {
+            title: "Crazy till we see the sun",
+            groupId: groupId,
+            status: "open",
+            assignedUsers: multipleUsers,
+            creator: "cherry",
         }
         await assertSucceeds(
             setDoc(doc(cherryDb, taskRef()), memberCreatedTask)
