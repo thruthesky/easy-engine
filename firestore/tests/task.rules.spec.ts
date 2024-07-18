@@ -98,20 +98,20 @@ describe('Rules Test', async () => {
     });
 
     it("User must the creator of the created task", async () => {
-        const taskCreateUnAuthWithCreatedBy: TaskCreate = {
+        const taskCreateUnauthWithCreatedBy: TaskCreate = {
             title: 'Create Task Test',
             content: 'Creating a task for testing',
             createdBy: 'apple',
         };
-        await assertFails(addDoc(unauthedDb.collection(taskCol()), taskCreateUnAuthWithCreatedBy));
+        await assertFails(addDoc(unauthedDb.collection(taskCol()), taskCreateUnauthWithCreatedBy));
 
 
-        const taskCreateUnAuthWithDifferentUid: TaskCreate = {
+        const taskCreateAuthWithDifferentUid: TaskCreate = {
             title: 'Create Task Test',
             content: 'Creating a task for testing',
             createdBy: 'IAmNotApple',
         };
-        await assertFails(addDoc(appleDb.collection(taskCol()), taskCreateUnAuthWithDifferentUid));
+        await assertFails(addDoc(appleDb.collection(taskCol()), taskCreateAuthWithDifferentUid));
 
         const taskCreateBanana: TaskCreate = {
             title: 'Create Task Test',

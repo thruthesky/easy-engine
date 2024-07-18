@@ -159,24 +159,24 @@ describe('Rules Test', function () { return __awaiter(void 0, void 0, void 0, fu
             });
         }); });
         it("User must the creator of the created task", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var taskCreateUnAuthWithCreatedBy, taskCreateUnAuthWithDifferentUid, taskCreateBanana;
+            var taskCreateUnauthWithCreatedBy, taskCreateAuthWithDifferentUid, taskCreateBanana;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskCreateUnAuthWithCreatedBy = {
+                        taskCreateUnauthWithCreatedBy = {
                             title: 'Create Task Test',
                             content: 'Creating a task for testing',
                             createdBy: 'apple',
                         };
-                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.addDoc)(unauthedDb.collection((0, task_1.taskCol)()), taskCreateUnAuthWithCreatedBy))];
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.addDoc)(unauthedDb.collection((0, task_1.taskCol)()), taskCreateUnauthWithCreatedBy))];
                     case 1:
                         _a.sent();
-                        taskCreateUnAuthWithDifferentUid = {
+                        taskCreateAuthWithDifferentUid = {
                             title: 'Create Task Test',
                             content: 'Creating a task for testing',
                             createdBy: 'IAmNotApple',
                         };
-                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.addDoc)(appleDb.collection((0, task_1.taskCol)()), taskCreateUnAuthWithDifferentUid))];
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.addDoc)(appleDb.collection((0, task_1.taskCol)()), taskCreateAuthWithDifferentUid))];
                     case 2:
                         _a.sent();
                         taskCreateBanana = {
