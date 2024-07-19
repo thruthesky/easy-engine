@@ -40,42 +40,49 @@ service cloud.firestore {
     }
     
 
+
+
+
+    function areUsersInTaskGroup(taskGroupId, uids) {
+      let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
+      let taskAllUids = taskGroupDoc.data['users'].toSet()
+                          .union(taskGroupDoc.data['moderatorUsers'].toSet())
+                          .union([taskGroupDoc.data['creator']].toSet());
+      return taskGroupDoc != null && taskAllUids.hasAll(uids);
+    }
+
+    function areCreatorOrModerators(taskGroupId, uids) {
+      let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
+      let taskAllUids = taskGroupDoc.data['moderatorUsers'].toSet()
+                          .union([taskGroupDoc.data['creator']].toSet());
+      return taskGroupDoc != null && taskAllUids.hasAll(uids);
+    }
+
+    function isValidTaskToCreateWithoutGroup(taskId) {
+      let taskDoc = get(/databases/$(database)/documents/task/$(taskId));
+      return taskDoc.data['creator'] == request.auth.uid && !('taskGroupId' in taskDoc.data);
+    }
+
     
     match /task/{taskId} {
-
-      function areUsersInTaskGroup(taskGroupId, uids) {
-        let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
-        let taskAllUids = taskGroupDoc.data['users'].toSet()
-                            .union(taskGroupDoc.data['moderatorUsers'].toSet())
-                            .union([taskGroupDoc.data['creator']].toSet());
-        return taskGroupDoc != null && taskAllUids.hasAll(uids);
-      }
-
-      function areCreatorOrModerators(taskGroupId, uids) {
-        let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
-        let taskAllUids = taskGroupDoc.data['moderatorUsers'].toSet()
-                            .union([taskGroupDoc.data['creator']].toSet());
-        return taskGroupDoc != null && taskAllUids.hasAll(uids);
-      }
-
       allow read: if isAuthenticated();
       allow create: if isAuthenticated() && willBeMyField('creator')
        &&
        (
-        !request.resource.data.keys().hasAny(["groupId"])
+        !request.resource.data.keys().hasAny(["taskGroupId"])
         ||
         (
-          areUsersInTaskGroup(request.resource.data['groupId'], [request.auth.uid])
+          areUsersInTaskGroup(request.resource.data['taskGroupId'], [request.auth.uid])
           &&
           (
             !request.resource.data.keys().hasAny(["assignedUsers"]) 
             ||
-            areUsersInTaskGroup(request.resource.data['groupId'], request.resource.data["assignedUsers"])
+            areUsersInTaskGroup(request.resource.data['taskGroupId'], request.resource.data["assignedUsers"])
           )
         )
        );
       allow update: if isAuthenticated()
-        && areCreatorOrModerators(request.resource.data['groupId'], [request.auth.uid]) 
+        && areCreatorOrModerators(request.resource.data['taskGroupId'], [request.auth.uid]) 
         && request.resource.data['creator'] == resource.data['creator'];
     }
 
@@ -86,17 +93,30 @@ service cloud.firestore {
                         && resource.data['creator'] == request.resource.data['creator'];
     }
     
-    match /task-assign {
+    match /task-assign/{taskAssignId} {
       allow read: if true;
       allow create: if
-        willBeMyField('assignTo')
-        // ||
-        // (
-        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
-        //   &&
-        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
-        // )
-        // ;
+        'taskId' in request.resource.data
+        &&
+        willBeMyField('assignedBy')
+        &&
+        (
+          (
+            willBeMyField('assignedTo') 
+            && 
+            !('taskGroupId' in request.resource.data)
+            &&
+            isValidTaskToCreateWithoutGroup(request.resource.data['taskId'])
+          )
+          ||
+          (
+            areUsersInTaskGroup(
+              request.resource.data['taskGroupId'], 
+              [request.auth.uid, request.resource.data['assignedTo']]
+            )
+          )
+        )
+        
     }
 
 

@@ -15,7 +15,7 @@ export type Task = {
     title?: string,
     content?: string,
     status?: string,
-    groupId?: string,
+    taskGroupId?: string,
     creator?: string,
 }
 
