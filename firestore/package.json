@@ -8,17 +8,16 @@
   },
   "scripts": {
     "test:user": "mocha --require ts-node/register tests/user.rules.spec.ts --watch --watch-files 'tests/**/*.ts'",
-    "test:task": "mocha --require ts-node/register tests/task.rules.spec.ts --watch --watch-files 'tests/**/*.ts'"
+    "test:task": "mocha --require ts-node/register tests/task.rules.spec.ts --watch --watch-files 'tests/**/*.ts'",
+    "build:watch": "tsc tests/**.ts --watch --outDir ./src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@firebase/rules-unit-testing": "^3.0.3"
-  },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^3.0.3",
     "@types/mocha": "^10.0.7",
-    "firebase": "^10.12.2",
+    "firebase": "^10.12.3",
     "mocha": "^10.5.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
