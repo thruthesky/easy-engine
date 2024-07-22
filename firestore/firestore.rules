@@ -36,6 +36,15 @@ service cloud.firestore {
     match /posts/{postId} {
       allow read: if true;
       allow create: if willBeMyDoc();
+      allow update: if
+        ( willBeMyDoc() && isMyDoc() )
+        ||
+        onlyUpdating(['commentCount']);
+    }
+
+    match /comments/{commentId} {
+      allow read: if true;
+      allow create: if willBeMyDoc();
       allow update: if willBeMyDoc() && isMyDoc();
     }
     
@@ -72,6 +81,7 @@ service cloud.firestore {
       allow update: if isMyDoc() || willBeMyDoc()
           && notUpdating(['uid'])
           && mustUpdating(['name'])
+          && onlyUpdating(['a', 'b'])
           && onlyAddingOneElement('users')
           && notRemoving('users', 'a')
           && onlyRemoving('users', 'a')
@@ -159,6 +169,22 @@ function notUpdating(fields) {
 
 
 
+// 함수
+//
+// 입력된 fields 중 한 개라도 업데이트되면 true 리턴
+//
+// 예, 입력 fields 가 ['A', 'B'] 이고, 업데이트된 필드가 ['A', 'C'] 이면 true 리턴. A 겹침
+// 예, 입력 fields 가 ['A', 'B'] 이고, 업데이트된 필드가 ['C', 'D'] 이면 false 리턴. 겹침 없음.
+// Example:
+// ```
+// allow update: if onlyUpdating(['a', 'b']);
+// ```
+function onlyUpdating(fields) {
+  return request.resource.data.diff(resource.data).affectedKeys().hasOnly(fields);
+}
+
+
+
 
 
 // The value of [fields] must be changed.
@@ -212,3 +238,4 @@ function onlyRemoving(arryField, element) {
     resource.data[arryField].toSet().intersection(request.resource.data[arryField].toSet()) == request.resource.data[arryField].toSet()
   ;
 }
+
