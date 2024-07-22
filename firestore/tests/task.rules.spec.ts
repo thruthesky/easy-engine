@@ -12,6 +12,7 @@ import {
     updateDoc,
     setLogLevel,
     arrayUnion,
+    arrayRemove,
 } from "firebase/firestore";
 import { readFileSync } from "node:fs";
 import { before, test } from "mocha";
@@ -220,7 +221,10 @@ describe("Task and Task Group Test", async () => {
             moderatorUsers: ["durian"],
             creator: "cherry"
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), taskGroupCreate);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreate)
+        );
         const taskCreateInGroupNoAssign: Task = {
             title: "Task to work",
             status: "open",
@@ -239,7 +243,11 @@ describe("Task and Task Group Test", async () => {
             moderatorUsers: ["durian"],
             creator: "cherry"
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), taskGroupCreate);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreate)
+        );
         const taskCreateInGroupNoAssign: Task = {
             title: "Task to work",
             status: "open",
@@ -258,7 +266,11 @@ describe("Task and Task Group Test", async () => {
             moderatorUsers: ["durian"],
             creator: "cherry"
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), taskGroupCreate);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreate)
+        );
         const taskCreateInGroupNoAssign: Task = {
             title: "Task to work",
             status: "open",
@@ -276,7 +288,10 @@ describe("Task and Task Group Test", async () => {
             moderatorUsers: ["durian"],
             creator: "cherry"
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), taskGroupCreate);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreate)
+        );
         const taskCreateInGroupNoAssign: Task = {
             title: "Task to work",
             status: "open",
@@ -665,8 +680,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
-
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const taskGroupInviteByUnauthed: TaskGroup = {
             invitedUsers: arrayUnion("eggplant"),
         }
@@ -682,7 +699,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const taskGroupInviteBySomeoneNotInGroup: TaskGroup = {
             invitedUsers: arrayUnion("eggplant"),
         }
@@ -700,8 +720,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
-
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const taskGroupInviteBySomeoneInGroupButNotModerator: TaskGroup = {
             invitedUsers: arrayUnion("eggplant"),
         }
@@ -717,8 +739,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
-
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const taskGroupInviteByModerator: TaskGroup = {
             invitedUsers: arrayUnion("eggplant"),
         }
@@ -734,7 +758,11 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const taskGroupInviteByCreator: TaskGroup = {
             invitedUsers: arrayUnion("flower"),
         }
@@ -751,7 +779,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const unauthCreatedTask: Task = {
             title: "Dance the tiktok Challenge",
             taskGroupId: taskGroupId,
@@ -770,7 +801,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const notMemberCreatedTask: Task = {
             title: "Gotta Move like Jagger",
             taskGroupId: taskGroupId,
@@ -791,7 +825,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const creatorCreatedTask: Task = {
             title: "Live like we're Young",
             taskGroupId: taskGroupId,
@@ -811,7 +848,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const moderatorCreatedTask: Task = {
             title: "Drink while Living",
@@ -832,7 +872,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const memberCreatedTask: Task = {
             title: "Crazy till we see the sun",
@@ -861,7 +904,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const unauthCreatedTask: Task = {
             title: "Dance the tiktok Challenge",
@@ -888,7 +934,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const notMemberCreatedTask: Task = {
             title: "Gotta Move like Jagger",
@@ -915,7 +964,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const creatorCreatedTask: Task = {
             title: "Live like we're Young",
@@ -942,7 +994,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const moderatorCreatedTask: Task = {
             title: "Drink while Living",
@@ -969,7 +1024,10 @@ describe("Task and Task Group Test", async () => {
             users: ["cherry"],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const memberCreatedTask: Task = {
             title: "Crazy till we see the sun",
@@ -1002,7 +1060,10 @@ describe("Task and Task Group Test", async () => {
             ],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const creatorCreatedTask: Task = {
             title: "Live like we're Young",
@@ -1035,7 +1096,10 @@ describe("Task and Task Group Test", async () => {
             ],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const moderatorCreatedTask: Task = {
             title: "Drink while Living",
@@ -1068,8 +1132,10 @@ describe("Task and Task Group Test", async () => {
             ],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
-
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
         const memberCreatedTask: Task = {
             title: "Crazy till we see the sun",
             taskGroupId: taskGroupId,
@@ -1125,7 +1191,10 @@ describe("Task Assign Test", async () => {
             ],
             moderatorUsers: ["banana"],
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateWithCorrectCreator)
+        );
 
         const memberCreatedTask: Task = {
             title: "Crazy till we see the sun",
@@ -1166,7 +1235,10 @@ describe("Task Assign Test", async () => {
             users: ["apple, durian, eggplant"],
             moderatorUsers: ["banana"],
         }
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), cherryCreateTaskGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), cherryCreateTaskGroup)
+        );
 
         const unauthAssignedToHimself: TaskAssign = {
             taskId: randomTaskId(),
@@ -1187,7 +1259,10 @@ describe("Task Assign Test", async () => {
             users: ["apple, durian, eggplant"],
             moderatorUsers: ["banana"],
         }
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), cherryCreateTaskGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), cherryCreateTaskGroup)
+        );
 
         const unauthAssignedToOther: TaskAssign = {
             taskId: randomTaskId(),
@@ -1394,7 +1469,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         }
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
+
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1420,7 +1499,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1449,7 +1531,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1477,7 +1562,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1504,7 +1592,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1532,7 +1623,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1560,7 +1654,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1589,7 +1686,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1617,7 +1717,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1656,7 +1759,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1684,7 +1790,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1711,7 +1820,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1739,7 +1851,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1767,7 +1882,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1795,7 +1913,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1823,7 +1944,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1853,7 +1977,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1881,7 +2008,10 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1908,7 +2038,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1936,7 +2070,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1964,7 +2102,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -1992,7 +2134,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -2020,7 +2166,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -2048,7 +2198,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -2076,7 +2230,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -2104,7 +2262,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -2133,7 +2295,11 @@ describe("Task Assign Test", async () => {
             creator: "cherry",
             name: "Task Group 3",
         };
-        await setDoc(doc(cherryDb, taskGroupRef(taskGroupId)), userCreateGroup);
+
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), userCreateGroup)
+        );
         const taskId = randomTaskId();
         const userCreatedTask: Task = {
             title: "Beat the heat",
@@ -2370,7 +2536,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
 
         const taskId = randomTaskId();
@@ -2409,7 +2578,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
 
         const taskId = randomTaskId();
@@ -2448,7 +2620,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2484,7 +2659,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
@@ -2521,7 +2699,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
@@ -2558,7 +2739,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2594,7 +2778,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2631,7 +2818,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
 
         const taskId = randomTaskId();
@@ -2670,7 +2860,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2704,7 +2897,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
 
         const taskId = randomTaskId();
@@ -2743,7 +2939,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
 
         const taskId = randomTaskId();
@@ -2781,7 +2980,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2812,13 +3014,16 @@ describe("Task Assign Update Test", async () => {
 
     it("[Pass] Creator created and assigned task to himself, then updated the status (in group)", async () => {
         const taskGroupId = randomTaskGroupId();
-        const taskGroupCreateApple: TaskGroup = {
+        const taskGroupCreateBanana: TaskGroup = {
             users: ["cherry"],
             moderatorUsers: ["apple"],
             creator: "banana",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateBanana)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2847,13 +3052,16 @@ describe("Task Assign Update Test", async () => {
 
     it("[Fail] Creator created and assigned task to himself, then unauth updated the status (in group)", async () => {
         const taskGroupId = randomTaskGroupId();
-        const taskGroupCreateApple: TaskGroup = {
+        const taskGroupCreateBanana: TaskGroup = {
             users: ["cherry"],
             moderatorUsers: ["apple"],
             creator: "banana",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateBanana)
+        );
 
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
@@ -2885,13 +3093,16 @@ describe("Task Assign Update Test", async () => {
 
     it("[Fail] Creator created and assigned task to himself, then outsider updated the status (in group)", async () => {
         const taskGroupId = randomTaskGroupId();
-        const taskGroupCreateApple: TaskGroup = {
+        const taskGroupCreateBanana: TaskGroup = {
             users: ["cherry"],
             moderatorUsers: ["apple"],
             creator: "banana",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateBanana)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2919,13 +3130,16 @@ describe("Task Assign Update Test", async () => {
     });
     it("[Pass] Creator created and assigned task to himself, then moderator updated the status (in group)", async () => {
         const taskGroupId = randomTaskGroupId();
-        const taskGroupCreateApple: TaskGroup = {
+        const taskGroupCreateBanana: TaskGroup = {
             users: ["cherry"],
             moderatorUsers: ["apple"],
             creator: "banana",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateBanana)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -2953,13 +3167,16 @@ describe("Task Assign Update Test", async () => {
     });
     it("[Pass] Creator created and assigned task to himself, then member updated the status (in group)", async () => {
         const taskGroupId = randomTaskGroupId();
-        const taskGroupCreateApple: TaskGroup = {
+        const taskGroupCreateBanana: TaskGroup = {
             users: ["cherry"],
             moderatorUsers: ["apple"],
             creator: "banana",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateBanana)
+        );
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -3083,7 +3300,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
@@ -3123,7 +3343,10 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
@@ -3157,6 +3380,7 @@ describe("Task Assign Update Test", async () => {
 
 
     it("[Pass] User created and assigned task to himself, then creator reassign to other member (in a group)", async () => {
+        // Apple created Task Group
         const taskGroupId = randomTaskGroupId();
         const taskGroupCreateApple: TaskGroup = {
             users: ["banana"],
@@ -3164,8 +3388,12 @@ describe("Task Assign Update Test", async () => {
             creator: "apple",
             name: "Dancers Task Group",
         };
-        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
+        // Banana Created task
         const taskId = randomTaskId();
         const taskCreateBanana: Task = {
             title: "Create Task Test",
@@ -3176,6 +3404,7 @@ describe("Task Assign Update Test", async () => {
         };
         await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
 
+        // Banana assigned to himself
         const taskAssignId = randomAssignId();
         const taskAssignBanana: TaskAssign = {
             taskId: taskId,
@@ -3192,55 +3421,59 @@ describe("Task Assign Update Test", async () => {
             status: "progress",
         }
         await assertSucceeds(
-            updateDoc(doc(appleDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+            updateDoc(doc(cherryDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
         );
     });
 
-    // TODO Having error
-    // it("[Fail] User created and assigned task to himself, then reassign to other member (wrong assignedBy)", async () => {
-    //     const taskGroupId = randomTaskGroupId();
-    //     const taskGroupCreateApple: TaskGroup = {
-    //         users: ["banana", "durian"],
-    //         moderatorUsers: ["cherry"],
-    //         creator: "apple",
-    //         name: "Dancers Task Group",
-    //     };
-    //     await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+    it("[Fail] User created and assigned task to himself, then reassign to other member (wrong assignedBy)", async () => {
+        // Apple Created a task group
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana", "durian"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await testEnv.withSecurityRulesDisabled(
+            async (context) =>
+                await setDoc(doc(context.firestore(), taskGroupRef(taskGroupId)), taskGroupCreateApple)
+        );
 
-    //     const taskId = randomTaskId();
-    //     const taskCreateBanana: Task = {
-    //         title: "Create Task Test",
-    //         content: "Creating a task for testing",
-    //         creator: "banana",
-    //         status: "open",
-    //         taskGroupId: taskGroupId,
-    //     };
-    //     await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+        // banana created task
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
 
-    //     const taskAssignId = randomAssignId();
-    //     const taskAssignBanana: TaskAssign = {
-    //         taskId: taskId,
-    //         assignedBy: "banana",
-    //         assignedTo: "banana",
-    //         status: "waiting",
-    //         taskGroupId: taskGroupId,
-    //     }
-    //     await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+        // Banana assigned
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
 
-    //     const taskAssignUpdate: TaskAssign = {
-    //         assignedBy: "cherry",
-    //         assignedTo: "durian",
-    //         status: "progress",
-    //     }
-    //     await assertFails(
-    //         updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
-    //     );
-    // });
+        const taskAssignUpdate: TaskAssign = {
+            assignedBy: "cherry",
+            assignedTo: "durian",
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
 
 });
 
-// TODO inivitation/joining test
-describe("Task Assign Update Test", async () => {
+describe("Invitation/Joining Test", async () => {
     let eggplantDb: firebase.firestore.Firestore;
     let flowerDb: firebase.firestore.Firestore;
     let guavaDb: firebase.firestore.Firestore;
@@ -3285,7 +3518,9 @@ describe("Task Assign Update Test", async () => {
             invitedUsers: [],
             rejectedUsers: [],
         };
-        await setDoc(doc(appleDb, taskGroupRef(appleTaskGroupId)), taskGroup);
+        await testEnv.withSecurityRulesDisabled(
+            async (context) => await setDoc(doc(context.firestore(), taskGroupRef(appleTaskGroupId)), taskGroup)
+        );
     });
 
     it("[Pass] Creator invite user to group", async () => {
@@ -3431,12 +3666,40 @@ describe("Task Assign Update Test", async () => {
             taskGroupUpdate,
         );
 
-        // 
-        await assertFails(
+        // Flower accepted invtation
+        const taskGroupFlowerAccept: TaskGroup = {
+            users: arrayUnion("flower"),
+            invitedUsers: arrayRemove("flower"),
+        };
+        await assertSucceeds(
             updateDoc(
-                doc(unauthedDb, taskGroupRef(appleTaskGroupId)),
-                taskGroupUpdate,
+                doc(flowerDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupFlowerAccept,
             )
         );
     });
+    it("[Fail] A different user accepting invitation and adding as member to group", async () => {
+        // Apple Invite Flower
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        };
+        updateDoc(
+            doc(appleDb, taskGroupRef(appleTaskGroupId)),
+            taskGroupUpdate,
+        );
+
+        // Flower accepted invtation
+        const taskGroupFlowerAccept: TaskGroup = {
+            users: arrayUnion("flower"),
+            invitedUsers: arrayRemove("flower"),
+        };
+        await assertFails(
+            updateDoc(
+                doc(guavaDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupFlowerAccept,
+            )
+        );
+    });
+
+
 });

@@ -367,7 +367,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             moderatorUsers: ["durian"],
                             creator: "cherry"
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskCreateInGroupNoAssign = {
@@ -394,7 +399,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             moderatorUsers: ["durian"],
                             creator: "cherry"
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskCreateInGroupNoAssign = {
@@ -421,7 +431,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             moderatorUsers: ["durian"],
                             creator: "cherry"
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskCreateInGroupNoAssign = {
@@ -448,7 +463,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             moderatorUsers: ["durian"],
                             creator: "cherry"
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreate)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskCreateInGroupNoAssign = {
@@ -1029,7 +1049,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskGroupInviteByUnauthed = {
@@ -1054,7 +1079,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskGroupInviteBySomeoneNotInGroup = {
@@ -1079,7 +1109,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskGroupInviteBySomeoneInGroupButNotModerator = {
@@ -1104,7 +1139,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskGroupInviteByModerator = {
@@ -1129,7 +1169,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskGroupInviteByCreator = {
@@ -1154,7 +1199,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         unauthCreatedTask = {
@@ -1182,7 +1232,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         notMemberCreatedTask = {
@@ -1210,7 +1265,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         creatorCreatedTask = {
@@ -1238,7 +1298,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         moderatorCreatedTask = {
@@ -1266,7 +1331,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         memberCreatedTask = {
@@ -1300,7 +1370,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         unauthCreatedTask = {
@@ -1335,7 +1410,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         notMemberCreatedTask = {
@@ -1370,7 +1450,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         creatorCreatedTask = {
@@ -1405,7 +1490,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         moderatorCreatedTask = {
@@ -1440,7 +1530,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             users: ["cherry"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         memberCreatedTask = {
@@ -1481,7 +1576,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             ],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         creatorCreatedTask = {
@@ -1522,7 +1622,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             ],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         moderatorCreatedTask = {
@@ -1563,7 +1668,12 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             ],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         memberCreatedTask = {
@@ -1643,7 +1753,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             ],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateWithCorrectCreator)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         memberCreatedTask = {
@@ -1706,7 +1821,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             users: ["apple, durian, eggplant"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), cherryCreateTaskGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), cherryCreateTaskGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         unauthAssignedToHimself = {
@@ -1735,7 +1855,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             users: ["apple, durian, eggplant"],
                             moderatorUsers: ["banana"],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), cherryCreateTaskGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), cherryCreateTaskGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         unauthAssignedToOther = {
@@ -2043,7 +2168,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2080,7 +2210,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2118,7 +2253,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2157,7 +2297,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2195,7 +2340,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2234,7 +2384,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2272,7 +2427,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2311,7 +2471,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2349,7 +2514,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2405,7 +2575,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2444,7 +2619,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2482,7 +2662,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2521,7 +2706,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2559,7 +2749,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2598,7 +2793,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2636,7 +2836,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2675,7 +2880,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2714,7 +2924,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2752,7 +2967,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2791,7 +3011,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2829,7 +3054,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2868,7 +3098,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2906,7 +3141,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2944,7 +3184,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -2983,7 +3228,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3022,7 +3272,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3061,7 +3316,12 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             creator: "cherry",
                             name: "Task Group 3",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(cherryDb, (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), userCreateGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3384,7 +3644,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3431,7 +3696,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3478,7 +3748,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3525,7 +3800,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3572,7 +3852,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3619,7 +3904,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3666,7 +3956,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3713,7 +4008,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3760,7 +4060,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3807,7 +4112,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3854,7 +4164,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3901,7 +4216,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3937,18 +4257,23 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
             });
         }); });
         it("[Pass] Creator created and assigned task to himself, then updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            var taskGroupId, taskGroupCreateBanana, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         taskGroupId = (0, task_group_1.randomTaskGroupId)();
-                        taskGroupCreateApple = {
+                        taskGroupCreateBanana = {
                             users: ["cherry"],
                             moderatorUsers: ["apple"],
                             creator: "banana",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateBanana)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -3984,18 +4309,23 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
             });
         }); });
         it("[Fail] Creator created and assigned task to himself, then unauth updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            var taskGroupId, taskGroupCreateBanana, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         taskGroupId = (0, task_group_1.randomTaskGroupId)();
-                        taskGroupCreateApple = {
+                        taskGroupCreateBanana = {
                             users: ["cherry"],
                             moderatorUsers: ["apple"],
                             creator: "banana",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateBanana)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -4031,18 +4361,23 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
             });
         }); });
         it("[Fail] Creator created and assigned task to himself, then outsider updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            var taskGroupId, taskGroupCreateBanana, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         taskGroupId = (0, task_group_1.randomTaskGroupId)();
-                        taskGroupCreateApple = {
+                        taskGroupCreateBanana = {
                             users: ["cherry"],
                             moderatorUsers: ["apple"],
                             creator: "banana",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateBanana)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -4078,18 +4413,23 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
             });
         }); });
         it("[Pass] Creator created and assigned task to himself, then moderator updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            var taskGroupId, taskGroupCreateBanana, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         taskGroupId = (0, task_group_1.randomTaskGroupId)();
-                        taskGroupCreateApple = {
+                        taskGroupCreateBanana = {
                             users: ["cherry"],
                             moderatorUsers: ["apple"],
                             creator: "banana",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateBanana)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -4125,18 +4465,23 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
             });
         }); });
         it("[Pass] Creator created and assigned task to himself, then member updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            var taskGroupId, taskGroupCreateBanana, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         taskGroupId = (0, task_group_1.randomTaskGroupId)();
-                        taskGroupCreateApple = {
+                        taskGroupCreateBanana = {
                             users: ["cherry"],
                             moderatorUsers: ["apple"],
                             creator: "banana",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateBanana)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -4295,7 +4640,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -4344,7 +4694,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -4393,7 +4748,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             creator: "apple",
                             name: "Dancers Task Group",
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 1:
                         _a.sent();
                         taskId = (0, task_1.randomTaskId)();
@@ -4423,7 +4783,61 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             assignedTo: "apple",
                             status: "progress",
                         };
-                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(cherryDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then reassign to other member (wrong assignedBy)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana", "durian"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            assignedBy: "cherry",
+                            assignedTo: "durian",
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
                     case 4:
                         _a.sent();
                         return [2 /*return*/];
@@ -4433,8 +4847,7 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
         return [2 /*return*/];
     });
 }); });
-// TODO inivitation/joining test
-describe("Task Assign Update Test", function () { return __awaiter(void 0, void 0, void 0, function () {
+describe("Invitation/Joining Test", function () { return __awaiter(void 0, void 0, void 0, function () {
     var eggplantDb, flowerDb, guavaDb, kiwiDb, lemonDb, mangoDb, appleTaskGroupId;
     return __generator(this, function (_a) {
         (0, mocha_1.before)(function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -4483,7 +4896,12 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             invitedUsers: [],
                             rejectedUsers: [],
                         };
-                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroup)];
+                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroup)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                }
+                            }); }); })];
                     case 2:
                         _a.sent();
                         return [2 /*return*/];
@@ -4671,7 +5089,7 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
             });
         }); });
         it("[Pass] User accepting invitation and adding as member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
-            var taskGroupUpdate;
+            var taskGroupUpdate, taskGroupFlowerAccept;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -4679,10 +5097,32 @@ describe("Task Assign Update Test", function () { return __awaiter(void 0, void 
                             invitedUsers: (0, firestore_1.arrayUnion)("flower"),
                         };
                         (0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate);
-                        // 
-                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                        taskGroupFlowerAccept = {
+                            users: (0, firestore_1.arrayUnion)("flower"),
+                            invitedUsers: (0, firestore_1.arrayRemove)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(flowerDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupFlowerAccept))];
                     case 1:
-                        // 
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] A different user accepting invitation and adding as member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate, taskGroupFlowerAccept;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        (0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate);
+                        taskGroupFlowerAccept = {
+                            users: (0, firestore_1.arrayUnion)("flower"),
+                            invitedUsers: (0, firestore_1.arrayRemove)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(guavaDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupFlowerAccept))];
+                    case 1:
                         _a.sent();
                         return [2 /*return*/];
                 }
