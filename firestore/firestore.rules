@@ -38,31 +38,103 @@ service cloud.firestore {
       allow create: if willBeMyDoc();
       allow update: if willBeMyDoc() && isMyDoc();
     }
-    
-    
-    // // TODO: check if the user of the uid is in the task group.
-    // function isUserInTaskGroup(taskId, uid) {
-    //    return true;
-    // }
+  
+    function areUsersInTaskGroup(taskGroupId, uids) {
+      let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
+      let taskAllUids = taskGroupDoc.data['users'].toSet()
+                          .union(taskGroupDoc.data['moderatorUsers'].toSet())
+                          .union([taskGroupDoc.data['creator']].toSet());
+      return  taskGroupDoc != null && taskAllUids.hasAll(uids);
+    }
+
+    function areCreatorOrModerators(taskGroupId, uids) {
+      let taskGroupDoc = get(/databases/$(database)/documents/task-group/$(taskGroupId));
+      let taskAllUids = taskGroupDoc.data['moderatorUsers'].toSet()
+                          .union([taskGroupDoc.data['creator']].toSet());
+      return taskGroupDoc != null && taskAllUids.hasAll(uids);
+    }
     
     match /task/{taskId} {
+      allow read: if isAuthenticated();
+      allow create: if 
+        isAuthenticated()
+        && 
+        willBeMyField('creator')
+        && (
+          !('taskGroupId' in request.resource.data)
+          ||
+          (
+            areUsersInTaskGroup(request.resource.data['taskGroupId'], [request.auth.uid])
+            && (
+              !('assignedUsers' in request.resource.data)
+              ||
+              areUsersInTaskGroup(request.resource.data['taskGroupId'], request.resource.data["assignedUsers"])
+            )
+          )
+        );
+      allow update: if isAuthenticated()
+        && areCreatorOrModerators(request.resource.data['taskGroupId'], [request.auth.uid]) 
+        && request.resource.data['creator'] == resource.data['creator'];
+    }
+
+    match /task-group/{taskGroupId} {
       allow read: if true;
-      allow create: if willBeMyField('creator');
-      allow update: if isMyField('creator') && willBeMyField('creator');
+      allow create: if willBeMyField('creator') && !('users' in request.resource.data);
+      allow update: if ((isMyField('creator') || resource.data.moderatorUsers.hasAny([request.auth.uid]))
+                        && notUpdating(['users', 'creator'])
+                      ) || (
+                        resource.data.invitedUsers.hasAny([request.auth.uid])
+                        && !request.resource.data.invitedUsers.hasAny([request.auth.uid])
+                        && onlyAddingOneElement('users')
+                        && !resource.data.users.hasAny([request.auth.uid])
+                        && request.resource.data.users.hasAny([request.auth.uid])
+                        && notUpdating(['creator', 'moderatorUsers', 'name'])
+                      );
     }
     
-    match /task-assign {
+    match /task-assign/{taskAssignId} {
+
+      function isValidTaskAssignWithoutGroup(taskId) {
+        let taskDoc = get(/databases/$(database)/documents/task/$(taskId));
+        return taskDoc.data['creator'] == request.auth.uid && !('taskGroupId' in taskDoc.data);
+      }
+
       allow read: if true;
       allow create: if
-        willBeMyField('assignTo')
-        // ||
-        // (
-        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
-        //   &&
-        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
-        // )
-        ;
+        isAuthenticated()
+        && 'taskId' in request.resource.data
+        && willBeMyField('assignedBy')
+        && (
+          (
+            willBeMyField('assignedTo') 
+            && !('taskGroupId' in request.resource.data)
+            && isValidTaskAssignWithoutGroup(request.resource.data['taskId'])
+          )
+          || areUsersInTaskGroup(
+            request.resource.data['taskGroupId'], 
+            [request.auth.uid, request.resource.data['assignedTo']],
+          )
+        );
+
+      allow update: if
+        isAuthenticated()
+        && notUpdating(['taskId', 'taskGroupId',])
+        && (
+          (isMyField('assignedBy') && isMyField('assignedTo') && notUpdating(['assignedBy', 'assignedTo']))
+          || (
+            'taskGroupId' in request.resource.data
+            && (
+              notUpdating(['assignedTo', 'assignedBy'])
+              || willBeMyField('assignedBy')
+            )
+            && areUsersInTaskGroup(
+              request.resource.data['taskGroupId'], 
+              [request.auth.uid, request.resource.data['assignedTo']],
+            ) 
+          )
+        );
     }
+
 
 
     // temporary rules test
@@ -98,6 +170,15 @@ function required(fields) {
   // let e = debug(request.resource.data);
   return request.resource.data.keys().hasAll( fields );
 }
+
+function isAuthenticated() {
+  return request.auth != null && request.auth.token.firebase.sign_in_provider != null;
+}
+
+// function isAnonymous() {
+//   return !isAuthenticated();
+// }
+
 
 
 

@@ -11,7 +11,7 @@ import { before } from "mocha";
 
 
 /****** SETUP ********/
-const PROJECT_ID = 'withcenter-test-5'; // Set your firebase project ID here
+const PROJECT_ID = 'withcenter-test-3'; // Set your firebase project ID here
 const host = '127.0.0.1'; // Don't user "localhost" unless you have a reasion.
 const port = 8080; // 터미날에 표시되는 포트로 적절히 지정해야 한다.
 /****** UNTIL HERE */
