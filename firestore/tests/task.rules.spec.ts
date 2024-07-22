@@ -3661,7 +3661,7 @@ describe("Invitation/Joining Test", async () => {
         const taskGroupUpdate: TaskGroup = {
             invitedUsers: arrayUnion("flower"),
         };
-        updateDoc(
+        await updateDoc(
             doc(appleDb, taskGroupRef(appleTaskGroupId)),
             taskGroupUpdate,
         );
@@ -3696,6 +3696,29 @@ describe("Invitation/Joining Test", async () => {
         await assertFails(
             updateDoc(
                 doc(guavaDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupFlowerAccept,
+            )
+        );
+    });
+
+    it("[Fail] Adding a different user after accepting invitation and adding as member to group", async () => {
+        // Apple Invite Flower
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        };
+        await updateDoc(
+            doc(appleDb, taskGroupRef(appleTaskGroupId)),
+            taskGroupUpdate,
+        );
+
+        // Flower accepted invtation
+        const taskGroupFlowerAccept: TaskGroup = {
+            users: arrayUnion("guava"),
+            invitedUsers: arrayRemove("flower"),
+        };
+        await assertFails(
+            updateDoc(
+                doc(flowerDb, taskGroupRef(appleTaskGroupId)),
                 taskGroupFlowerAccept,
             )
         );

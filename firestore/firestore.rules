@@ -80,13 +80,15 @@ service cloud.firestore {
     match /task-group/{taskGroupId} {
       allow read: if true;
       allow create: if willBeMyField('creator') && !('users' in request.resource.data);
-      allow update: if (((isMyField('creator') || resource.data.moderatorUsers.hasAny([request.auth.uid]))
-                        && resource.data['creator'] == request.resource.data['creator'])
-                        && notUpdating(['users'])
+      allow update: if ((isMyField('creator') || resource.data.moderatorUsers.hasAny([request.auth.uid]))
+                        && notUpdating(['users', 'creator'])
                       ) || (
                         resource.data.invitedUsers.hasAny([request.auth.uid])
                         && !request.resource.data.invitedUsers.hasAny([request.auth.uid])
-                        &&  notUpdating(['creator', 'moderatorUsers', 'name'])
+                        && onlyAddingOneElement('users')
+                        && !resource.data.users.hasAny([request.auth.uid])
+                        && request.resource.data.users.hasAny([request.auth.uid])
+                        && notUpdating(['creator', 'moderatorUsers', 'name'])
                       );
     }
     
@@ -121,9 +123,8 @@ service cloud.firestore {
           (isMyField('assignedBy') && isMyField('assignedTo') && notUpdating(['assignedBy', 'assignedTo']))
           || (
             'taskGroupId' in request.resource.data
-            &&
-            (
-              (request.resource.data.assignedTo == resource.data.assignedTo && request.resource.data.assignedBy == resource.data.assignedBy)
+            && (
+              notUpdating(['assignedTo', 'assignedBy'])
               || willBeMyField('assignedBy')
             )
             && areUsersInTaskGroup(

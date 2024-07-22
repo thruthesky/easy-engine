@@ -5096,13 +5096,15 @@ describe("Invitation/Joining Test", function () { return __awaiter(void 0, void 
                         taskGroupUpdate = {
                             invitedUsers: (0, firestore_1.arrayUnion)("flower"),
                         };
-                        (0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate);
+                        return [4 /*yield*/, (0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate)];
+                    case 1:
+                        _a.sent();
                         taskGroupFlowerAccept = {
                             users: (0, firestore_1.arrayUnion)("flower"),
                             invitedUsers: (0, firestore_1.arrayRemove)("flower"),
                         };
                         return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(flowerDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupFlowerAccept))];
-                    case 1:
+                    case 2:
                         _a.sent();
                         return [2 /*return*/];
                 }
@@ -5123,6 +5125,28 @@ describe("Invitation/Joining Test", function () { return __awaiter(void 0, void 
                         };
                         return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(guavaDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupFlowerAccept))];
                     case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Adding a different user after accepting invitation and adding as member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate, taskGroupFlowerAccept;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate)];
+                    case 1:
+                        _a.sent();
+                        taskGroupFlowerAccept = {
+                            users: (0, firestore_1.arrayUnion)("guava"),
+                            invitedUsers: (0, firestore_1.arrayRemove)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(flowerDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupFlowerAccept))];
+                    case 2:
                         _a.sent();
                         return [2 /*return*/];
                 }
