@@ -48,7 +48,7 @@ service cloud.firestore {
       let taskAllUids = taskGroupDoc.data['users'].toSet()
                           .union(taskGroupDoc.data['moderatorUsers'].toSet())
                           .union([taskGroupDoc.data['creator']].toSet());
-      return taskGroupDoc != null && taskAllUids.hasAll(uids);
+      return  taskGroupDoc != null && taskAllUids.hasAll(uids);
     }
 
     function areCreatorOrModerators(taskGroupId, uids) {
@@ -58,29 +58,26 @@ service cloud.firestore {
       return taskGroupDoc != null && taskAllUids.hasAll(uids);
     }
 
-    function isValidTaskToCreateWithoutGroup(taskId) {
-      let taskDoc = get(/databases/$(database)/documents/task/$(taskId));
-      return taskDoc.data['creator'] == request.auth.uid && !('taskGroupId' in taskDoc.data);
-    }
 
     
     match /task/{taskId} {
       allow read: if isAuthenticated();
-      allow create: if isAuthenticated() && willBeMyField('creator')
-       &&
-       (
-        !request.resource.data.keys().hasAny(["taskGroupId"])
-        ||
-        (
-          areUsersInTaskGroup(request.resource.data['taskGroupId'], [request.auth.uid])
-          &&
+      allow create: if 
+        isAuthenticated()
+        && 
+        willBeMyField('creator')
+        && (
+          !('taskGroupId' in request.resource.data)
+          ||
           (
-            !request.resource.data.keys().hasAny(["assignedUsers"]) 
-            ||
-            areUsersInTaskGroup(request.resource.data['taskGroupId'], request.resource.data["assignedUsers"])
+            areUsersInTaskGroup(request.resource.data['taskGroupId'], [request.auth.uid])
+            && (
+              !('assignedUsers' in request.resource.data)
+              ||
+              areUsersInTaskGroup(request.resource.data['taskGroupId'], request.resource.data["assignedUsers"])
+            )
           )
-        )
-       );
+        );
       allow update: if isAuthenticated()
         && areCreatorOrModerators(request.resource.data['taskGroupId'], [request.auth.uid]) 
         && request.resource.data['creator'] == resource.data['creator'];
@@ -94,30 +91,46 @@ service cloud.firestore {
     }
     
     match /task-assign/{taskAssignId} {
+
+      function isValidTaskAssignWithoutGroup(taskId) {
+        let taskDoc = get(/databases/$(database)/documents/task/$(taskId));
+        return taskDoc.data['creator'] == request.auth.uid && !('taskGroupId' in taskDoc.data);
+      }
+
       allow read: if true;
       allow create: if
-        'taskId' in request.resource.data
-        &&
-        willBeMyField('assignedBy')
-        &&
-        (
+        isAuthenticated()
+        && 'taskId' in request.resource.data
+        && willBeMyField('assignedBy')
+        && (
           (
             willBeMyField('assignedTo') 
-            && 
-            !('taskGroupId' in request.resource.data)
-            &&
-            isValidTaskToCreateWithoutGroup(request.resource.data['taskId'])
+            && !('taskGroupId' in request.resource.data)
+            && isValidTaskAssignWithoutGroup(request.resource.data['taskId'])
           )
-          ||
-          (
-            areUsersInTaskGroup(
+          || areUsersInTaskGroup(
+            request.resource.data['taskGroupId'], 
+            [request.auth.uid, request.resource.data['assignedTo']],
+          )
+        );
+
+        // TODO reassignments
+      allow update: if
+        isAuthenticated()
+        && notUpdating(['taskId', 'taskGroupId',])
+        && (
+          (isMyField('assignedBy') && isMyField('assignedTo') && notUpdating(['assignedBy', 'assignedTo']))
+          || (
+            'taskGroupId' in request.resource.data
+            && areUsersInTaskGroup(
               request.resource.data['taskGroupId'], 
-              [request.auth.uid, request.resource.data['assignedTo']]
+              [request.auth.uid, request.resource.data['assignedTo']],
             )
           )
-        )
-        
+        );
+        // TODO reassignments
     }
+
 
 
     // temporary rules test

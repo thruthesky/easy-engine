@@ -9,17 +9,15 @@ import {
     doc,
     getDoc,
     setDoc,
-    addDoc,
     updateDoc,
-    deleteDoc,
     setLogLevel,
     arrayUnion,
 } from "firebase/firestore";
 import { readFileSync } from "node:fs";
-import { before } from "mocha";
+import { before, test } from "mocha";
 import { taskRef, Task, randomTaskId } from "./task/task";
-import { randomtaskGroupId, TaskGroup, taskGroupRef } from "./task/task-group";
-import { TaskAssign, taskAssignRef } from "./task/task-assign";
+import { randomTaskGroupId, TaskGroup, taskGroupRef } from "./task/task-group";
+import { randomAssignId, TaskAssign, taskAssignRef } from "./task/task-assign";
 
 /****** SETUP ********/
 const PROJECT_ID = "withcenter-test-3"; // Set your firebase project ID here
@@ -216,7 +214,7 @@ describe("Task and Task Group Test", async () => {
     });
     it("[Pass] Member created a task without assignment yet, in a group", async () => {
         // Cherry created a group
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreate: TaskGroup = {
             users: ["apple"],
             moderatorUsers: ["durian"],
@@ -235,7 +233,7 @@ describe("Task and Task Group Test", async () => {
     });
     it("[Pass] Moderator created a task without assignment yet, in a group", async () => {
         // Cherry created a group
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreate: TaskGroup = {
             users: ["apple"],
             moderatorUsers: ["durian"],
@@ -254,7 +252,7 @@ describe("Task and Task Group Test", async () => {
     });
     it("[Pass] Creator created a task without assignment yet, in a group", async () => {
         // Cherry created a group
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreate: TaskGroup = {
             users: ["apple"],
             moderatorUsers: ["durian"],
@@ -272,7 +270,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] Outsider created a task without assignment yet, in a group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreate: TaskGroup = {
             users: ["apple"],
             moderatorUsers: ["durian"],
@@ -356,7 +354,7 @@ describe("Task and Task Group Test", async () => {
 
 
     it("[Fail] Unauth user tried to update the name of the task group [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -374,7 +372,7 @@ describe("Task and Task Group Test", async () => {
 
 
     it("[Fail] Unauth user tried to update the creator of the task group [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -389,7 +387,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] Unauth user tried to add a moderator in a group [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -406,7 +404,7 @@ describe("Task and Task Group Test", async () => {
 
 
     it("[Fail] User who is not the creator of the group tried to update the name of the group. [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -421,7 +419,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User who is not the creator of the group tried to update the creator of the group. [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -436,7 +434,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User who is not the creator of the group tried to add a moderator in the group. [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -451,7 +449,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Pass] User updated the name of the group where the user is the creator. [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -466,7 +464,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User updated the creator of the group where the user is the creator. [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -481,7 +479,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Pass] Group creator added a moderator in the group. [Creator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -497,7 +495,7 @@ describe("Task and Task Group Test", async () => {
     });
 
     it("[Fail] Unauth user tried to update the name of the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -513,7 +511,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] Unauth user tried to update the creator of the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -529,7 +527,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] Unauth user tried to add a moderator in a group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -545,7 +543,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User who is not the creator or moderator tried to update the name of the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -562,7 +560,7 @@ describe("Task and Task Group Test", async () => {
     });
 
     it("[Fail] User who is not the creator or moderator tried to update the creator of the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -578,7 +576,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User who is not the creator or moderator tried to add a moderator in the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -594,7 +592,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User who is not the creator or moderator tried to update the name of the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -610,7 +608,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Pass] User updated the name of the group where he/she a moderator but not the creator. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -626,7 +624,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] Moderator tried to update the creator of the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -642,7 +640,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Pass] Group moderator added another moderator in the group. [Moderator Test]", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -660,7 +658,7 @@ describe("Task and Task Group Test", async () => {
 
 
     it("[Fail] Unauth user tried to invite users to the group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -677,7 +675,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User who is not the member, creator, or moderator tried to invite users to the group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -695,7 +693,7 @@ describe("Task and Task Group Test", async () => {
 
 
     it("[Fail] Member invited user to the group but not the creator or moderator", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -712,7 +710,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Pass] Moderator invited user to the group but not the creator", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -729,7 +727,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Pass] creator invited user to the group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -746,7 +744,7 @@ describe("Task and Task Group Test", async () => {
     });
 
     it("[Fail] Unauth user tried to create a task in a group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -765,7 +763,7 @@ describe("Task and Task Group Test", async () => {
         );
     });
     it("[Fail] User who is not a member, creator, or moderator tried to create a task in a group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -786,7 +784,7 @@ describe("Task and Task Group Test", async () => {
 
 
     it("[Pass] Creator created a task in a group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -806,7 +804,7 @@ describe("Task and Task Group Test", async () => {
     });
 
     it("[Pass] Moderator created a task in a group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -827,7 +825,7 @@ describe("Task and Task Group Test", async () => {
     });
 
     it("[Pass] Member created a task in a group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -856,7 +854,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -883,7 +881,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -910,7 +908,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -937,7 +935,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -964,7 +962,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -991,7 +989,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -1024,7 +1022,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -1057,7 +1055,7 @@ describe("Task and Task Group Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -1098,18 +1096,9 @@ describe("Task Assign Test", async () => {
         });
     });
 
-    // 각 테스트를 하기 전에, 로컬 Firestore 의 데이터를 모두 지운다.
     beforeEach(async () => {
         await testEnv.clearFirestore();
-        await testEnv.withSecurityRulesDisabled(async (context) => {
-            await setDoc(doc(context.firestore(), "users/apple"), {
-                name: "apple",
-                no: 1,
-            });
-        });
-
         unauthedDb = testEnv.unauthenticatedContext().firestore();
-
         appleDb = testEnv.authenticatedContext("apple").firestore();
         bananaDb = testEnv.authenticatedContext("banana").firestore();
         cherryDb = testEnv.authenticatedContext("cherry").firestore();
@@ -1123,7 +1112,7 @@ describe("Task Assign Test", async () => {
             "eggplant",
             "flower",
         ];
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const taskGroupCreateWithCorrectCreator: TaskGroup = {
             name: "Task Group 3",
             creator: "apple",
@@ -1170,7 +1159,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Unauth user created a task and assigned to himself (with task group)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const cherryCreateTaskGroup: TaskGroup = {
             name: "Task Group 3",
             creator: "cherry",
@@ -1191,7 +1180,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Unauth user created a task and assigned to others (with task group)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const cherryCreateTaskGroup: TaskGroup = {
             name: "Task Group 3",
             creator: "cherry",
@@ -1398,7 +1387,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] User created a group, and a task, then unauth created a task assign to himself", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1424,7 +1413,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] User created a group, and a task, then outsider created a task assign to himself", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1453,7 +1442,7 @@ describe("Task Assign Test", async () => {
 
 
     it("[Pass] Creator assigned to himself, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1481,7 +1470,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Creator assigned to himself, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1508,7 +1497,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Pass] Creator assigned to moderator, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1536,7 +1525,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Creator assigned to moderator, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1564,7 +1553,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Pass] Creator assigned to member, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1593,7 +1582,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Fail] Creator assigned to member, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1621,7 +1610,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Fail] Creator assigned to outsider, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1660,7 +1649,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Pass] Moderator assigned to himself, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1688,7 +1677,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Moderator assigned to himself, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1715,7 +1704,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Pass] Moderator assigned to moderator, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian", "banana"],
             users: ["apple"],
@@ -1743,7 +1732,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Moderator assigned to moderator, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian", "banana"],
             users: ["apple"],
@@ -1771,7 +1760,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Pass] Moderator assigned to member, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1799,7 +1788,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Moderator assigned to member, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1827,7 +1816,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Fail] Moderator assigned to outsider, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1857,7 +1846,7 @@ describe("Task Assign Test", async () => {
 
 
     it("[Pass] Member assigned to himself, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1885,7 +1874,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Member assigned to himself, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1912,7 +1901,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Pass] Member assigned to moderator, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1940,7 +1929,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Member assigned to moderator, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -1968,7 +1957,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Pass] Member assigned to another member, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple", "banana"],
@@ -1996,7 +1985,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Member assigned to another member, task by himself, in group (missing taskGroupId)", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple", "banana"],
@@ -2024,7 +2013,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Fail] Member assigned to outsider, task by himself, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -2052,7 +2041,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Fail] Outsider assigned to himself, task in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -2080,7 +2069,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Outsider assigned to Creator, task in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -2108,7 +2097,7 @@ describe("Task Assign Test", async () => {
         );
     });
     it("[Fail] Outsider assigned to moderator, in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -2137,7 +2126,7 @@ describe("Task Assign Test", async () => {
     });
 
     it("[Fail] Outsider assigned to another Outsider, task in group", async () => {
-        const taskGroupId = randomtaskGroupId();
+        const taskGroupId = randomTaskGroupId();
         const userCreateGroup: TaskGroup = {
             moderatorUsers: ["durian"],
             users: ["apple"],
@@ -2162,6 +2151,1292 @@ describe("Task Assign Test", async () => {
         };
         await assertFails(
             setDoc(doc(appleDb, taskAssignRef()), outsiderAssignedToOutsider)
+        );
+    });
+});
+
+describe("Task Assign Update Test", async () => {
+    before(async () => {
+        setLogLevel("error");
+        testEnv = await initializeTestEnvironment({
+            projectId: PROJECT_ID,
+            firestore: {
+                host,
+                port,
+                rules: readFileSync("firestore.rules", "utf8"),
+            },
+        });
+    });
+
+    beforeEach(async () => {
+        await testEnv.clearFirestore();
+        unauthedDb = testEnv.unauthenticatedContext().firestore();
+        appleDb = testEnv.authenticatedContext("apple").firestore();
+        bananaDb = testEnv.authenticatedContext("banana").firestore();
+        cherryDb = testEnv.authenticatedContext("cherry").firestore();
+        durianDb = testEnv.authenticatedContext("durian").firestore();
+    });
+
+    it("[Pass] User created and assigned task to himself, then updated the status", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Fail] User created and assigned task to himself, then unauthed user updated the status", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(unauthedDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Fail] User created and assigned task to himself, then unauthed user updated the status", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(unauthedDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Fail] User created and assigned task to himself, then other user updated the status", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(appleDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Fail] User created and assigned task to himself, then tried to update taskId", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            taskId: randomTaskId(),
+        }
+        await assertFails(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Fail] User created and assigned task to himself, then other user tried to update taskId", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            taskId: randomTaskId(),
+        }
+        await assertFails(
+            updateDoc(doc(appleDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Fail] User created and assigned task to himself, then unauthed user tried to update taskId", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            taskId: randomTaskId(),
+        }
+        await assertFails(
+            updateDoc(doc(unauthedDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+
+    it("[Pass] User created and assigned task to himself, then updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Fail] User created and assigned task to himself, then unauth updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(unauthedDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Fail] User created and assigned task to himself, then outsider updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(durianDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] User created and assigned task to himself, then creator updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(cherryDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] User created and assigned task to himself, then moderator updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(cherryDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] User created and assigned task to himself, then other member updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry", "durian"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(durianDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] Moderator created and assigned task to himself, then updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Fail] Moderator created and assigned task to himself, then unauth updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(unauthedDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Fail] Moderator created and assigned task to himself, then outsider updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(durianDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] Moderator created and assigned task to himself, then creator updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(cherryDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] Moderator created and assigned task to himself, then other moderator updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["banana", "durian"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(durianDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] Moderator created and assigned task to himself, then member updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["banana"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(cherryDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Pass] Creator created and assigned task to himself, then updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["apple"],
+            creator: "banana",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Fail] Creator created and assigned task to himself, then unauth updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["apple"],
+            creator: "banana",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(unauthedDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Fail] Creator created and assigned task to himself, then outsider updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["apple"],
+            creator: "banana",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(durianDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] Creator created and assigned task to himself, then moderator updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["apple"],
+            creator: "banana",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(appleDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Pass] Creator created and assigned task to himself, then member updated the status (in group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["cherry"],
+            moderatorUsers: ["apple"],
+            creator: "banana",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(bananaDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(cherryDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    // Reassign
+
+    it("[Fail] User created and assigned task to himself, then reassign to other user", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+
+            assignedBy: "banana",
+            assignedTo: "apple",
+
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Fail] User created and assigned task to himself, then unauth user reassign to other user", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            assignedBy: "banana",
+            assignedTo: "apple",
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(unauthedDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+    it("[Fail] User created and assigned task to himself, then other user reassign to other user", async () => {
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open"
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+        const taskAssignUpdate: TaskAssign = {
+            assignedBy: "apple",
+            assignedTo: "apple",
+            status: "progress",
+        }
+        await assertFails(
+            updateDoc(doc(appleDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+
+    it("[Pass] User created and assigned task to himself, then reassign to other member (in a group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana", "durian"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            assignedBy: "banana",
+            assignedTo: "durian",
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    it("[Pass] User created and assigned task to himself, then moderator reassign to other member (in a group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            assignedBy: "cherry",
+            assignedTo: "apple",
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(cherryDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+
+    it("[Pass] User created and assigned task to himself, then creator reassign to other member (in a group)", async () => {
+        const taskGroupId = randomTaskGroupId();
+        const taskGroupCreateApple: TaskGroup = {
+            users: ["banana"],
+            moderatorUsers: ["cherry"],
+            creator: "apple",
+            name: "Dancers Task Group",
+        };
+        await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+        const taskId = randomTaskId();
+        const taskCreateBanana: Task = {
+            title: "Create Task Test",
+            content: "Creating a task for testing",
+            creator: "banana",
+            status: "open",
+            taskGroupId: taskGroupId,
+        };
+        await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+        const taskAssignId = randomAssignId();
+        const taskAssignBanana: TaskAssign = {
+            taskId: taskId,
+            assignedBy: "banana",
+            assignedTo: "banana",
+            status: "waiting",
+            taskGroupId: taskGroupId,
+        }
+        await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+        const taskAssignUpdate: TaskAssign = {
+            assignedBy: "cherry",
+            assignedTo: "apple",
+            status: "progress",
+        }
+        await assertSucceeds(
+            updateDoc(doc(appleDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+        );
+    });
+
+    // TODO Having error
+    // it("[Fail] User created and assigned task to himself, then reassign to other member (wrong assignedBy)", async () => {
+    //     const taskGroupId = randomTaskGroupId();
+    //     const taskGroupCreateApple: TaskGroup = {
+    //         users: ["banana", "durian"],
+    //         moderatorUsers: ["cherry"],
+    //         creator: "apple",
+    //         name: "Dancers Task Group",
+    //     };
+    //     await setDoc(doc(appleDb, taskGroupRef(taskGroupId)), taskGroupCreateApple);
+
+    //     const taskId = randomTaskId();
+    //     const taskCreateBanana: Task = {
+    //         title: "Create Task Test",
+    //         content: "Creating a task for testing",
+    //         creator: "banana",
+    //         status: "open",
+    //         taskGroupId: taskGroupId,
+    //     };
+    //     await setDoc(doc(bananaDb, taskRef(taskId)), taskCreateBanana);
+
+    //     const taskAssignId = randomAssignId();
+    //     const taskAssignBanana: TaskAssign = {
+    //         taskId: taskId,
+    //         assignedBy: "banana",
+    //         assignedTo: "banana",
+    //         status: "waiting",
+    //         taskGroupId: taskGroupId,
+    //     }
+    //     await setDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignBanana);
+
+    //     const taskAssignUpdate: TaskAssign = {
+    //         assignedBy: "cherry",
+    //         assignedTo: "durian",
+    //         status: "progress",
+    //     }
+    //     await assertFails(
+    //         updateDoc(doc(bananaDb, taskAssignRef(taskAssignId)), taskAssignUpdate)
+    //     );
+    // });
+
+});
+
+// TODO inivitation/joining test
+describe("Task Assign Update Test", async () => {
+    let eggplantDb: firebase.firestore.Firestore;
+    let flowerDb: firebase.firestore.Firestore;
+    let guavaDb: firebase.firestore.Firestore;
+    let kiwiDb: firebase.firestore.Firestore;
+    let lemonDb: firebase.firestore.Firestore;
+    let mangoDb: firebase.firestore.Firestore;
+
+    let appleTaskGroupId: string;
+
+    before(async () => {
+        setLogLevel("error");
+        testEnv = await initializeTestEnvironment({
+            projectId: PROJECT_ID,
+            firestore: {
+                host,
+                port,
+                rules: readFileSync("firestore.rules", "utf8"),
+            },
+        });
+    });
+
+    beforeEach(async () => {
+        await testEnv.clearFirestore();
+        unauthedDb = testEnv.unauthenticatedContext().firestore();
+        appleDb = testEnv.authenticatedContext("apple").firestore();
+        bananaDb = testEnv.authenticatedContext("banana").firestore();
+        cherryDb = testEnv.authenticatedContext("cherry").firestore();
+        durianDb = testEnv.authenticatedContext("durian").firestore();
+        eggplantDb = testEnv.authenticatedContext("eggplant").firestore();
+        flowerDb = testEnv.authenticatedContext("flower").firestore();
+        guavaDb = testEnv.authenticatedContext("guava").firestore();
+        kiwiDb = testEnv.authenticatedContext("kiwi").firestore();
+        lemonDb = testEnv.authenticatedContext("lemon").firestore();
+        mangoDb = testEnv.authenticatedContext("mango").firestore();
+
+        appleTaskGroupId = randomTaskGroupId();
+        const taskGroup: TaskGroup = {
+            name: "Best Group for you to handle",
+            creator: "apple",
+            moderatorUsers: ["banana", "cherry"],
+            users: ["durian", "eggplant"],
+            invitedUsers: [],
+            rejectedUsers: [],
+        };
+        await setDoc(doc(appleDb, taskGroupRef(appleTaskGroupId)), taskGroup);
+    });
+
+    it("[Pass] Creator invite user to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        }
+        await assertSucceeds(
+            updateDoc(
+                doc(appleDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Pass] Moderator invite user to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        }
+        await assertSucceeds(
+            updateDoc(
+                doc(bananaDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Member invite user to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(durianDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Outsider invite user to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(guavaDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Unauth user invite user to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(unauthedDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Outsider user invited himself to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(flowerDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+
+    it("[Fail] Creator added member to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            users: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(appleDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Moderator added member to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            users: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(bananaDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Member added member to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            users: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(durianDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Outsider added himself as member to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            users: arrayUnion("flower"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(flowerDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Outsider added another as member to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            users: arrayUnion("guava"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(flowerDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Fail] Unauth user added member to group", async () => {
+        const taskGroupUpdate: TaskGroup = {
+            users: arrayUnion("guava"),
+        }
+        await assertFails(
+            updateDoc(
+                doc(unauthedDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
+        );
+    });
+    it("[Pass] User accepting invitation and adding as member to group", async () => {
+        // Apple Invite Flower
+        const taskGroupUpdate: TaskGroup = {
+            invitedUsers: arrayUnion("flower"),
+        };
+        updateDoc(
+            doc(appleDb, taskGroupRef(appleTaskGroupId)),
+            taskGroupUpdate,
+        );
+
+        // 
+        await assertFails(
+            updateDoc(
+                doc(unauthedDb, taskGroupRef(appleTaskGroupId)),
+                taskGroupUpdate,
+            )
         );
     });
 });

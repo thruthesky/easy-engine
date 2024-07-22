@@ -361,7 +361,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreate = {
                             users: ["apple"],
                             moderatorUsers: ["durian"],
@@ -388,7 +388,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreate = {
                             users: ["apple"],
                             moderatorUsers: ["durian"],
@@ -415,7 +415,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreate = {
                             users: ["apple"],
                             moderatorUsers: ["durian"],
@@ -442,7 +442,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreate = {
                             users: ["apple"],
                             moderatorUsers: ["durian"],
@@ -575,7 +575,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -598,7 +598,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -621,7 +621,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -644,7 +644,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -667,7 +667,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -690,7 +690,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -713,7 +713,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -736,7 +736,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -759,7 +759,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -782,7 +782,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -806,7 +806,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -830,7 +830,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -854,7 +854,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -878,7 +878,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -902,7 +902,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -926,7 +926,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -950,7 +950,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -974,7 +974,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -998,7 +998,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1022,7 +1022,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1047,7 +1047,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1072,7 +1072,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1097,7 +1097,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1122,7 +1122,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1147,7 +1147,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1175,7 +1175,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1203,7 +1203,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1231,7 +1231,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1259,7 +1259,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1293,7 +1293,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1328,7 +1328,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1363,7 +1363,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1398,7 +1398,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1433,7 +1433,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1468,7 +1468,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1509,7 +1509,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1550,7 +1550,7 @@ describe("Task and Task Group Test", function () { return __awaiter(void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1604,27 +1604,11 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                 }
             });
         }); });
-        // 각 테스트를 하기 전에, 로컬 Firestore 의 데이터를 모두 지운다.
         beforeEach(function () { return __awaiter(void 0, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, testEnv.clearFirestore()];
                     case 1:
-                        _a.sent();
-                        return [4 /*yield*/, testEnv.withSecurityRulesDisabled(function (context) { return __awaiter(void 0, void 0, void 0, function () {
-                                return __generator(this, function (_a) {
-                                    switch (_a.label) {
-                                        case 0: return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(context.firestore(), "users/apple"), {
-                                                name: "apple",
-                                                no: 1,
-                                            })];
-                                        case 1:
-                                            _a.sent();
-                                            return [2 /*return*/];
-                                    }
-                                });
-                            }); })];
-                    case 2:
                         _a.sent();
                         unauthedDb = testEnv.unauthenticatedContext().firestore();
                         appleDb = testEnv.authenticatedContext("apple").firestore();
@@ -1646,7 +1630,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                             "eggplant",
                             "flower",
                         ];
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         taskGroupCreateWithCorrectCreator = {
                             name: "Task Group 3",
                             creator: "apple",
@@ -1715,7 +1699,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         cherryCreateTaskGroup = {
                             name: "Task Group 3",
                             creator: "cherry",
@@ -1744,7 +1728,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         cherryCreateTaskGroup = {
                             name: "Task Group 3",
                             creator: "cherry",
@@ -2052,7 +2036,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2089,7 +2073,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2127,7 +2111,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2166,7 +2150,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2204,7 +2188,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2243,7 +2227,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2281,7 +2265,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2320,7 +2304,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2358,7 +2342,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2414,7 +2398,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2453,7 +2437,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2491,7 +2475,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian", "banana"],
                             users: ["apple"],
@@ -2530,7 +2514,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian", "banana"],
                             users: ["apple"],
@@ -2568,7 +2552,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2607,7 +2591,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2645,7 +2629,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2684,7 +2668,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2723,7 +2707,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2761,7 +2745,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2800,7 +2784,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2838,7 +2822,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple", "banana"],
@@ -2877,7 +2861,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple", "banana"],
@@ -2915,7 +2899,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2953,7 +2937,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -2992,7 +2976,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -3031,7 +3015,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -3070,7 +3054,7 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        taskGroupId = (0, task_group_1.randomtaskGroupId)();
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
                         userCreateGroup = {
                             moderatorUsers: ["durian"],
                             users: ["apple"],
@@ -3099,6 +3083,1606 @@ describe("Task Assign Test", function () { return __awaiter(void 0, void 0, void
                         };
                         return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_assign_1.taskAssignRef)()), outsiderAssignedToOutsider))];
                     case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        return [2 /*return*/];
+    });
+}); });
+describe("Task Assign Update Test", function () { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        (0, mocha_1.before)(function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        (0, firestore_1.setLogLevel)("error");
+                        return [4 /*yield*/, (0, rules_unit_testing_1.initializeTestEnvironment)({
+                                projectId: PROJECT_ID,
+                                firestore: {
+                                    host: host,
+                                    port: port,
+                                    rules: (0, node_fs_1.readFileSync)("firestore.rules", "utf8"),
+                                },
+                            })];
+                    case 1:
+                        testEnv = _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        beforeEach(function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, testEnv.clearFirestore()];
+                    case 1:
+                        _a.sent();
+                        unauthedDb = testEnv.unauthenticatedContext().firestore();
+                        appleDb = testEnv.authenticatedContext("apple").firestore();
+                        bananaDb = testEnv.authenticatedContext("banana").firestore();
+                        cherryDb = testEnv.authenticatedContext("cherry").firestore();
+                        durianDb = testEnv.authenticatedContext("durian").firestore();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then updated the status", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then unauthed user updated the status", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then unauthed user updated the status", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then other user updated the status", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then tried to update taskId", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            taskId: (0, task_1.randomTaskId)(),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then other user tried to update taskId", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            taskId: (0, task_1.randomTaskId)(),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then unauthed user tried to update taskId", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            taskId: (0, task_1.randomTaskId)(),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then unauth updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then outsider updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(durianDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then creator updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(cherryDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then moderator updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(cherryDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then other member updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry", "durian"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(durianDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Moderator created and assigned task to himself, then updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Moderator created and assigned task to himself, then unauth updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Moderator created and assigned task to himself, then outsider updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(durianDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Moderator created and assigned task to himself, then creator updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(cherryDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Moderator created and assigned task to himself, then other moderator updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["banana", "durian"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(durianDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Moderator created and assigned task to himself, then member updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["banana"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(cherryDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Creator created and assigned task to himself, then updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["apple"],
+                            creator: "banana",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Creator created and assigned task to himself, then unauth updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["apple"],
+                            creator: "banana",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Creator created and assigned task to himself, then outsider updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["apple"],
+                            creator: "banana",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(durianDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Creator created and assigned task to himself, then moderator updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["apple"],
+                            creator: "banana",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Creator created and assigned task to himself, then member updated the status (in group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["cherry"],
+                            moderatorUsers: ["apple"],
+                            creator: "banana",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(cherryDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        // Reassign
+        it("[Fail] User created and assigned task to himself, then reassign to other user", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            assignedBy: "banana",
+                            assignedTo: "apple",
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then unauth user reassign to other user", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            assignedBy: "banana",
+                            assignedTo: "apple",
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] User created and assigned task to himself, then other user reassign to other user", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open"
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 1:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            assignedBy: "apple",
+                            assignedTo: "apple",
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then reassign to other member (in a group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana", "durian"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            assignedBy: "banana",
+                            assignedTo: "durian",
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then moderator reassign to other member (in a group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            assignedBy: "cherry",
+                            assignedTo: "apple",
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(cherryDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User created and assigned task to himself, then creator reassign to other member (in a group)", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupId, taskGroupCreateApple, taskId, taskCreateBanana, taskAssignId, taskAssignBanana, taskAssignUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroupCreateApple = {
+                            users: ["banana"],
+                            moderatorUsers: ["cherry"],
+                            creator: "apple",
+                            name: "Dancers Task Group",
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(taskGroupId)), taskGroupCreateApple)];
+                    case 1:
+                        _a.sent();
+                        taskId = (0, task_1.randomTaskId)();
+                        taskCreateBanana = {
+                            title: "Create Task Test",
+                            content: "Creating a task for testing",
+                            creator: "banana",
+                            status: "open",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_1.taskRef)(taskId)), taskCreateBanana)];
+                    case 2:
+                        _a.sent();
+                        taskAssignId = (0, task_assign_1.randomAssignId)();
+                        taskAssignBanana = {
+                            taskId: taskId,
+                            assignedBy: "banana",
+                            assignedTo: "banana",
+                            status: "waiting",
+                            taskGroupId: taskGroupId,
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(bananaDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignBanana)];
+                    case 3:
+                        _a.sent();
+                        taskAssignUpdate = {
+                            assignedBy: "cherry",
+                            assignedTo: "apple",
+                            status: "progress",
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_assign_1.taskAssignRef)(taskAssignId)), taskAssignUpdate))];
+                    case 4:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        return [2 /*return*/];
+    });
+}); });
+// TODO inivitation/joining test
+describe("Task Assign Update Test", function () { return __awaiter(void 0, void 0, void 0, function () {
+    var eggplantDb, flowerDb, guavaDb, kiwiDb, lemonDb, mangoDb, appleTaskGroupId;
+    return __generator(this, function (_a) {
+        (0, mocha_1.before)(function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        (0, firestore_1.setLogLevel)("error");
+                        return [4 /*yield*/, (0, rules_unit_testing_1.initializeTestEnvironment)({
+                                projectId: PROJECT_ID,
+                                firestore: {
+                                    host: host,
+                                    port: port,
+                                    rules: (0, node_fs_1.readFileSync)("firestore.rules", "utf8"),
+                                },
+                            })];
+                    case 1:
+                        testEnv = _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        beforeEach(function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroup;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, testEnv.clearFirestore()];
+                    case 1:
+                        _a.sent();
+                        unauthedDb = testEnv.unauthenticatedContext().firestore();
+                        appleDb = testEnv.authenticatedContext("apple").firestore();
+                        bananaDb = testEnv.authenticatedContext("banana").firestore();
+                        cherryDb = testEnv.authenticatedContext("cherry").firestore();
+                        durianDb = testEnv.authenticatedContext("durian").firestore();
+                        eggplantDb = testEnv.authenticatedContext("eggplant").firestore();
+                        flowerDb = testEnv.authenticatedContext("flower").firestore();
+                        guavaDb = testEnv.authenticatedContext("guava").firestore();
+                        kiwiDb = testEnv.authenticatedContext("kiwi").firestore();
+                        lemonDb = testEnv.authenticatedContext("lemon").firestore();
+                        mangoDb = testEnv.authenticatedContext("mango").firestore();
+                        appleTaskGroupId = (0, task_group_1.randomTaskGroupId)();
+                        taskGroup = {
+                            name: "Best Group for you to handle",
+                            creator: "apple",
+                            moderatorUsers: ["banana", "cherry"],
+                            users: ["durian", "eggplant"],
+                            invitedUsers: [],
+                            rejectedUsers: [],
+                        };
+                        return [4 /*yield*/, (0, firestore_1.setDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroup)];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Creator invite user to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] Moderator invite user to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertSucceeds)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Member invite user to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(durianDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Outsider invite user to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(guavaDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Unauth user invite user to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Outsider user invited himself to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(flowerDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Creator added member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            users: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Moderator added member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            users: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(bananaDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Member added member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            users: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(durianDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Outsider added himself as member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            users: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(flowerDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Outsider added another as member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            users: (0, firestore_1.arrayUnion)("guava"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(flowerDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Fail] Unauth user added member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            users: (0, firestore_1.arrayUnion)("guava"),
+                        };
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+        it("[Pass] User accepting invitation and adding as member to group", function () { return __awaiter(void 0, void 0, void 0, function () {
+            var taskGroupUpdate;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskGroupUpdate = {
+                            invitedUsers: (0, firestore_1.arrayUnion)("flower"),
+                        };
+                        (0, firestore_1.updateDoc)((0, firestore_1.doc)(appleDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate);
+                        // 
+                        return [4 /*yield*/, (0, rules_unit_testing_1.assertFails)((0, firestore_1.updateDoc)((0, firestore_1.doc)(unauthedDb, (0, task_group_1.taskGroupRef)(appleTaskGroupId)), taskGroupUpdate))];
+                    case 1:
+                        // 
                         _a.sent();
                         return [2 /*return*/];
                 }
