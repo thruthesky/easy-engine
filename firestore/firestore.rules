@@ -147,7 +147,7 @@ service cloud.firestore {
 
 
     // temporary rules test
-    match /temp/{doc} {
+    match /temp_rules_test/{doc} {
       allow read: if false;
       allow create: if willBeMyDoc();
       allow update: if isMyDoc() || willBeMyDoc()
@@ -160,6 +160,10 @@ service cloud.firestore {
           && fieldCheck(['required', 'fields'], ['optional', 'fields'])
           ;
       allow delete: if false;
+    }
+    // temporary collection for testing
+    match /tmp/{doc} {
+      allow read,write: if true;
     }
   // EO of Rules
   }
