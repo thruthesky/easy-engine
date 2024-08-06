@@ -38,6 +38,26 @@ service cloud.firestore {
         allow read, write: if request.auth.uid == uid;
       }
     }
+
+    match /user-phone-sign-in-numbers/{id} {
+      allow get: if true;
+      allow list: if false;
+      allow write: if true;
+    }
+
+    match /chat-rooms/{roomId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if true;
+    }
+    
+    match /tasks/{taskId} {
+      allow read: if isMyField('creator');
+      allow create: if willBeMyField('creator');
+      allow update: if isMyField('creator');
+    }
+    
     // TODO: Update the security rules to let the user can only add/remove his uid. Not other's uid.
     match /likes/{likeId} {
       allow read, write: if true;
@@ -80,18 +100,6 @@ service cloud.firestore {
       allow update: if isMyField('creator') && willBeMyField('creator');
     }
     
-    match /task-assign {
-      allow read: if true;
-      allow create: if
-        willBeMyField('assignTo')
-        // ||
-        // (
-        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
-        //   &&
-        //   isUserInTaskGroup(request.resource.data['taskId'], request.auth.uid)
-        // )
-        ;
-    }
 
 
     // temporary rules test
