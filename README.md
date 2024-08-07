@@ -32,11 +32,47 @@ The `easy engine` provides essential cloud functions to help front-end apps use 
 - `firebase use`
 - `firebase deploy`
 
-## Firebase Security Rules install
+## Firestore Security Rules install
 
 - To understand better about the security rules, please read the comments of the security rules source code.
 
+## Realtime Database Security Rules install
 
+
+```json
+{
+  "rules": {
+    "mirror-users": {
+      ".read": true,
+      "$uid": {
+        ".write": "$uid === auth.uid",
+      },
+      ".indexOn": ["createdAt"]
+    },
+    "fcm-tokens": {
+      ".read": true,
+      "$token": {
+        ".write": "newData.val() === auth.uid",
+      },
+      ".indexOn": [".value"],
+    },
+    "fcm-subscriptions": {
+      ".read": true,
+      "$subscriptionId": {
+        "$uid": {
+          ".write": "newData.val() === auth.uid"
+        }
+      }
+    },
+    "chat-messages": {
+      "$roomId": {
+        ".read": true,
+        ".write": true
+      }
+    }
+  }
+}
+```
 
 # How to use
 
