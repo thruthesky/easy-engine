@@ -8,6 +8,7 @@
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "npm run lint -- --fix && firebase deploy --only functions",
+    "deploy:messaging": "npm run lint -- --fix && firebase deploy --only functions:sendMessage,functions:sendMessageToUids,functions:sendMessageToSubscription",
     "logs": "firebase functions:log",
     "test:deleteAccount": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/user/deleteAccount.spec.ts --timeout 10000",
     "test:e2e:deleteAccount": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/user/deleteAccount.e2e.spec.ts --timeout 10000",

@@ -1,6 +1,6 @@
 
 
-import { AndroidConfig, ApnsConfig, FcmOptions, WebpushConfig } from "firebase-admin/messaging";
+import {AndroidConfig, ApnsConfig, FcmOptions, WebpushConfig} from "firebase-admin/messaging";
 
 /**
  * Inteface for sendNotificationToUids
@@ -20,7 +20,6 @@ export interface SendMessageToUidsRequest {
 }
 
 
-
 /**
  * Basic interface for sending a message
  *
@@ -32,7 +31,6 @@ export interface PayloadNotification {
     body: string;
     image?: string;
 }
-
 
 
 /**
@@ -52,9 +50,6 @@ export interface Payload {
     apns?: ApnsConfig;
     fcmOptions?: FcmOptions;
 }
-
-
-
 
 
 /**

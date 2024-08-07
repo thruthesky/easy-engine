@@ -30,14 +30,16 @@ export class Config {
     static databaseRegion = "asia-southeast1"; // "us-central1"; // asia-southeast1
 
 
-
-    static fcmTokens = 'fcm-tokens';
-    static fcmSubscriptions = 'fcm-subscriptions';
+    static fcmTokens = "fcm-tokens";
+    static fcmSubscriptions = "fcm-subscriptions";
 
     static fcmSendingResults = "fcm-sending-results";
 
-    // Remove the tokens that have errors like messaging/invalid-argument, messaging/invalid-registration-token, messaging/registration-token-not-registered.
-    // But be careful, when you set it to true since thehre is a case that the token is valid but produceses error due to developer's mistake like mis-setup.
+    // Remove the tokens that have errors like messaging/invalid-argument,
+    // messaging/invalid-registration-token, messaging/registration-token-not-registered.
+    //
+    // But be careful, when you set it to true since there is a case that the token is valid
+    // but produceses error due to developer's mistake like mis-setup.
     //
     // 푸시 알림을 보낼 때, 잘못된 토큰이 있으면 삭제를 할 것인지 여부.
     // 주의 할 점은 올바른 토큰임에도 불구하고 Network 에러나 기타 설정, 서버 등의 에러로 인해서 푸시 알림 전송시 에러(잘못된 토큰)로 인식될 수 있다.
@@ -52,7 +54,5 @@ export class Config {
     // 이 값을 true 로 하면, 푸시 알림을 한 후, 그 결과를 DB 에 기록한다. 로그를 기록하면 DB 용량이 커 질 수 있으므로 주의해야 한다.
     // 개발 및 테스트 할 때에는 이 값을 true 로 해서, 확인을 해 볼 필요가 있다.
     static logSendingPushNotificationResult = true;
-
-
 }
 
