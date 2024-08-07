@@ -6,10 +6,10 @@ The `easy engine` provides essential cloud functions to help front-end apps use 
 
 # Why cloud functions?
 
+- Only service accounts can enable and disable user accounts. This means web and app clients using SDKs like Flutter or JavaScript cannot perform this task.
+  - This project supports such functionality for any client platform.
+  - This includes enabling/disabling accounts, sending messages, and more.
 
-
-- Enabling and disabling user accounts can only be done with service accounts. This means that the webs and apps that are using Client SDK like Flutter SDK or Javascript SDK cannot perform this task.
-  - This project supports this functionality for any client platform, including enabling/disabling accounts, sending messages, and more.
 
 - To send push notifications to a device token from Flutter, an `access token` for HTTP API v1 is required. There is no secure way to obtain one.
   - The official document states - [Update authorization of send requests](https://firebase.google.com/docs/cloud-messaging/migrate-v1#update-authorization-of-send-requests): `HTTP v1 messages must be sent through a trusted environment such as your app server or Cloud Functions for Firebase using the HTTP protocol or the Admin SDK to build message requests. Sending directly from client app logic carries extreme security risk and is not supported.`
