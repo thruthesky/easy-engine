@@ -81,7 +81,7 @@ export class MessagingService {
 
         const tokenChunks = await this.getTokensFromUids(uids, concurrentConnections);
 
-        dog("----> sendNotificationToUids() -> tokenChunks:", tokenChunks);
+        // dog("----> sendNotificationToUids() -> tokenChunks:", tokenChunks);
 
         // 토큰 메시지 작성. 이미지는 옵션.
         const notification: PayloadNotification = { title, body };
@@ -99,8 +99,6 @@ export class MessagingService {
                     notification,
                     data,
                     token,
-                    android: MessagingService.android,
-                    apns: MessagingService.apns,
                 });
             }
             tokensWithError = [
@@ -113,12 +111,10 @@ export class MessagingService {
             // 모든 토큰을 하나의 배열로 합친다.
             const tokens = tokenChunks.flat();
 
-            console.log("tokensWithError:", tokensWithError);
+            // console.log("tokensWithError:", tokensWithError);
 
             // / 결과를 /push-notification-logs 에 저장한다.
             const logData = {
-                action: req.action,
-                targetId: req.targetId,
                 title,
                 body,
                 createdAt: Date.now(),
@@ -127,34 +123,22 @@ export class MessagingService {
                 // 에러가 있는 토큰 목록
                 tokensWithError: tokensWithError,
             };
-            console.log(logData);
+            // console.log(logData);
             await getDatabase().ref(Config.fcmSendingResults).push(logData);
         }
         return tokensWithError;
     }
-    static async sendMessageToSubscription(req: SendMessageToSubscription)
-        : Promise<string[]> {
-
-        // 1. Get the list of user uids of the subscriptions
-
-        // 2. send the messages
-        const data: SendMessageToUidsRequest = {
-            uids: [],
-            concurrentConnections: 500,
-            title: req.title,
-            body: req.body,
-            image: req.image,
-            data: req.data,
-            action: req.action,
-            targetId: req.targetId,
-        }
-        return await this.sendMessageToUids(data);
-
-    }
 
 
     /**
-     * Send messages
+     * Send messages with tokens
+     * 
+     * This method gets the list of tokens and  title, body, image, and data.
+     * Then it sends the message to the list of tokens using the
+     * sendMessageToTokens method.
+     * 
+     * Use this method if you have token list. Don't use the
+     * sendMessageToTokens directly.
      *
      * @param {MessageRequest} params - The parameters for sending messages.
      * params.tokens - The list of tokens to send the message to.
@@ -178,6 +162,7 @@ export class MessagingService {
      * If there is no error with the token, the value will be empty
      * string. Otherwise, there will be a error message.
      *
+     * 
      *
      */
     static async sendMessage(params: SendMessageRequest): Promise<string[]> {
@@ -215,8 +200,6 @@ export class MessagingService {
                 notification: notification,
                 data: params.data ?? {},
                 token: token,
-                android: MessagingService.android,
-                apns: MessagingService.apns,
             });
         }
 
@@ -224,11 +207,37 @@ export class MessagingService {
     }
 
 
+    /**
+     * Send messages to the list of tokens.
+     * 
+     * This method adds the default android and apns configuration to the message.
+     * 
+     * @param messages messages to send
+     * @returns an array of tokens that have errors.
+     * The return value is an array of tokens that have errors.
+     */
     static async sendMessageToTokens(messages: Array<Payload>): Promise<string[]> {
 
         const messaging = getMessaging();
 
-        dog("-----> sendNotificationToUids -> sendEach() messages[0]:", messages[0]);
+        // Add apns priority in the message
+        for (const message of messages) {
+            message.android = {
+                ...message.android,
+                ...MessagingService.android,
+            }
+            message.apns = {
+                ...message.apns,
+                ...MessagingService.apns,
+            };
+        }
+
+        // print the messages
+        // for (const message of messages) {
+        //     console.log("message:", message);
+        // }
+
+        // dog("-----> sendNotificationToUids -> sendEach()");
         const res = await messaging.sendEach(messages);
         dog("-----> sendNotificationToUids -> sendEach() result:", "successCount", res.successCount, "failureCount", res.failureCount,);
 
@@ -281,7 +290,8 @@ export class MessagingService {
      *
      * @returns Array<Array<string>> - Array of tokens.
      * 리턴 값은 2차원 배열이다. 각 배열은 최대 [chunkSize] 개의 토큰을 담고 있다.
-     *
+     * 
+     * @see the example of `tests/messaging/sendMessageToUids.spec.ts` for more details.
      */
     static async getTokensFromUids(uids: Array<string>, chunkSize = 128): Promise<Array<Array<string>>> {
         const promises = [];
@@ -292,9 +302,11 @@ export class MessagingService {
 
         // uid 사용자 별 모든 토큰을 가져온다.
         for (const uid of uids) {
-            promises.push(db.ref(Config.fcmTokens).orderByChild("uid").equalTo(uid).get());
+            promises.push(db.ref(Config.fcmTokens).orderByValue().equalTo(uid).get());
         }
         const settled = await Promise.allSettled(promises);
+
+        // console.log('settled:', settled);
 
 
         // 토큰을 배열에 담는다.
@@ -303,7 +315,6 @@ export class MessagingService {
         for (const res of settled) {
             if (res.status == "fulfilled") {
                 res.value.forEach((token) => {
-
                     tokens.push(token.key!);
                 });
             }
@@ -311,6 +322,40 @@ export class MessagingService {
 
         // 토큰을 chunk 단위로 나누어 리턴
         return chunk(tokens, chunkSize);
+    }
+
+
+    /**
+     * Send message to the list of user uids in the subscription.
+     * 
+     * @param {*} req request
+     * @returns {string[]} - The list of tokens that have errors.
+     */
+    static async sendMessageToSubscription(req: SendMessageToSubscription)
+        : Promise<string[]> {
+
+        // 1. Get the list of user uids of the subscriptions
+        const db = getDatabase();
+        const ref = db.ref(Config.fcmSubscriptions).child(req.subscription);
+        const snapshot = await ref.get();
+        if (!snapshot.exists()) {
+            throw new Error("Subscription not found");
+        }
+        const uids = Object.keys(snapshot.val());
+
+        // dog('uids:', uids);
+
+        // 2. send the messages
+        const data: SendMessageToUidsRequest = {
+            uids: uids,
+            concurrentConnections: 500,
+            title: req.title,
+            body: req.body,
+            image: req.image,
+            data: req.data,
+        }
+        return await this.sendMessageToUids(data);
+
     }
 
 }

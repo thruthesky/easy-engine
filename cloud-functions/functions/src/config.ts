@@ -32,6 +32,7 @@ export class Config {
 
 
     static fcmTokens = 'fcm-tokens';
+    static fcmSubscriptions = 'fcm-subscriptions';
 
     static fcmSendingResults = "fcm-sending-results";
 

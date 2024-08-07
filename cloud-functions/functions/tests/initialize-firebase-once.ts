@@ -14,6 +14,6 @@ export const initializeFirebaseOnce = () => {
 
     initialized = true;
     admin.initializeApp({
-        databaseURL: "https://withcenter-test-5-default-rtdb.firebaseio.com/",
+        databaseURL: "https://withcenter-test-5-default-rtdb.asia-southeast1.firebasedatabase.app",
     });
 };
