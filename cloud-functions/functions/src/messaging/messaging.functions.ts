@@ -1,10 +1,10 @@
-import { onRequest } from "firebase-functions/v2/https";
-import { MessagingService } from "./messaging.service";
-import { logger } from "firebase-functions/v2";
+import {onRequest} from "firebase-functions/v2/https";
+import {MessagingService} from "./messaging.service";
+import {logger} from "firebase-functions/v2";
 
 /**
  * Send message with tokens
- * 
+ *
  * TODO: Unit test
  */
 export const sendMessage = onRequest(async (request, response) => {
@@ -15,18 +15,17 @@ export const sendMessage = onRequest(async (request, response) => {
     } catch (e) {
         logger.error(e);
         if (e instanceof Error) {
-            response.send({ error: e.message });
+            response.send({error: e.message});
         } else {
-            response.send({ error: "unknown error" });
+            response.send({error: "unknown error"});
         }
     }
 });
 
 
-
 /**
  * Send message with user uids.
- * 
+ *
  * TDOO: Unit test
  */
 export const sendMessageToUids = onRequest(async (request, response) => {
@@ -37,9 +36,9 @@ export const sendMessageToUids = onRequest(async (request, response) => {
     } catch (e) {
         logger.error(e);
         if (e instanceof Error) {
-            response.send({ error: e.message });
+            response.send({error: e.message});
         } else {
-            response.send({ error: "unknown error" });
+            response.send({error: "unknown error"});
         }
     }
 });
@@ -47,7 +46,7 @@ export const sendMessageToUids = onRequest(async (request, response) => {
 
 /**
  * Send message with user tokens.
- * 
+ *
  * TDOO: Unit test
  */
 export const sendMessageToSubscription = onRequest(async (request, response) => {
@@ -58,9 +57,9 @@ export const sendMessageToSubscription = onRequest(async (request, response) => 
     } catch (e) {
         logger.error(e);
         if (e instanceof Error) {
-            response.send({ error: e.message });
+            response.send({error: e.message});
         } else {
-            response.send({ error: "unknown error" });
+            response.send({error: "unknown error"});
         }
     }
 });
