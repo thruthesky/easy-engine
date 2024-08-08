@@ -84,13 +84,17 @@ export class MessagingService {
     req: SendMessageToUidsRequest
   ): Promise<string[]> {
     // prepare the parameters
-    let { uids, concurrentConnections, title, body, image, data } = req;
-    data = data ?? {};
+    let { concurrentConnections, title, body, image } = req;
 
+    const listOfUids = this.getListOfUids(req);
+
+    this.checkTitleAndBody(req);
+
+    /// If not set or greater than 500 then it will be 500
     concurrentConnections = Math.min(concurrentConnections || 500, 500);
 
     const tokenChunks = await this.getTokensFromUids(
-      uids,
+      listOfUids,
       concurrentConnections
     );
 
@@ -110,7 +114,7 @@ export class MessagingService {
       for (const token of tokenChunk) {
         messages.push({
           notification,
-          data,
+          data: req.data ?? {},
           token,
         });
       }
@@ -177,30 +181,21 @@ export class MessagingService {
    *
    *
    */
-  static async sendMessage(params: SendMessageRequest): Promise<string[]> {
-    if (typeof params.tokens != "object") {
-      throw new Error("tokens must be an array of string");
-    }
-    if (params.tokens.length == 0) {
-      throw new Error("tokens must not be empty");
-    }
-    if (!params.title) {
-      throw new Error("title must not be empty");
-    }
-    if (!params.body) {
-      throw new Error("body must not be empty");
-    }
+  static async sendMessage(req: SendMessageRequest): Promise<string[]> {
+    //  get tokens and check if valid
+    const listOfTokens = this.getListOfTokens(req);
+    this.checkTitleAndBody(req);
 
     // Remove empty tokens
-    const tokens = params.tokens.filter((token) => !!token);
+    const tokens = listOfTokens.filter((token) => !!token);
 
     // Image is optional
     const notification: PayloadNotification = {
-      title: params.title,
-      body: params.body,
+      title: req.title,
+      body: req.body,
     };
-    if (params.image) {
-      notification.image = params.image;
+    if (req.image) {
+      notification.image = req.image;
     }
 
     const payloads: Array<Payload> = [];
@@ -209,7 +204,7 @@ export class MessagingService {
     for (const token of tokens) {
       payloads.push({
         notification: notification,
-        data: params.data ?? {},
+        data: req.data ?? {},
         token: token,
       });
     }
@@ -319,7 +314,7 @@ export class MessagingService {
    */
   static async getTokensFromUids(
     uids: Array<string>,
-    chunkSize = 128
+    chunkSize: number = 128
   ): Promise<Array<Array<string>>> {
     const promises = [];
 
@@ -359,6 +354,12 @@ export class MessagingService {
   static async sendMessageToSubscription(
     req: SendMessageToSubscription
   ): Promise<string[]> {
+    if (!req.subscription) {
+      throw new Error("Subscription must not be empty");
+    }
+
+    this.checkTitleAndBody(req);
+
     // 1. Get the list of user uids of the subscriptions
     const db = getDatabase();
     const ref = db.ref(Config.fcmSubscriptions).child(req.subscription);
@@ -380,5 +381,60 @@ export class MessagingService {
       data: req.data,
     };
     return await this.sendMessageToUids(data);
+  }
+
+  /**
+   * This will check if the title and body are not empty and will throw error it they are empty
+   *
+   * @param {SendMessageRequest|SendMessageToUidsRequest|SendMessageToSubscription} req check if the title and body are properly set
+   * @return {void}
+   */
+  static checkTitleAndBody(
+    req:
+      | SendMessageRequest
+      | SendMessageToUidsRequest
+      | SendMessageToSubscription
+  ): void {
+    if (!req.title) {
+      throw new Error("title must not be empty");
+    }
+    if (!req.body) {
+      throw new Error("body must not be empty");
+    }
+  }
+
+  /**
+   * This will return the tokens or throw error if the tokens params is invalid
+   * @param {SendMessageRequest} req
+   * @returns {Array<String>}
+   */
+  static getListOfTokens(req: SendMessageRequest): Array<string> {
+    const tokens =
+      typeof req.tokens == "string" ? req.tokens.split(",") : req.tokens;
+
+    if (typeof tokens != "object") {
+      throw new Error("uids must be an array of string");
+    }
+    if (tokens.length == 0) {
+      throw new Error("tokens must not be empty");
+    }
+    return tokens;
+  }
+
+  /**
+   * This will return the uids or throw error if the uids params is invalid
+   * @param {SendMessageToUidsRequest} req
+   * @return {Array<string>}
+   */
+  static getListOfUids(req: SendMessageToUidsRequest): Array<string> {
+    const uids = typeof req.uids == "string" ? req.uids.split(",") : req.uids;
+
+    if (typeof uids != "object") {
+      throw new Error("uids must be an array of string");
+    }
+    if (uids.length == 0) {
+      throw new Error("tokens must not be empty");
+    }
+    return uids;
   }
 }
