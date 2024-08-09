@@ -46,8 +46,6 @@ describe("Send messages to Tokens", () => {
         expect(re.length).equal(2);
 
 
-
-
         const re2 = await MessagingService.sendMessageToSubscription({
             title: "title - (sendMessageToUids) - " + new Date().toISOString(),
             body: "body",
