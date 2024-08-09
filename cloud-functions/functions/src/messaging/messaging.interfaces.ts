@@ -1,6 +1,9 @@
-
-
-import {AndroidConfig, ApnsConfig, FcmOptions, WebpushConfig} from "firebase-admin/messaging";
+import {
+  AndroidConfig,
+  ApnsConfig,
+  FcmOptions,
+  WebpushConfig,
+} from "firebase-admin/messaging";
 
 /**
  * Inteface for sendNotificationToUids
@@ -11,14 +14,13 @@ import {AndroidConfig, ApnsConfig, FcmOptions, WebpushConfig} from "firebase-adm
  * @data: Additional data to be sent
  */
 export interface SendMessageToUidsRequest {
-    uids: Array<string>;
-    concurrentConnections?: number;
-    title: string;
-    body: string;
-    image?: string;
-    data?: { [key: string]: string };
+  uids: Array<string> | string;
+  concurrentConnections?: number;
+  title: string;
+  body: string;
+  image?: string;
+  data?: { [key: string]: string };
 }
-
 
 /**
  * Basic interface for sending a message
@@ -27,47 +29,44 @@ export interface SendMessageToUidsRequest {
  * field for sending a message
  */
 export interface PayloadNotification {
-    title: string;
-    body: string;
-    image?: string;
+  title: string;
+  body: string;
+  image?: string;
 }
-
 
 /**
  * Interface for push notification payload.
  */
 export interface Payload {
-    notification: PayloadNotification;
-    data?: {
-        [key: string]: string;
-    };
-    token: string;
-    success?: boolean;
-    code?: string;
+  notification: PayloadNotification;
+  data?: {
+    [key: string]: string;
+  };
+  token: string;
+  success?: boolean;
+  code?: string;
 
-    android?: AndroidConfig;
-    webpush?: WebpushConfig;
-    apns?: ApnsConfig;
-    fcmOptions?: FcmOptions;
+  android?: AndroidConfig;
+  webpush?: WebpushConfig;
+  apns?: ApnsConfig;
+  fcmOptions?: FcmOptions;
 }
-
 
 /**
  *
  */
 export interface SendMessageRequest {
-    title: string;
-    body: string;
-    image?: string;
-    data?: { [key: string]: string };
-    tokens: Array<string>;
+  title: string;
+  body: string;
+  image?: string;
+  data?: { [key: string]: string };
+  tokens: Array<string> | string;
 }
 
-
 export interface SendMessageToSubscription {
-    title: string;
-    body: string;
-    image?: string;
-    data?: { [key: string]: string };
-    subscription: string;
+  title: string;
+  body: string;
+  image?: string;
+  data?: { [key: string]: string };
+  subscription: string;
 }
