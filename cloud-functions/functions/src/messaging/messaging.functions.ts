@@ -1,6 +1,7 @@
 import { onRequest } from "firebase-functions/v2/https";
 import { MessagingService } from "./messaging.service";
 import { logger } from "firebase-functions/v2";
+import { handleHttpError } from "../library";
 
 /**
  * Send message with tokens
@@ -14,12 +15,7 @@ export const sendMessage = onRequest(async (request, response) => {
     const res = await MessagingService.sendMessage(request.body);
     response.send(res);
   } catch (e) {
-    logger.error(e);
-    if (e instanceof Error) {
-      response.send({ error: e.message });
-    } else {
-      response.send({ error: "unknown error" });
-    }
+    handleHttpError(e, response);
   }
 });
 
@@ -35,12 +31,7 @@ export const sendMessageToUids = onRequest(async (request, response) => {
     const res = await MessagingService.sendMessageToUids(request.body);
     response.send(res);
   } catch (e) {
-    logger.error(e);
-    if (e instanceof Error) {
-      response.send({ error: e.message });
-    } else {
-      response.send({ error: "unknown error" });
-    }
+    handleHttpError(e, response);
   }
 });
 
@@ -59,12 +50,7 @@ export const sendMessageToSubscription = onRequest(
       );
       response.send(res);
     } catch (e) {
-      logger.error(e);
-      if (e instanceof Error) {
-        response.send({ error: e.message });
-      } else {
-        response.send({ error: "unknown error" });
-      }
+      handleHttpError(e, response);
     }
   }
 );
