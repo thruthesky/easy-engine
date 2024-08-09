@@ -19,14 +19,6 @@ export const chunk = (
   size: number
 ): any[] => // eslint-disable-line
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Array.from({ length: Math.ceil(arr.length / size) }, (_: any, i: number) =>
+  Array.from({length: Math.ceil(arr.length / size)}, (_: any, i: number) =>
     arr.slice(i * size, i * size + size)
   );
-
-export class ErrorCode extends Error {
-  code: string;
-  constructor(code: string, message: string) {
-    super(message);
-    this.code = code;
-  }
-}

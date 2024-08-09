@@ -7,6 +7,7 @@ import { initializeFirebaseOnce } from "../initialize-firebase-once";
 import { MessagingService } from "../../src/messaging/messaging.service";
 import { Config } from "../../src/config";
 import { getDatabase } from "firebase-admin/database";
+import { MessagingConfig } from "../messaging.config";
 // import { getDatabase } from "firebase-admin/database";
 // import { Config } from "../../src/config";
 
@@ -89,9 +90,7 @@ describe("Send messages to uids", () => {
   it("Check input success with valid tokens", async () => {
     const db = getDatabase();
     db.ref(Config.fcmTokens)
-      .child(
-        "eXR2KTonTn2je2feP7K0AC:APA91bGXYxLIPhuMpia5xWphMbNHGVwcodcUPfdDUO7e8kXmbcSui40SJJjF5CuZxcYagfRQe1Y-Eo3hqOF8YsmjfeutCMAODGmB-xbE4UrnCkLJ4m3plW-_53431M6xGAC1zAftJFgP"
-      )
+      .child(MessagingConfig.validToken)
       .set("uids-GHI123-uids");
     const re = await MessagingService.sendMessageToUids({
       uids: "uids-GHI123-uids",
@@ -108,11 +107,7 @@ describe("Send messages to uids", () => {
     const uidA = "uid-a";
     const uidB = "uid-b";
     const tokensForUidA = ["token-a", "token-b"];
-    const tokensForUidB = [
-      "token-c",
-      "token-d",
-      "eXR2KTonTn2je2feP7K0AC:APA91bGXYxLIPhuMpia5xWphMbNHGVwcodcUPfdDUO7e8kXmbcSui40SJJjF5CuZxcYagfRQe1Y-Eo3hqOF8YsmjfeutCMAODGmB-xbE4UrnCkLJ4m3plW-_53431M6xGAC1zAftJFgP",
-    ];
+    const tokensForUidB = ["token-c", "token-d", MessagingConfig.validToken];
 
     const db = getDatabase();
     db.ref(Config.fcmTokens).child(tokensForUidA[0]).set(uidA);
