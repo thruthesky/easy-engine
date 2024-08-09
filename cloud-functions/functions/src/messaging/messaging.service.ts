@@ -381,7 +381,7 @@ export class MessagingService {
       title: req.title,
       body: req.body,
       image: req.image,
-      data: this.preData(req.data),
+      data: req.data,
     };
     return await this.sendMessageToUids(data);
   }
