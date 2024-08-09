@@ -1,5 +1,5 @@
 import { Config } from "../config";
-import { chunk, dog } from "../library";
+import { chunk } from "../library";
 import {
   Payload,
   PayloadNotification,
@@ -90,7 +90,7 @@ export class MessagingService {
 
     this.checkTitleAndBody(req);
 
-    /// If not set or greater than 500 then it will be 500
+    // / If not set or greater than 500 then it will be 500
     concurrentConnections = Math.min(concurrentConnections || 500, 500);
 
     const tokenChunks = await this.getTokensFromUids(
@@ -156,7 +156,7 @@ export class MessagingService {
    * Use this method if you have token list. Don't use the
    * sendMessageToTokens directly.
    *
-   * @param {MessageRequest} params - The parameters for sending messages.
+   * @param {MessageRequest} req - The parameters for sending messages.
    * params.tokens - The list of tokens to send the message to.
    * params.title - The title of the message.
    * params.body - The body of the message.
@@ -245,13 +245,13 @@ export class MessagingService {
 
     // dog("-----> sendNotificationToUids -> sendEach()");
     const res = await messaging.sendEach(messages);
-    dog(
-      "-----> sendNotificationToUids -> sendEach() result:",
-      "successCount",
-      res.successCount,
-      "failureCount",
-      res.failureCount
-    );
+    // dog(
+    //   "-----> sendNotificationToUids -> sendEach() result:",
+    //   "successCount",
+    //   res.successCount,
+    //   "failureCount",
+    //   res.failureCount
+    // );
 
     // chunk 단위로 전송 - 결과 확인 및 에러 토큰 삭제
     for (let i = 0; i < messages.length; i++) {
@@ -314,7 +314,7 @@ export class MessagingService {
    */
   static async getTokensFromUids(
     uids: Array<string>,
-    chunkSize: number = 128
+    chunkSize = 128
   ): Promise<Array<Array<string>>> {
     const promises = [];
 
@@ -355,7 +355,11 @@ export class MessagingService {
     req: SendMessageToSubscription
   ): Promise<string[]> {
     if (!req.subscription) {
-      throw new Error("Subscription must not be empty");
+      throw new Error("subscription-must-not-be-empty");
+      // throw new ErrorCode(
+      //   "subscription-must-not-be-empty",
+      //   "Susbscription must not be empty"
+      // );
     }
 
     this.checkTitleAndBody(req);
@@ -365,7 +369,7 @@ export class MessagingService {
     const ref = db.ref(Config.fcmSubscriptions).child(req.subscription);
     const snapshot = await ref.get();
     if (!snapshot.exists()) {
-      throw new Error("Subscription not found");
+      throw new Error("subscription-not-found");
     }
     const uids = Object.keys(snapshot.val());
 
@@ -386,7 +390,7 @@ export class MessagingService {
   /**
    * This will check if the title and body are not empty and will throw error it they are empty
    *
-   * @param {SendMessageRequest|SendMessageToUidsRequest|SendMessageToSubscription} req check if the title and body are properly set
+   * @param {SendMessageRequest|SendMessageToUidsRequest|SendMessageToSubscription} req message request
    * @return {void}
    */
   static checkTitleAndBody(
@@ -396,27 +400,30 @@ export class MessagingService {
       | SendMessageToSubscription
   ): void {
     if (!req.title) {
-      throw new Error("title must not be empty");
+      throw new Error("title-must-not-be-empty");
     }
     if (!req.body) {
-      throw new Error("body must not be empty");
+      throw new Error("body-must-not-be-empty");
     }
   }
 
   /**
    * This will return the tokens or throw error if the tokens params is invalid
    * @param {SendMessageRequest} req
-   * @returns {Array<String>}
+   * @return {Array<String>}
    */
   static getListOfTokens(req: SendMessageRequest): Array<string> {
+    if (!req.tokens) {
+      throw new Error("tokens-must-not-be-empty");
+    }
     const tokens =
       typeof req.tokens == "string" ? req.tokens.split(",") : req.tokens;
 
     if (typeof tokens != "object") {
-      throw new Error("uids must be an array of string");
+      throw new Error("tokens-must-be-an-array-of-string");
     }
     if (tokens.length == 0) {
-      throw new Error("tokens must not be empty");
+      throw new Error("tokens-must-not-be-empty");
     }
     return tokens;
   }
@@ -427,13 +434,17 @@ export class MessagingService {
    * @return {Array<string>}
    */
   static getListOfUids(req: SendMessageToUidsRequest): Array<string> {
+    if (!req.uids) {
+      throw new Error("uids-must-not-be-empty");
+    }
+
     const uids = typeof req.uids == "string" ? req.uids.split(",") : req.uids;
 
     if (typeof uids != "object") {
-      throw new Error("uids must be an array of string");
+      throw new Error("uids-must-be-an-array-of-string");
     }
     if (uids.length == 0) {
-      throw new Error("tokens must not be empty");
+      throw new Error("uids-must-not-be-empty");
     }
     return uids;
   }
