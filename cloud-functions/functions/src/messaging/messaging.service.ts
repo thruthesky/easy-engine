@@ -9,6 +9,7 @@ import {
 } from "./messaging.interfaces";
 import {SendResponse, getMessaging} from "firebase-admin/messaging";
 import {getDatabase} from "firebase-admin/database";
+import {logger} from "firebase-functions/v1";
 
 /**
  * MessagingService
@@ -22,6 +23,7 @@ export class MessagingService {
   static android = {
     notification: {
       sound: "default",
+      channel_id: "high_importance_channel",
     },
   };
 
@@ -248,13 +250,13 @@ export class MessagingService {
 
     // dog("-----> sendNotificationToUids -> sendEach()");
     const res = await messaging.sendEach(messages);
-    // dog(
-    //   "-----> sendNotificationToUids -> sendEach() result:",
-    //   "successCount",
-    //   res.successCount,
-    //   "failureCount",
-    //   res.failureCount
-    // );
+    logger.info(
+      "-----> sendNotificationToUids -> sendEach() result:",
+      "successCount",
+      res.successCount,
+      "failureCount",
+      res.failureCount
+    );
 
     // chunk 단위로 전송 - 결과 확인 및 에러 토큰 삭제
     for (let i = 0; i < messages.length; i++) {
