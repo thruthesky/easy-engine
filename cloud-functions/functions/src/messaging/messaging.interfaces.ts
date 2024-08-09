@@ -19,7 +19,7 @@ export interface SendMessageToUidsRequest {
   title: string;
   body: string;
   image?: string;
-  data?: { [key: string]: string };
+  data?: { [key: string]: string } | string;
 }
 
 /**
@@ -59,7 +59,7 @@ export interface SendMessageRequest {
   title: string;
   body: string;
   image?: string;
-  data?: { [key: string]: string };
+  data?: { [key: string]: string } | string;
   tokens: Array<string> | string;
 }
 
@@ -67,6 +67,6 @@ export interface SendMessageToSubscription {
   title: string;
   body: string;
   image?: string;
-  data?: { [key: string]: string };
+  data?: { [key: string]: string } | string;
   subscription: string;
 }

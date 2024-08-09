@@ -1,5 +1,5 @@
-import { Config } from "../config";
-import { chunk } from "../library";
+import {Config} from "../config";
+import {chunk} from "../library";
 import {
   Payload,
   PayloadNotification,
@@ -7,8 +7,8 @@ import {
   SendMessageToSubscription,
   SendMessageToUidsRequest,
 } from "./messaging.interfaces";
-import { SendResponse, getMessaging } from "firebase-admin/messaging";
-import { getDatabase } from "firebase-admin/database";
+import {SendResponse, getMessaging} from "firebase-admin/messaging";
+import {getDatabase} from "firebase-admin/database";
 
 /**
  * MessagingService
@@ -84,7 +84,7 @@ export class MessagingService {
     req: SendMessageToUidsRequest
   ): Promise<string[]> {
     // prepare the parameters
-    let { concurrentConnections, title, body, image } = req;
+    let {concurrentConnections, title, body, image} = req;
 
     const listOfUids = this.getListOfUids(req);
 
@@ -101,10 +101,12 @@ export class MessagingService {
     // dog("----> sendNotificationToUids() -> tokenChunks:", tokenChunks);
 
     // 토큰 메시지 작성. 이미지는 옵션.
-    const notification: PayloadNotification = { title, body };
+    const notification: PayloadNotification = {title, body};
     if (image) {
       notification["image"] = image;
     }
+
+    const data = this.preData(req.data);
 
     let tokensWithError: Array<string> = [];
 
@@ -114,7 +116,7 @@ export class MessagingService {
       for (const token of tokenChunk) {
         messages.push({
           notification,
-          data: req.data ?? {},
+          data: data,
           token,
         });
       }
@@ -198,13 +200,14 @@ export class MessagingService {
       notification.image = req.image;
     }
 
+    const data = this.preData(req.data);
     const payloads: Array<Payload> = [];
 
     // send the notification message to the list of tokens
     for (const token of tokens) {
       payloads.push({
         notification: notification,
-        data: req.data ?? {},
+        data: data,
         token: token,
       });
     }
@@ -378,7 +381,7 @@ export class MessagingService {
       title: req.title,
       body: req.body,
       image: req.image,
-      data: req.data,
+      data: this.preData(req.data),
     };
     return await this.sendMessageToUids(data);
   }
@@ -432,10 +435,6 @@ export class MessagingService {
   static getListOfUids(req: SendMessageToUidsRequest): Array<string> {
     if (!req.uids) {
       throw new Error("uids-must-not-be-empty");
-      // throw new ErrorCode(
-      //   "uids-must-not-be-empty",
-      //   "uids must not be empty"
-      // );
     }
 
     const uids = typeof req.uids == "string" ? req.uids.split(",") : req.uids;
@@ -447,5 +446,20 @@ export class MessagingService {
       throw new Error("uids-must-not-be-empty");
     }
     return uids;
+  }
+
+  /**
+   *
+   * Preprocess data
+   * If data is string, then JSON parse.
+   * If data is null/undefined then return empty object
+   *
+   * @param {Object|String|undefined}  data
+   * @return {Object}
+   */
+  static preData(data?: { [key: string]: string } | string): {
+    [key: string]: string;
+  } {
+    return typeof data == "string" ? JSON.parse(data) : data ?? {};
   }
 }

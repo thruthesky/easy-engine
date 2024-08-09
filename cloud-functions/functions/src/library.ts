@@ -1,5 +1,4 @@
-
-import { logger } from "firebase-functions/v2";
+import {logger} from "firebase-functions/v2";
 import * as express from "express";
 
 /**
@@ -19,27 +18,29 @@ export function dog(...args: unknown[]) {
  * @return {any[]}
  */
 export const chunk = (
-  arr: any[],
+  arr: any[], // eslint-disable-line
   size: number
 ): any[] => // eslint-disable-line
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Array.from({ length: Math.ceil(arr.length / size) }, (_: any, i: number) =>
+  Array.from({length: Math.ceil(arr.length / size)}, (_: any, i: number) =>
     arr.slice(i * size, i * size + size)
   );
 
-
 /**
  * Handle HTTP error
- * 
+ *
  * @param {Error|unknown} e error
  * @param {express.Response} response response
  * @return {void} void
  */
-export function handleHttpError(e: Error | unknown, response: express.Response): void {
+export function handleHttpError(
+  e: Error | unknown,
+  response: express.Response
+): void {
   logger.error(e);
   if (e instanceof Error) {
-    response.send({ error: e.message });
+    response.send({error: e.message});
   } else {
-    response.send({ error: "unknown error" });
+    response.send({error: "unknown error"});
   }
 }
