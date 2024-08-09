@@ -8,20 +8,20 @@ import {logger} from "firebase-functions/v2";
  * TODO: Unit test
  */
 export const sendMessage = onRequest(async (request, response) => {
-    logger.info("request.query of sendPushNotifications", request.body);
-    try {
-        const res = await MessagingService.sendMessage(request.body);
-        response.send(res);
-    } catch (e) {
-        logger.error(e);
-        if (e instanceof Error) {
-            response.send({error: e.message});
-        } else {
-            response.send({error: "unknown error"});
-        }
-    }
+  logger.info("request.query of sendPushNotifications", request.body);
+  response.send(await MessagingService.sendMessage(request.body));
+  // try {
+  //     const res = await MessagingService.sendMessage(request.body);
+  //     response.send(res);
+  // } catch (e) {
+  //     logger.error(e);
+  //     if (e instanceof Error) {
+  //         response.send({error: e.message});
+  //     } else {
+  //         response.send({error: "unknown error"});
+  //     }
+  // }
 });
-
 
 /**
  * Send message with user uids.
@@ -29,37 +29,44 @@ export const sendMessage = onRequest(async (request, response) => {
  * TDOO: Unit test
  */
 export const sendMessageToUids = onRequest(async (request, response) => {
-    logger.info("request.query of sendPushNotifications", request.body);
-    try {
-        const res = await MessagingService.sendMessageToUids(request.body);
-        response.send(res);
-    } catch (e) {
-        logger.error(e);
-        if (e instanceof Error) {
-            response.send({error: e.message});
-        } else {
-            response.send({error: "unknown error"});
-        }
-    }
+  logger.info("request.query of sendPushNotifications", request.body);
+  response.send(await MessagingService.sendMessageToUids(request.body));
+  //   try {
+  //     const res = await MessagingService.sendMessageToUids(request.body);
+  //     response.send(res);
+  //   } catch (e) {
+  //     logger.error(e);
+  //     if (e instanceof Error) {
+  //       response.send({error: e.message});
+  //     } else {
+  //       response.send({error: "unknown error"});
+  //     }
+  //   }
 });
-
 
 /**
  * Send message with user tokens.
  *
  * TDOO: Unit test
  */
-export const sendMessageToSubscription = onRequest(async (request, response) => {
+export const sendMessageToSubscription = onRequest(
+  async (request, response) => {
     logger.info("request.query of sendPushNotifications", request.body);
-    try {
-        const res = await MessagingService.sendMessageToSubscription(request.body);
-        response.send(res);
-    } catch (e) {
-        logger.error(e);
-        if (e instanceof Error) {
-            response.send({error: e.message});
-        } else {
-            response.send({error: "unknown error"});
-        }
-    }
-});
+    response.send(
+      await MessagingService.sendMessageToSubscription(request.body)
+    );
+    // try {
+    //   const res = await MessagingService.sendMessageToSubscription(
+    //     request.body
+    //   );
+    //   response.send(res);
+    // } catch (e) {
+    //   logger.error(e);
+    //   if (e instanceof Error) {
+    //     response.send({error: e.message});
+    //   } else {
+    //     response.send({error: "unknown error"});
+    //   }
+    // }
+  }
+);

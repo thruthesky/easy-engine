@@ -1,5 +1,5 @@
-import { Config } from "../config";
-import { chunk } from "../library";
+import {Config} from "../config";
+import {chunk} from "../library";
 import {
   Payload,
   PayloadNotification,
@@ -7,8 +7,8 @@ import {
   SendMessageToSubscription,
   SendMessageToUidsRequest,
 } from "./messaging.interfaces";
-import { SendResponse, getMessaging } from "firebase-admin/messaging";
-import { getDatabase } from "firebase-admin/database";
+import {SendResponse, getMessaging} from "firebase-admin/messaging";
+import {getDatabase} from "firebase-admin/database";
 
 /**
  * MessagingService
@@ -84,7 +84,7 @@ export class MessagingService {
     req: SendMessageToUidsRequest
   ): Promise<string[]> {
     // prepare the parameters
-    let { concurrentConnections, title, body, image } = req;
+    let {concurrentConnections, title, body, image} = req;
 
     const listOfUids = this.getListOfUids(req);
 
@@ -101,7 +101,7 @@ export class MessagingService {
     // dog("----> sendNotificationToUids() -> tokenChunks:", tokenChunks);
 
     // 토큰 메시지 작성. 이미지는 옵션.
-    const notification: PayloadNotification = { title, body };
+    const notification: PayloadNotification = {title, body};
     if (image) {
       notification["image"] = image;
     }
@@ -436,6 +436,10 @@ export class MessagingService {
   static getListOfUids(req: SendMessageToUidsRequest): Array<string> {
     if (!req.uids) {
       throw new Error("uids-must-not-be-empty");
+      // throw new ErrorCode(
+      //   "uids-must-not-be-empty",
+      //   "uids must not be empty"
+      // );
     }
 
     const uids = typeof req.uids == "string" ? req.uids.split(",") : req.uids;

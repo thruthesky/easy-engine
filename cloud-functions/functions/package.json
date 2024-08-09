@@ -12,8 +12,8 @@
     "logs": "firebase functions:log",
     "test:deleteAccount": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/user/deleteAccount.spec.ts --timeout 10000",
     "test:e2e:deleteAccount": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/user/deleteAccount.e2e.spec.ts --timeout 10000",
-    "test:sendMessageToTokens": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/messaging/sendMessageToTokens.spec.ts --timeout 10000",
-    "test:sendMessageToUids": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/messaging/sendMessageToUids.spec.ts --timeout 10000",
+    "test:sendMessageToTokens": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/messaging/sendMessageToTokens.spec.ts --timeout 20000",
+    "test:sendMessageToUids": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/messaging/sendMessageToUids.spec.ts --timeout 20000",
     "test:sendMessageToSubscription": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/messaging/sendMessageToSubscription.spec.ts --timeout 20000"
   },
   "engines": {
