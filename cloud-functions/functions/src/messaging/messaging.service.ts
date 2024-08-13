@@ -1,5 +1,5 @@
-import {Config} from "../config";
-import {chunk} from "../library";
+import { Config } from "../config";
+import { chunk } from "../library";
 import {
   Payload,
   PayloadNotification,
@@ -7,9 +7,9 @@ import {
   SendMessageToSubscription,
   SendMessageToUidsRequest,
 } from "./messaging.interfaces";
-import {SendResponse, getMessaging} from "firebase-admin/messaging";
-import {getDatabase} from "firebase-admin/database";
-import {logger} from "firebase-functions/v1";
+import { SendResponse, getMessaging } from "firebase-admin/messaging";
+import { getDatabase } from "firebase-admin/database";
+import { logger } from "firebase-functions/v1";
 
 /**
  * MessagingService
@@ -86,14 +86,30 @@ export class MessagingService {
     req: SendMessageToUidsRequest
   ): Promise<string[]> {
     // prepare the parameters
-    let {concurrentConnections, title, body, image} = req;
+    let { concurrentConnections, title, body, image } = req;
 
-    const listOfUids = this.getListOfUids(req);
+    let listOfUids: string[] = this.getListOfUids(req);
 
     this.checkTitleAndBody(req);
 
     // / If not set or greater than 500 then it will be 500
     concurrentConnections = Math.min(concurrentConnections || 500, 500);
+
+    /// if excludeSubsribers is set true and subscription is set, exclude subsribers from list
+    if (req.excludeSubscribers == true && req.subscriptionName) {
+      // 1. Get the list of user uids of the subscriptions
+      const db = getDatabase();
+      const ref = db.ref(Config.fcmSubscriptions).child(req.subscriptionName!);
+      const snapshot = await ref.get();
+      if (snapshot.exists()) {
+        /// get subscriber uid
+        const uids: string[] = Object.keys(snapshot.val());
+        if (uids.length > 0) {
+          /// remove subscriber uid from listOfUids
+          listOfUids.filter((x) => !uids.includes(x));
+        }
+      }
+    }
 
     const tokenChunks = await this.getTokensFromUids(
       listOfUids,
@@ -103,7 +119,7 @@ export class MessagingService {
     // dog("----> sendNotificationToUids() -> tokenChunks:", tokenChunks);
 
     // 토큰 메시지 작성. 이미지는 옵션.
-    const notification: PayloadNotification = {title, body};
+    const notification: PayloadNotification = { title, body };
     if (image) {
       notification["image"] = image;
     }

@@ -19,6 +19,8 @@ export interface SendMessageToUidsRequest {
   title: string;
   body: string;
   image?: string;
+  subscriptionName?: string;
+  excludeSubscribers?: boolean;
   data?: { [key: string]: string } | string;
 }
 
