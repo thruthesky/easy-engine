@@ -1,4 +1,4 @@
 export class MessagingConfig {
   static validToken =
-    "eXR2KTonTn2je2feP7K0AC:APA91bGXYxLIPhuMpia5xWphMbNHGVwcodcUPfdDUO7e8kXmbcSui40SJJjF5CuZxcYagfRQe1Y-Eo3hqOF8YsmjfeutCMAODGmB-xbE4UrnCkLJ4m3plW-_53431M6xGAC1zAftJFgP";
+    "cdgqMhK3QGm7pfBELsHQUq:APA91bGP8XoW1u6UOTZ_Q1gTwUvDLU5sMFCa9jFc0fbv2nKzl1Odu-LfBzJn8ejDIsTkiBE1mcNMZqchHzi5OXDSOztqyQBgMi8Ipx4MJztrivkpiZ5FAPM-SV8AlN3lx2eRuuXXsSZ9";
 }
