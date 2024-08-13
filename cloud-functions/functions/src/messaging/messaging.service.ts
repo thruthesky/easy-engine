@@ -96,17 +96,27 @@ export class MessagingService {
     concurrentConnections = Math.min(concurrentConnections || 500, 500);
 
     /// if excludeSubsribers is set true and subscription is set, exclude subsribers from list
+    console.log(
+      "excludeSubscribers:",
+      req.excludeSubscribers,
+      req.subscriptionName
+    );
     if (req.excludeSubscribers == true && req.subscriptionName) {
       // 1. Get the list of user uids of the subscriptions
       const db = getDatabase();
       const ref = db.ref(Config.fcmSubscriptions).child(req.subscriptionName!);
       const snapshot = await ref.get();
+      console.log("snapshot:", snapshot.val(), req.subscriptionName!);
       if (snapshot.exists()) {
         /// get subscriber uid
         const uids: string[] = Object.keys(snapshot.val());
         if (uids.length > 0) {
+          console.log(listOfUids, uids);
           /// remove subscriber uid from listOfUids
-          listOfUids.filter((x) => !uids.includes(x));
+
+          /// remove subscriber uid from listOfUids
+          listOfUids = listOfUids.filter((x) => !uids.includes(x));
+          console.log(listOfUids);
         }
       }
     }
