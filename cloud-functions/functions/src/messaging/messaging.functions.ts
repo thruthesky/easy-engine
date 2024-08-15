@@ -12,7 +12,7 @@ export const sendMessage = onRequest(async (request, response) => {
   logger.info("request.query of sendPushNotifications", request.body);
 
   try {
-    const res = await MessagingService.sendMessage(JSON.parse(request.body));
+    const res = await MessagingService.sendMessage(request.body);
     response.send(res);
   } catch (e) {
     handleHttpError(e, response);
@@ -28,9 +28,7 @@ export const sendMessageToUids = onRequest(async (request, response) => {
   logger.info("request.query of sendPushNotifications", request.body);
 
   try {
-    const res = await MessagingService.sendMessageToUids(
-      JSON.parse(request.body)
-    );
+    const res = await MessagingService.sendMessageToUids(request.body);
     response.send(res);
   } catch (e) {
     handleHttpError(e, response);
@@ -48,7 +46,7 @@ export const sendMessageToSubscription = onRequest(
 
     try {
       const res = await MessagingService.sendMessageToSubscription(
-        JSON.parse(request.body)
+        request.body
       );
       response.send(res);
     } catch (e) {
