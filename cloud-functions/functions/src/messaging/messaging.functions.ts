@@ -1,7 +1,7 @@
-import { onRequest } from "firebase-functions/v2/https";
-import { MessagingService } from "./messaging.service";
-import { logger } from "firebase-functions/v2";
-import { handleHttpError } from "../library";
+import {onRequest} from "firebase-functions/v2/https";
+import {MessagingService} from "./messaging.service";
+import {logger} from "firebase-functions/v2";
+import {handleHttpError} from "../library";
 
 /**
  * Send message with tokens
@@ -13,9 +13,9 @@ export const sendMessage = onRequest(async (request, response) => {
 
   try {
     const body =
-      typeof request.body === "string"
-        ? JSON.parse(request.body)
-        : request.body;
+      typeof request.body === "string" ?
+        JSON.parse(request.body) :
+        request.body;
     const res = await MessagingService.sendMessage(body);
     response.send(res);
   } catch (e) {
@@ -33,9 +33,9 @@ export const sendMessageToUids = onRequest(async (request, response) => {
 
   try {
     const body =
-      typeof request.body === "string"
-        ? JSON.parse(request.body)
-        : request.body;
+      typeof request.body === "string" ?
+        JSON.parse(request.body) :
+        request.body;
     const res = await MessagingService.sendMessageToUids(body);
     response.send(res);
   } catch (e) {
@@ -54,9 +54,9 @@ export const sendMessageToSubscription = onRequest(
 
     try {
       const body =
-        typeof request.body === "string"
-          ? JSON.parse(request.body)
-          : request.body;
+        typeof request.body === "string" ?
+          JSON.parse(request.body) :
+          request.body;
       const res = await MessagingService.sendMessageToSubscription(body);
       response.send(res);
     } catch (e) {

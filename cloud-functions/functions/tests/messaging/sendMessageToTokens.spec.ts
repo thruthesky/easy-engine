@@ -16,7 +16,7 @@ describe("Send messages to Tokens", () => {
   it("Check input Tokens empty string", async () => {
     try {
       const re = await MessagingService.sendMessage({
-        tokens: "",
+        tokens: [],
         title: "",
         body: "",
       });
@@ -41,7 +41,7 @@ describe("Send messages to Tokens", () => {
   it("Check input uid exsit but title", async () => {
     try {
       const re = await MessagingService.sendMessage({
-        tokens: "token-ABC123-tokens",
+        tokens: ["token-ABC123-tokens"],
         title: "",
         body: "",
       });
@@ -86,7 +86,7 @@ describe("Send messages to Tokens", () => {
 
   it("Success with string tokens, 1 tokens error 1 success", async () => {
     const re = await MessagingService.sendMessage({
-      tokens: `token-ABC123-tokens,${MessagingConfig.validToken}`,
+      tokens: ["token-ABC123-tokens", MessagingConfig.validToken],
       title: "title - token-ABC123-tokens - " + new Date().toISOString(),
       body: "body (sendMessage)",
     });
@@ -98,7 +98,7 @@ describe("Send messages to Tokens", () => {
     const db = getDatabase();
     db.ref(Config.fcmTokens).child("token-DEF123-uids").set("uids-DEF123-uids");
     const re = await MessagingService.sendMessageToUids({
-      uids: "uids-DEF123-uids",
+      uids: ["uids-DEF123-uids"],
       title: "title -uids-DEF123-uids - " + new Date().toISOString(),
       body: "body (sendMessageToUids)",
     });

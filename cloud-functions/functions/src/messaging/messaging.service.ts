@@ -1,5 +1,5 @@
-import {Config} from "../config";
-import {chunk} from "../library";
+import { Config } from "../config";
+import { chunk } from "../library";
 import {
   Payload,
   PayloadNotification,
@@ -7,9 +7,9 @@ import {
   SendMessageToSubscription,
   SendMessageToUidsRequest,
 } from "./messaging.interfaces";
-import {SendResponse, getMessaging} from "firebase-admin/messaging";
-import {getDatabase} from "firebase-admin/database";
-import {logger} from "firebase-functions/v1";
+import { SendResponse, getMessaging } from "firebase-admin/messaging";
+import { getDatabase } from "firebase-admin/database";
+import { logger } from "firebase-functions/v1";
 
 /**
  * MessagingService
@@ -86,7 +86,7 @@ export class MessagingService {
     req: SendMessageToUidsRequest
   ): Promise<string[]> {
     // prepare the parameters
-    let {concurrentConnections, title, body, image} = req;
+    let { concurrentConnections, title, body, image, data } = req;
 
     let listOfUids: string[] = this.getListOfUids(req);
 
@@ -119,12 +119,12 @@ export class MessagingService {
     // dog("----> sendNotificationToUids() -> tokenChunks:", tokenChunks);
 
     // 토큰 메시지 작성. 이미지는 옵션.
-    const notification: PayloadNotification = {title, body};
+    const notification: PayloadNotification = { title, body };
     if (image) {
       notification["image"] = image;
     }
 
-    const data = this.preData(req.data);
+    // const data = this.preData(req.data);
 
     let tokensWithError: Array<string> = [];
 
@@ -218,14 +218,14 @@ export class MessagingService {
       notification.image = req.image;
     }
 
-    const data = this.preData(req.data);
+    // const data = this.preData(req.data);
     const payloads: Array<Payload> = [];
 
     // send the notification message to the list of tokens
     for (const token of tokens) {
       payloads.push({
         notification: notification,
-        data: data,
+        data: req.data,
         token: token,
       });
     }
@@ -281,8 +281,8 @@ export class MessagingService {
         // 에러 토큰 표시
         messages[i].success = false;
         messages[i].code = response.error?.code;
-        // console.log("error code:", response.error?.code);
-        // console.log("error message:", response.error?.message);
+        console.log("error code:", response.error?.code);
+        console.log("error message:", response.error?.message);
       }
     }
 
@@ -433,16 +433,16 @@ export class MessagingService {
     if (!req.tokens) {
       throw new Error("tokens-must-not-be-empty");
     }
-    const tokens =
-      typeof req.tokens == "string" ? req.tokens.split(",") : req.tokens;
+    // const tokens =
+    //   typeof req.tokens == "string" ? req.tokens.split(",") : req.tokens;
 
-    if (typeof tokens != "object") {
+    if (typeof req.tokens != "object") {
       throw new Error("tokens-must-be-an-array-of-string");
     }
-    if (tokens.length == 0) {
+    if (req.tokens.length == 0) {
       throw new Error("tokens-must-not-be-empty");
     }
-    return tokens;
+    return req.tokens;
   }
 
   /**
@@ -455,29 +455,29 @@ export class MessagingService {
       throw new Error("uids-must-not-be-empty");
     }
 
-    const uids = typeof req.uids == "string" ? req.uids.split(",") : req.uids;
+    // const uids = typeof req.uids == "string" ? req.uids.split(",") : req.uids;
 
-    if (typeof uids != "object") {
+    if (typeof req.uids != "object") {
       throw new Error("uids-must-be-an-array-of-string");
     }
-    if (uids.length == 0) {
+    if (req.uids.length == 0) {
       throw new Error("uids-must-not-be-empty");
     }
-    return uids;
+    return req.uids;
   }
 
-  /**
-   *
-   * Preprocess data
-   * If data is string, then JSON parse.
-   * If data is null/undefined then return empty object
-   *
-   * @param {Object|String|undefined}  data
-   * @return {Object}
-   */
-  static preData(data?: { [key: string]: string } | string): {
-    [key: string]: string;
-  } {
-    return typeof data == "string" ? JSON.parse(data) : data ?? {};
-  }
+  // /**
+  //  *
+  //  * Preprocess data
+  //  * If data is string, then JSON parse.
+  //  * If data is null/undefined then return empty object
+  //  *
+  //  * @param {Object|String|undefined}  data
+  //  * @return {Object}
+  //  */
+  // static preData(data?: { [key: string]: string } | string): {
+  //   [key: string]: string;
+  // } {
+  //   return typeof data == "string" ? JSON.parse(data) : data ?? {};
+  // }
 }

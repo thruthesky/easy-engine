@@ -14,14 +14,14 @@ import {
  * @data: Additional data to be sent
  */
 export interface SendMessageToUidsRequest {
-  uids: Array<string> | string;
+  uids: Array<string>;
   concurrentConnections?: number;
   title: string;
   body: string;
   image?: string;
   subscriptionName?: string;
   excludeSubscribers?: boolean;
-  data?: { [key: string]: string } | string;
+  data?: { [key: string]: string };
 }
 
 /**
@@ -61,14 +61,14 @@ export interface SendMessageRequest {
   title: string;
   body: string;
   image?: string;
-  data?: { [key: string]: string } | string;
-  tokens: Array<string> | string;
+  data?: { [key: string]: string };
+  tokens: Array<string>;
 }
 
 export interface SendMessageToSubscription {
   title: string;
   body: string;
   image?: string;
-  data?: { [key: string]: string } | string;
+  data?: { [key: string]: string };
   subscription: string;
 }

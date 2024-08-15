@@ -15,7 +15,7 @@ describe("Send messages to uids", () => {
   it("Check input uids empty string", async () => {
     try {
       const re = await MessagingService.sendMessageToUids({
-        uids: "",
+        uids: [],
         title: "",
         body: "",
       });
@@ -40,7 +40,7 @@ describe("Send messages to uids", () => {
   it("Check input uid exsit but title", async () => {
     try {
       const re = await MessagingService.sendMessageToUids({
-        uids: "uids-ABC123-uids",
+        uids: ["uids-ABC123-uids"],
         title: "",
         body: "",
       });
@@ -53,7 +53,7 @@ describe("Send messages to uids", () => {
   it("Check input body", async () => {
     try {
       const re = await MessagingService.sendMessageToUids({
-        uids: "uids-ABC123-uids",
+        uids: ["uids-ABC123-uids"],
         title: "title - (sendMessageToUids) - " + new Date().toISOString(),
         body: "",
       });
@@ -65,7 +65,7 @@ describe("Send messages to uids", () => {
 
   it("Check input success with 0 tokens", async () => {
     const re = await MessagingService.sendMessageToUids({
-      uids: "uids-ABC123-uids",
+      uids: ["uids-ABC123-uids"],
       title: "title - uids-ABC123-uids - " + new Date().toISOString(),
       body: "body (sendMessageToUids)",
     });
@@ -77,7 +77,7 @@ describe("Send messages to uids", () => {
     const db = getDatabase();
     db.ref(Config.fcmTokens).child("token-DEF123-uids").set("uids-DEF123-uids");
     const re = await MessagingService.sendMessageToUids({
-      uids: "uids-DEF123-uids",
+      uids: ["uids-DEF123-uids"],
       title: "title -uids-DEF123-uids - " + new Date().toISOString(),
       body: "body (sendMessageToUids)",
     });
@@ -91,7 +91,7 @@ describe("Send messages to uids", () => {
       .child(MessagingConfig.validToken)
       .set("uids-GHI123-uids");
     const re = await MessagingService.sendMessageToUids({
-      uids: "uids-GHI123-uids",
+      uids: ["uids-GHI123-uids"],
       title: "title -uids-GHI123-uids - " + new Date().toISOString(),
       body: "body (sendMessageToUids)",
     });
