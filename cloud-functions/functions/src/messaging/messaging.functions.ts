@@ -1,7 +1,7 @@
-import {onRequest} from "firebase-functions/v2/https";
-import {MessagingService} from "./messaging.service";
-import {logger} from "firebase-functions/v2";
-import {handleHttpError} from "../library";
+import { onRequest } from "firebase-functions/v2/https";
+import { MessagingService } from "./messaging.service";
+import { logger } from "firebase-functions/v2";
+import { handleHttpError } from "../library";
 
 /**
  * Send message with tokens
@@ -12,7 +12,11 @@ export const sendMessage = onRequest(async (request, response) => {
   logger.info("request.query of sendPushNotifications", request.body);
 
   try {
-    const res = await MessagingService.sendMessage(request.body);
+    const body =
+      typeof request.body === "string"
+        ? JSON.parse(request.body)
+        : request.body;
+    const res = await MessagingService.sendMessage(body);
     response.send(res);
   } catch (e) {
     handleHttpError(e, response);
@@ -28,7 +32,11 @@ export const sendMessageToUids = onRequest(async (request, response) => {
   logger.info("request.query of sendPushNotifications", request.body);
 
   try {
-    const res = await MessagingService.sendMessageToUids(request.body);
+    const body =
+      typeof request.body === "string"
+        ? JSON.parse(request.body)
+        : request.body;
+    const res = await MessagingService.sendMessageToUids(body);
     response.send(res);
   } catch (e) {
     handleHttpError(e, response);
@@ -45,9 +53,11 @@ export const sendMessageToSubscription = onRequest(
     logger.info("request.query of sendPushNotifications", request.body);
 
     try {
-      const res = await MessagingService.sendMessageToSubscription(
-        request.body
-      );
+      const body =
+        typeof request.body === "string"
+          ? JSON.parse(request.body)
+          : request.body;
+      const res = await MessagingService.sendMessageToSubscription(body);
       response.send(res);
     } catch (e) {
       handleHttpError(e, response);
