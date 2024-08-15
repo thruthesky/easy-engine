@@ -1,7 +1,7 @@
-import { onRequest } from "firebase-functions/v2/https";
-import { MessagingService } from "./messaging.service";
-import { logger } from "firebase-functions/v2";
-import { handleHttpError } from "../library";
+import {onRequest} from "firebase-functions/v2/https";
+import {MessagingService} from "./messaging.service";
+import {logger} from "firebase-functions/v2";
+import {handleHttpError} from "../library";
 
 /**
  * Send message with tokens
