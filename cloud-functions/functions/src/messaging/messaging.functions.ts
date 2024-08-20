@@ -1,15 +1,14 @@
-import {onRequest} from "firebase-functions/v2/https";
-import {MessagingService} from "./messaging.service";
-import {logger} from "firebase-functions/v2";
-import {handleHttpError} from "../library";
+import { onRequest } from "firebase-functions/v2/https";
+import { MessagingService } from "./messaging.service";
+import { logger } from "firebase-functions/v2";
+import { handleHttpError } from "../library";
 
 /**
  * Send message with tokens
  *
- * TODO: Unit test
  */
-export const sendMessage = onRequest(async (request, response) => {
-  logger.info("request.query of sendMessage", request.body);
+export const sendMessageToTokens = onRequest(async (request, response) => {
+  logger.info("request.query of sendMessageToTokens", request.body);
 
   try {
     const res = await MessagingService.sendMessage(request.body);
@@ -22,7 +21,6 @@ export const sendMessage = onRequest(async (request, response) => {
 /**
  * Send message with user uids.
  *
- * TDOO: Unit test
  */
 export const sendMessageToUids = onRequest(async (request, response) => {
   logger.info("request.query of sendMessageToUids", request.body);
@@ -38,7 +36,6 @@ export const sendMessageToUids = onRequest(async (request, response) => {
 /**
  * Send message with user tokens.
  *
- * TDOO: Unit test
  */
 export const sendMessageToSubscription = onRequest(
   async (request, response) => {
