@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
-import {setGlobalOptions} from "firebase-functions/v2";
-import {Config} from "./config";
+import { setGlobalOptions } from "firebase-functions/v2";
+import { Config } from "./config";
 
 admin.initializeApp();
 
