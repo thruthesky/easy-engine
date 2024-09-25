@@ -2,6 +2,18 @@
 
 The `easy engine` provides essential cloud functions to help front-end apps use Firebase more effectively. It includes server-side functions for tasks that can't be done on the client side, like sending push notifications, disabling user accounts. It also offers helpful functions, such as deleting user accounts.
 
+- [Easy Engine](#easy-engine)
+- [Why cloud functions?](#why-cloud-functions)
+- [Install](#install)
+  - [Cloud functions install](#cloud-functions-install)
+  - [Firestore Security Rules install](#firestore-security-rules-install)
+  - [Realtime Database Security Rules install](#realtime-database-security-rules-install)
+- [How to use](#how-to-use)
+  - [Delete account](#delete-account)
+  - [Claim as admin](#claim-as-admin)
+  - [FCM](#fcm)
+- [Unit Tests](#unit-tests)
+- [E2E Tests](#e2e-tests)
 
 
 # Why cloud functions?
@@ -38,41 +50,7 @@ The `easy engine` provides essential cloud functions to help front-end apps use 
 
 ## Realtime Database Security Rules install
 
-
-```json
-{
-  "rules": {
-    "mirror-users": {
-      ".read": true,
-      "$uid": {
-        ".write": "$uid === auth.uid",
-      },
-      ".indexOn": ["createdAt"]
-    },
-    "fcm-tokens": {
-      ".read": true,
-      "$token": {
-        ".write": "newData.val() === auth.uid",
-      },
-      ".indexOn": [".value"],
-    },
-    "fcm-subscriptions": {
-      ".read": true,
-      "$subscriptionId": {
-        "$uid": {
-          ".write": "newData.val() === auth.uid"
-        }
-      }
-    },
-    "chat-messages": {
-      "$roomId": {
-        ".read": true,
-        ".write": true
-      }
-    }
-  }
-}
-```
+- Install the security rules for the Realtime Database at the [easy package database security rules](https://github.com/thruthesky/easy_packages/blob/main/docs/database_security_rules.json).
 
 # How to use
 
