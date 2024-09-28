@@ -7,7 +7,7 @@
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "npm run lint -- --fix && firebase deploy --only functions",
+    "deploy": "npm run lint -- --fix && firebase deploy --only functions:claimAdmin,functions:deleteAccount,functions:sendMessageToTokens,functions:sendMessageToUids,functions:sendMessageToSubscription",
     "deploy:messaging": "npm run lint -- --fix && firebase deploy --only functions:sendMessageToTokens,functions:sendMessageToUids,functions:sendMessageToSubscription",
     "logs": "firebase functions:log",
     "test:deleteAccount": "mocha --require ts-node/register --watch --watch-files src/**/*.ts,tests/**/*.ts tests/user/deleteAccount.spec.ts --timeout 10000",

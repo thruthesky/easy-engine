@@ -40,9 +40,9 @@ The `easy engine` provides essential cloud functions to help front-end apps use 
 ## Cloud functions install
 
 - `git clone` the easy-engine
-- `cd functions`
-- `firebase use`
-- `firebase deploy`
+- `cd cloud-functions/functions`
+- `firebase use`: select the project you want to deploy the functions to.
+- `npm run deploy`
 
 ## Firestore Security Rules install
 

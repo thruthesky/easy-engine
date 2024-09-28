@@ -2,7 +2,8 @@
   "projects": {
     "default": "withcenter-test-5",
     "test3": "withcenter-test-3",
-    "school": "withcenter-school"
+    "school": "withcenter-school",
+    "philgo": "philgo"
   },
   "targets": {},
   "etags": {},
